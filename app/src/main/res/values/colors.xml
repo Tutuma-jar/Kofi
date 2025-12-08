@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="beige_claro">#ede6dd</color>
+    <color name="beige_medio">#e5d3bd</color>
+    <color name="beige_oscuro">#e2c198</color>
+    <color name="azul_medio">#8999a9</color>
+    <color name="azul_oscuro">#3e5879</color>
+    <color name="texto">#595a5d</color>
+    <color name="blanco">#fafafa</color>
+    <color name="boton_listo">#aac0cd</color>
+    <color name="boton_pendiente">#d5ceb2</color>
 </resources>
