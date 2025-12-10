@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".FinalizarOrdenActivity">
 
+
     <!-- ==================== GUIAS MARGEN ==================== -->
 
     <androidx.constraintlayout.widget.Guideline
@@ -105,7 +106,6 @@
         app:layout_constraintStart_toStartOf="@+id/startGuia"
         android:src="@drawable/go_previous_svgrepo_com"
         android:background="@android:color/transparent" />
-    <!-- ^ antes tenías "transparent" sin @android:color -->
 
 
     <Button
