@@ -69,11 +69,11 @@
         app:layout_constraintStart_toEndOf="@id/tvEtiquetaCantidad"
         app:layout_constraintEnd_toStartOf="@id/guiaColumna2">
         <ImageButton
-            android:id="@+id/btnIncrementarCantidad"
+            android:id="@+id/btnDisminuirCantidad"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:background="@drawable/btn_redondo"
-            android:src="@drawable/btn_mas"
+            android:src="@drawable/btn_menos"
             android:contentDescription="Agregar" />
         <TextView
             android:id="@+id/tvCantidad"
@@ -83,11 +83,11 @@
             android:paddingHorizontal="12dp"
             tools:text="1" />
         <ImageButton
-            android:id="@+id/btnDisminuirCantidad"
+            android:id="@+id/btnIncrementarCantidadCantidad"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:background="@drawable/btn_redondo"
-            android:src="@drawable/btn_menos"
+            android:src="@drawable/btn_mas"
             android:contentDescription="Disminuir" />
     </LinearLayout>
 

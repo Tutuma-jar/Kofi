@@ -30,12 +30,33 @@ class FinalizarOrdenActivity : AppCompatActivity() {
         recycler.layoutManager = LinearLayoutManager(this)
         //Datos de prueba
         val articulos = listOf(
-            Articulo("Capuccino", 20.0, R.drawable.ic_launcher_foreground),
-            Articulo("Latte", 18.0, R.drawable.ic_launcher_foreground),
-            Articulo("Mocca", 22.0, R.drawable.ic_launcher_foreground),
-            Articulo("Americano", 15.0, R.drawable.ic_launcher_foreground),
-            Articulo("Frappe", 25.0, R.drawable.ic_launcher_foreground)
+            Articulo(
+                1, "Capuccino",
+                "Espresso combinado con leche vaporizada y una capa suave de espuma. Equilibrado, cremoso y aromático.",
+                20.0, R.drawable.ic_launcher_foreground
+            ),
+            Articulo(
+                2, "Latte",
+                "Espresso con abundante leche caliente y una fina capa de espuma. Suave, ligero y perfecto para quienes prefieren sabores delicados.",
+                18.0, R.drawable.ic_launcher_foreground
+            ),
+            Articulo(
+                3, "Mocca",
+                "Mezcla de espresso, leche vaporizada y chocolate. Dulce, intenso y con un toque de cacao que realza el aroma.",
+                22.0, R.drawable.ic_launcher_foreground
+            ),
+            Articulo(
+                4, "Americano",
+                "Espresso diluido en agua caliente. Sabor limpio, ligero y con la intensidad justa del grano.",
+                15.0, R.drawable.ic_launcher_foreground
+            ),
+            Articulo(
+                5, "Frappe",
+                "Café frío mezclado con hielo y leche hasta lograr una textura cremosa. Refrescante y ligeramente dulce.",
+                25.0, R.drawable.ic_launcher_foreground
+            )
         )
+
 
         //Conectar adapter
         recycler.adapter = ArticuloAdapter(articulos)

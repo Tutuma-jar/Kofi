@@ -5,8 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingStart="16dp"
-    android:paddingEnd="16dp"
+    android:padding="16dp"
     tools:context=".FinalizarOrdenActivity">
 
 
@@ -16,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.10" />
+        app:layout_constraintGuide_percent="0.08" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/articulosGuiaTop"
         android:layout_width="match_parent"
@@ -44,7 +43,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/tituloGuia"
         app:layout_constraintStart_toStartOf="parent"
         android:text="FINALIZAR ORDEN"
         style="@style/titulos" />
@@ -64,13 +62,13 @@
     <!-- ==================== BOTONES ==================== -->
     <ImageButton
         android:id="@+id/ibVolver"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/tituloGuia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/tvTituloFinalizar"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTituloFinalizar"
         app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/btn_regresar"
-        android:background="@android:color/transparent" />
+        android:src="@drawable/arrow"
+        android:backgroundTint="@color/beige_claro" />
     <Button
         android:id="@+id/btnConfirmarPedido"
         android:layout_width="0dp"
@@ -82,14 +80,6 @@
         app:layout_constraintWidth_percent="0.75"
         android:background="@drawable/boton_kofi"
         android:text="HACER PEDIDO" />
-    <View
-        android:id="@+id/viewSeparadorVertical"
-        android:layout_width="1dp"
-        android:layout_height="0dp"
-        android:background="#33000000"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/ibVolver"
-        app:layout_constraintBottom_toBottomOf="@+id/tituloGuia" />
 
 
     <!-- ==================== CONTENEDOR ARTICULOS ==================== -->
@@ -154,7 +144,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/articulosCol3"
             app:layout_constraintBottom_toBottomOf="@id/articulosGuiaTitulos"
             app:layout_constraintStart_toStartOf="@id/articulosCol2"
             android:text="Precio" />

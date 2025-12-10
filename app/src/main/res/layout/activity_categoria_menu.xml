@@ -22,9 +22,13 @@
         app:layout_constraintGuide_percent="0.90">
     </androidx.constraintlayout.widget.Guideline>
     <ImageButton
+        android:id="@+id/ibRegreso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/arrow"
+        android:backgroundTint="@color/beige_claro"
+        app:layout_constraintTop_toTopOf="@+id/tvTituloCategoria"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTituloCategoria"
         app:layout_constraintStart_toStartOf="parent" />
     <TextView
         android:id="@+id/tvTituloCategoria"
@@ -32,16 +36,18 @@
         android:layout_height="wrap_content"
         style="@style/titulos"
         android:text="SANDWICHES"
-        android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/guiaSuperior"
         app:layout_constraintStart_toStartOf="parent" />
     <ImageButton
+        android:id="@+id/ibMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:src="@drawable/menu"
+        android:backgroundTint="@color/beige_claro"
+        app:layout_constraintTop_toTopOf="@id/tvTituloCategoria"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTituloCategoria"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
