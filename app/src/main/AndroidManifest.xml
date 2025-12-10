@@ -15,11 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Kofi">
         <activity
-            android:name=".PrincipalActivity"
+            android:name=".PedidosActivity"
             android:exported="true"/>
         <activity
+            android:name=".PrincipalActivity"
+            android:exported="true" />
+        <activity
             android:name=".ComandaActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".MenuActivity"
             android:exported="true" />
