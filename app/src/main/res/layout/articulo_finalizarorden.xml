@@ -112,5 +112,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/guiaColumna3"
-        tools:src="@drawable/bin_svgrepo_com" />
+        tools:src="@drawable/btn_basurero" />
 </androidx.constraintlayout.widget.ConstraintLayout>
