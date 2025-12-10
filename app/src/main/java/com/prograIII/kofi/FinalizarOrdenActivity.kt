@@ -1,6 +1,8 @@
 package com.prograIII.kofi
 
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
+import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -13,12 +15,19 @@ class FinalizarOrdenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+
         setContentView(R.layout.activity_finalizar_orden)
+        //Obtener referencia al EditText
+        val etComentario = findViewById<EditText>(R.id.etComentario)
+        //Activar scroll interno
+        etComentario.movementMethod = ScrollingMovementMethod()
 
+
+        setContentView(R.layout.activity_finalizar_orden)
         //Configurar RecyclerView
-        val recycler = findViewById<RecyclerView>(R.id.listaArticulos)
+        val recycler = findViewById<RecyclerView>(R.id.rvArticulosPedido)
         recycler.layoutManager = LinearLayoutManager(this)
-
         //Datos de prueba
         val articulos = listOf(
             Articulo("Capuccino", 20.0, R.drawable.ic_launcher_foreground),

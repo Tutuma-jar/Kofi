@@ -16,9 +16,12 @@ class ArticuloAdapter(
 ) : RecyclerView.Adapter<ArticuloAdapter.ArticuloViewHolder>() {
 
     inner class ArticuloViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val imagen = itemView.findViewById<ImageView>(R.id.imagenArticulo)
-        val nombre = itemView.findViewById<TextView>(R.id.nombreArticulo)
-        val precio = itemView.findViewById<TextView>(R.id.precioArticulo)
+        // Columna 1
+        val imagen = itemView.findViewById<ImageView>(R.id.ivImagenArticulo)
+        // Columna 2
+        val nombre = itemView.findViewById<TextView>(R.id.tvNombreArticulo)
+        // Columna 3
+        val precio = itemView.findViewById<TextView>(R.id.tvPrecioArticulo)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticuloViewHolder {
