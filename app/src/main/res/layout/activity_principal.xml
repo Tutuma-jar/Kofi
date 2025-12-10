@@ -91,7 +91,8 @@
                 android:id="@+id/recycler_pedidos_pendientes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/blanco"/>
+                android:background="@color/blanco"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
