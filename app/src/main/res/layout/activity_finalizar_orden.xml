@@ -10,12 +10,12 @@
 
     <!-- ==================== GUIAS MARGEN ==================== -->
 
-    <androidx.constraintlayout.widget.Guideline
+<!--    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/topGuia"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.025" />
+        app:layout_constraintGuide_percent="0.025" />-->
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/endGuia"
@@ -67,7 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6" />
+        app:layout_constraintGuide_percent="0.55" />
 
 
     <!-- ==================== TEXTOS ==================== -->
@@ -76,12 +76,12 @@
         android:id="@+id/tituloFinalizarOrden"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@+id/topGuia"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/endGuia"
         app:layout_constraintBottom_toBottomOf="@+id/tituloGuia"
         app:layout_constraintStart_toStartOf="@+id/startGuia"
-        android:gravity="center"
-        android:text="FINALIZAR ORDEN" />
+        android:text="FINALIZAR ORDEN"
+        style="@style/titulos"/>
 
     <TextView
         android:id="@+id/tituloPedido"
@@ -92,7 +92,8 @@
         app:layout_constraintStart_toStartOf="@+id/startGuia"
         android:gravity="start|center"
         android:layout_marginStart="23dp"
-        android:text="PEDIDO XX" />
+        android:text="PEDIDO XX"
+        style="@style/subtitulos"/>
 
 
     <!-- ==================== BOTONES ==================== -->
@@ -101,7 +102,7 @@
         android:id="@+id/botonDeRegreso"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        app:layout_constraintTop_toTopOf="@+id/topGuia"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/tituloGuia"
         app:layout_constraintStart_toStartOf="@+id/startGuia"
         android:src="@drawable/go_previous_svgrepo_com"
@@ -125,7 +126,7 @@
         android:layout_width="1dp"
         android:layout_height="0dp"
         android:background="#33000000"
-        app:layout_constraintTop_toTopOf="@+id/topGuia"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/botonDeRegreso"
         app:layout_constraintBottom_toBottomOf="@+id/tituloGuia" />
 
@@ -218,5 +219,80 @@
             tools:listitem="@layout/articulo_finalizarorden" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/articulosGuiaBottom"
+        app:layout_constraintEnd_toEndOf="@+id/endGuia"
+        app:layout_constraintBottom_toBottomOf="@id/botonBajoGuia"
+        app:layout_constraintStart_toStartOf="@id/startGuia" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="textotextotextotextotext" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guiaDatos"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.40" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/guiaDatos"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="PROMOCIONES" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="TOTAL" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="NOMBRE"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="NIT"/>
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
