@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FinalizarOrdenActivity">
+
+    <!-- ==================== GUIAS MARGEN ==================== -->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/topGuia"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.025" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/endGuia"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.950" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottomGuia"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.975" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/startGuia"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.050" />
+
+
+    <!-- ==================== GUIAS DE CONTENIDO ==================== -->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/tituloGuia"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.10" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/articulosGuiaTop"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/botonBajoGuia"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.875" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/articulosGuiaBottom"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6" />
+
+
+    <!-- ==================== TEXTOS ==================== -->
+
+    <TextView
+        android:id="@+id/tituloFinalizarOrden"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/topGuia"
+        app:layout_constraintEnd_toEndOf="@+id/endGuia"
+        app:layout_constraintBottom_toBottomOf="@+id/tituloGuia"
+        app:layout_constraintStart_toStartOf="@+id/startGuia"
+        android:gravity="center"
+        android:text="FINALIZAR ORDEN" />
+
+    <TextView
+        android:id="@+id/tituloPedido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/tituloGuia"
+        app:layout_constraintBottom_toBottomOf="@+id/articulosGuiaTop"
+        app:layout_constraintStart_toStartOf="@+id/startGuia"
+        android:gravity="start|center"
+        android:layout_marginStart="23dp"
+        android:text="PEDIDO XX" />
+
+
+    <!-- ==================== BOTONES ==================== -->
+
+    <ImageButton
+        android:id="@+id/botonDeRegreso"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:layout_constraintTop_toTopOf="@+id/topGuia"
+        app:layout_constraintBottom_toBottomOf="@+id/tituloGuia"
+        app:layout_constraintStart_toStartOf="@+id/startGuia"
+        android:src="@drawable/go_previous_svgrepo_com"
+        android:background="@android:color/transparent" />
+    <!-- ^ antes tenías "transparent" sin @android:color -->
+
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/botonBajoGuia"
+        app:layout_constraintEnd_toEndOf="@id/endGuia"
+        app:layout_constraintBottom_toBottomOf="@id/bottomGuia"
+        app:layout_constraintStart_toStartOf="@id/startGuia"
+        app:layout_constraintWidth_percent="0.75"
+        android:background="@drawable/boton_kofi"
+        android:text="HACER PEDIDO" />
+
+
+    <View
+        android:id="@+id/lineaDivisoraVertical"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:background="#33000000"
+        app:layout_constraintTop_toTopOf="@+id/topGuia"
+        app:layout_constraintEnd_toEndOf="@+id/botonDeRegreso"
+        app:layout_constraintBottom_toBottomOf="@+id/tituloGuia" />
+
+
+    <!-- ==================== CONTENEDOR ARTICULOS ==================== -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@+id/articulosGuiaTop"
+        app:layout_constraintEnd_toEndOf="@+id/endGuia"
+        app:layout_constraintBottom_toBottomOf="@+id/articulosGuiaBottom"
+        app:layout_constraintStart_toStartOf="@+id/startGuia">
+
+
+        <!-- ==================== GUIAS DE CONTENEDOR DE ARTICULOS ==================== -->
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/articulosCol1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.25" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/articulosCol2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.70" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/articulosCol3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.90" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/articulosGuiaTitulos"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.10" />
+
+
+        <!-- ==================== TEXTOS DE CONTENEDOR DE ARTICULOS ==================== -->
+
+        <TextView
+            android:id="@+id/articulosTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/articulosCol1"
+            app:layout_constraintBottom_toBottomOf="@id/articulosGuiaTitulos"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Articulo" />
+
+        <TextView
+            android:id="@+id/descripccionTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/articulosCol2"
+            app:layout_constraintBottom_toBottomOf="@id/articulosGuiaTitulos"
+            app:layout_constraintStart_toStartOf="@id/articulosCol1"
+            android:text="Descripccion" />
+
+        <TextView
+            android:id="@+id/precioTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/articulosGuiaTitulos"
+            app:layout_constraintStart_toStartOf="@id/articulosCol2"
+            android:text="Precio" />
+
+
+        <!-- ==================== LISTA DE ARTICULOS ==================== -->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listaArticulos"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/articulosGuiaTitulos"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:listitem="@layout/articulo_finalizarorden" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
