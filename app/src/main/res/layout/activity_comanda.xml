@@ -10,7 +10,7 @@
     tools:context=".ComandaActivity">
 
     <TextView
-        android:id="@+id/menuTitulo"
+        android:id="@+id/comanda_titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="COMANDA"
@@ -20,13 +20,13 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageButton
-        android:id="@+id/menuButton"
+        android:id="@+id/arrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/arrow"
         android:background="@color/beige_claro"
-        app:layout_constraintTop_toTopOf="@id/menuTitulo"
-        app:layout_constraintBottom_toBottomOf="@id/menuTitulo"
+        app:layout_constraintTop_toTopOf="@id/comanda_titulo"
+        app:layout_constraintBottom_toBottomOf="@id/comanda_titulo"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <androidx.constraintlayout.widget.Guideline

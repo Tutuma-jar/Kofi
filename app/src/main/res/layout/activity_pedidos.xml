@@ -10,7 +10,7 @@
     tools:context=".PedidosActivity">
 
     <TextView
-        android:id="@+id/pedidos_itulo"
+        android:id="@+id/pedidos_titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="PEDIDOS"
@@ -20,13 +20,23 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageButton
+        android:id="@+id/arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/arrow"
+        android:backgroundTint="@color/beige_claro"
+        app:layout_constraintTop_toTopOf="@id/pedidos_titulo"
+        app:layout_constraintBottom_toBottomOf="@id/pedidos_titulo"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
         android:id="@+id/menuButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/menu"
         android:backgroundTint="@color/beige_claro"
-        app:layout_constraintTop_toTopOf="@id/menuTitulo"
-        app:layout_constraintBottom_toBottomOf="@id/menuTitulo"
+        app:layout_constraintTop_toTopOf="@id/pedidos_titulo"
+        app:layout_constraintBottom_toBottomOf="@id/pedidos_titulo"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline

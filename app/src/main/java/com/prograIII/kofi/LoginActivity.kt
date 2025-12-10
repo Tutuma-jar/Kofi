@@ -1,5 +1,6 @@
 package com.prograIII.kofi
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -14,6 +15,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
 
+    val context: Context = this
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -31,7 +33,7 @@ class LoginActivity : AppCompatActivity() {
 
         val currentUser = auth.currentUser
         if(currentUser != null){
-            val intentUsuarioLogueado = Intent(this, MainActivity::class.java) //para redirigir a los usuarios que sya se loguearon
+            val intentUsuarioLogueado = Intent(context, PrincipalActivity::class.java) //para redirigir a los usuarios que sya se loguearon
             startActivity(intentUsuarioLogueado)
         }
 
@@ -57,7 +59,7 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if(task.isSuccessful){
                     //Nuestro usuaro se logeo correctamente
-                    val intentLogueado = Intent(this, MainActivity::class.java)
+                    val intentLogueado = Intent(context, PrincipalActivity::class.java)
                     startActivity(intentLogueado)
                 } else {
                     Toast.makeText(
