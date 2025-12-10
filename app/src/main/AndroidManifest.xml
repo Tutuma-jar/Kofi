@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Kofi">
         <activity
+            android:name=".CategoriaMenuActivity"
+            android:exported="false" />
+        <activity
             android:name=".FinalizarOrdenActivity"
             android:exported="false" />
         <activity
