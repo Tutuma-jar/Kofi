@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.prograIII.kofi.databinding.ActivityPrincipalBinding
@@ -21,7 +22,8 @@ class PrincipalActivity : AppCompatActivity() {
         binding = ActivityPrincipalBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        // Usamos binding.root que siempre se refiere a la vista principal (el DrawerLayout)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -35,6 +37,30 @@ class PrincipalActivity : AppCompatActivity() {
         binding.buttonMenu.setOnClickListener {
             val intentCambioAMenu = Intent(context, MenuActivity::class.java)
             startActivity(intentCambioAMenu)
+        }
+
+        //Barra lateral
+        binding.menuButton.setOnClickListener {
+            binding.drawerLayout.openDrawer(GravityCompat.END)
+        }
+
+        binding.navBtnInicio.setOnClickListener {
+            binding.drawerLayout.closeDrawer(GravityCompat.END)
+        }
+
+        binding.navBtnMenu.setOnClickListener {
+            val intent = Intent(context, MenuActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.navBtnPedidos.setOnClickListener {
+            val intent = Intent(context, PedidosActivity::class.java) // Asegúrate de crear esta Activity
+            startActivity(intent)
+        }
+
+        binding.navBtnComanda.setOnClickListener {
+            val intent = Intent(context, ComandaActivity::class.java)
+            startActivity(intent)
         }
     }
 }
