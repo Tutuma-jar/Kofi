@@ -9,4 +9,5 @@
     <color name="blanco">#fafafa</color>
     <color name="boton_listo">#aac0cd</color>
     <color name="boton_pendiente">#d5ceb2</color>
+    <color name="negro_opacidad">#66373737</color>
 </resources>
