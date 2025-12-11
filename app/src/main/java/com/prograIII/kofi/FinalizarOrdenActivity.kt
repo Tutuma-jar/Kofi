@@ -2,32 +2,29 @@ package com.prograIII.kofi
 
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
-import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.prograIII.kofi.databinding.ActivityFinalizarOrdenBinding
 
 class FinalizarOrdenActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityFinalizarOrdenBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-
-        setContentView(R.layout.activity_finalizar_orden)
-        //Obtener referencia al EditText
-        val etComentario = findViewById<EditText>(R.id.etComentario)
-        //Activar scroll interno
-        etComentario.movementMethod = ScrollingMovementMethod()
-
-
-        setContentView(R.layout.activity_finalizar_orden)
+        //Inflar binding
+        binding = ActivityFinalizarOrdenBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        //Activar scroll del EditText
+        binding.etComentario.movementMethod = ScrollingMovementMethod()
         //Configurar RecyclerView
-        val recycler = findViewById<RecyclerView>(R.id.rvArticulosPedido)
-        recycler.layoutManager = LinearLayoutManager(this)
+        binding.rvArticulosPedido.layoutManager = LinearLayoutManager(this)
+
         //Datos de prueba
         val articulos = listOf(
             Articulo(
@@ -57,12 +54,11 @@ class FinalizarOrdenActivity : AppCompatActivity() {
             )
         )
 
-
         //Conectar adapter
-        recycler.adapter = ArticuloAdapter(articulos)
+        binding.rvArticulosPedido.adapter = ArticuloAdapter(articulos)
 
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        //Window Insets
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets

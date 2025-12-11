@@ -1,38 +1,33 @@
 package com.prograIII.kofi
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.prograIII.kofi.databinding.ArticuloCategoriaBinding
 
 class ArticulosCategoriaAdapter(
     private val articulos: List<Articulo>
 ) : RecyclerView.Adapter<ArticulosCategoriaAdapter.ArticuloViewHolder>() {
 
-    class ArticuloViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val tvNombre = itemView.findViewById<TextView>(R.id.tvNombreArticulo)
-        val tvDescripcion = itemView.findViewById<TextView>(R.id.tvDescripcionArticulo)
-        val tvPrecio = itemView.findViewById<TextView>(R.id.tvPrecioArticulo)
-        val ivImagen = itemView.findViewById<ImageView>(R.id.ivImagenArticulo)
-    }
+    class ArticuloViewHolder(val binding: ArticuloCategoriaBinding)
+        : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticuloViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.articulo_categoria, parent, false)
-        return ArticuloViewHolder(view)
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = ArticuloCategoriaBinding.inflate(inflater, parent, false)
+        return ArticuloViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ArticuloViewHolder, position: Int) {
         val articulo = articulos[position]
 
-        holder.tvNombre.text = articulo.nombre
-        holder.tvDescripcion.text = articulo.descripcion
-        holder.tvPrecio.text = "${articulo.precio} Bs."
-        holder.ivImagen.setImageResource(articulo.imagenResId)
+        holder.binding.apply {
+            tvNombreArticulo.text = articulo.nombre
+            tvDescripcionArticulo.text = articulo.descripcion
+            tvPrecioArticulo.text = "${articulo.precio} Bs."
+            ivArticulo.setImageResource(articulo.imagenResId)
+        }
     }
 
     override fun getItemCount(): Int = articulos.size
 }
-
