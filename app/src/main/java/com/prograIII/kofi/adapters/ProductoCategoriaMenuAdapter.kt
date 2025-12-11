@@ -1,0 +1,37 @@
+package com.prograIII.kofi.adapters
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.prograIII.kofi.Producto
+import com.prograIII.kofi.databinding.ProductoCategoriaMenuBinding
+
+class ProductoCategoriaMenuAdapter(
+    private val productos: List<Producto>
+) : RecyclerView.Adapter<ProductoCategoriaMenuAdapter.ProductoViewHolder>() {
+
+    inner class ProductoViewHolder(val binding: ProductoCategoriaMenuBinding) :
+        RecyclerView.ViewHolder(binding.root)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductoViewHolder {
+        val binding = ProductoCategoriaMenuBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        return ProductoViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: ProductoViewHolder, position: Int) {
+        val producto = productos[position]
+
+        holder.binding.apply {
+            tvNombreArticulo.text = producto.nombre
+            tvDescripcionArticulo.text = producto.descripcion
+            tvPrecioArticulo.text = "${producto.precio} Bs."
+            ivArticulo.setImageResource(producto.imagenResId)
+        }
+    }
+
+    override fun getItemCount(): Int = productos.size
+}
