@@ -1,8 +1,9 @@
-package com.prograIII.kofi.dataclasses
+package com.prograIII.kofi
 
 data class Producto(
     val id: Int,
     val nombre: String,
+    val descripcion: String,
     val precio: Double,
-    val descripcion: String
+    val imagenResId: Int,
 )
