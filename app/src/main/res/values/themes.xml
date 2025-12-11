@@ -53,4 +53,10 @@
         <item name="android:textColor">@color/texto</item>
         <item name="android:textSize">15sp</item>
     </style>
+
+    <style name="texto_con_negrillas">
+        <item name="android:textColor">@color/texto</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

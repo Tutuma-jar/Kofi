@@ -1,5 +1,7 @@
 package com.prograIII.kofi
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -8,10 +10,12 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.prograIII.kofi.adapters.ProductoCategoriaMenuAdapter
 import com.prograIII.kofi.databinding.ActivityCategoriaBinding
+import com.prograIII.kofi.databinding.ActivityMenuBinding
 
 class CategoriaMenuActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCategoriaBinding
+    val context: Context = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +25,7 @@ class CategoriaMenuActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Configurar Recycler
-        binding.rvArticulosCategoria.layoutManager = LinearLayoutManager(this)
+        binding.rvArticulosCategoria.layoutManager = LinearLayoutManager(context)
 
         val productos = listOf(
             Producto(
@@ -54,6 +58,14 @@ class CategoriaMenuActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        binding.arrow.setOnClickListener {
+            val intentCambioAPrincipal = Intent(context, PrincipalActivity::class.java)
+            startActivity(intentCambioAPrincipal)
+        }
+
+        binding.nuevaReceta.setOnClickListener {
         }
     }
 }

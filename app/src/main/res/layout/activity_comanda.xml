@@ -64,8 +64,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/search"
-                android:tint="@color/texto"
-                android:background="@color/blanco"/>
+                android:background="@color/blanco"
+                app:tint="@color/texto" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -262,6 +262,7 @@
     </androidx.cardview.widget.CardView>
 
     <Button
+        android:id="@+id/finalizar_orden"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="FINALIZAR ORDEN"

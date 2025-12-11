@@ -62,7 +62,7 @@
 
     <!-- ==================== BOTONES ==================== -->
     <ImageButton
-        android:id="@+id/ibVolver"
+        android:id="@+id/arrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/tvTituloFinalizar"
@@ -356,6 +356,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="EFECTIVO"
+                style="@style/subtitulos_orden"
                 android:layoutDirection="rtl" />
             <View
                 android:layout_width="1dp"
@@ -371,6 +372,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="TARJETA"
+                style="@style/subtitulos_orden"
                 android:layoutDirection="rtl" />
             <View
                 android:layout_width="1dp"
@@ -383,6 +385,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="QR"
+                style="@style/subtitulos_orden"
                 android:layoutDirection="rtl" />
         </RadioGroup>
     </LinearLayout>

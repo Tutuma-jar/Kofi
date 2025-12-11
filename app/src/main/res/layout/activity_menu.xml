@@ -64,7 +64,7 @@
             android:layout_margin="5dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1">
-            <ImageButton
+            <ImageView
                 android:id="@+id/breakfast"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -92,7 +92,7 @@
             android:layout_margin="5dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="2">
-            <ImageButton
+            <ImageView
                 android:id="@+id/cafes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -120,7 +120,7 @@
             android:layout_margin="5dp"
             android:layout_columnWeight="2"
             android:layout_rowWeight="1">
-            <ImageButton
+            <ImageView
                 android:id="@+id/infusiones"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -149,7 +149,7 @@
             android:layout_margin="5dp"
             android:layout_columnWeight="2"
             android:layout_rowWeight="2">
-            <ImageButton
+            <ImageView
                 android:id="@+id/bebidas"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -178,7 +178,7 @@
             android:layout_margin="5dp"
             android:layout_columnWeight="3"
             android:layout_rowWeight="1">
-            <ImageButton
+            <ImageView
                 android:id="@+id/sandwiches"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -207,7 +207,7 @@
             android:layout_margin="5dp"
             android:layout_columnWeight="3"
             android:layout_rowWeight="2">
-            <ImageButton
+            <ImageView
                 android:id="@+id/panaderia"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -236,7 +236,7 @@
             android:layout_margin="5dp"
             android:layout_columnWeight="4"
             android:layout_rowWeight="1">
-            <ImageButton
+            <ImageView
                 android:id="@+id/pasteles"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -265,7 +265,7 @@
             android:layout_margin="5dp"
             android:layout_columnWeight="4"
             android:layout_rowWeight="2">
-            <ImageButton
+            <ImageView
                 android:id="@+id/helados"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
