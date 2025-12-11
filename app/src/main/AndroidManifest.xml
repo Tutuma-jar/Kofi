@@ -16,17 +16,22 @@
         android:theme="@style/Theme.Kofi">
 
         <activity
+            android:name=".CategoriaMenuActivity"
+            android:exported="true">
+        </activity>
+        <activity
             android:name=".FinalizarOrdenActivity"
-            android:exported="true"/>
+            android:exported="true" >
+        </activity>
         <activity
             android:name=".PedidosActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".PrincipalActivity"
             android:exported="true" />
         <activity
             android:name=".ComandaActivity"
-            android:exported="true" />
+            android:exported="true"/>
         <activity
             android:name=".MenuActivity"
             android:exported="true" />
