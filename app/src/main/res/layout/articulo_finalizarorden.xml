@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="8dp">
+
+    <!-- COLUMNAS DE CONTENEDOR -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiaColumna1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiaColumna2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.70" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guiaColumna3"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.90" />
+
+
+    <!-- COLUMNA 1: IMAGEN -->
+    <ImageView
+        android:id="@+id/ivImagenArticulo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guiaColumna1"
+        tools:src="@drawable/food_1_svgrepo_com" />
+
+
+    <!-- COLUMNA 2: NOMBRE + CANTIDAD -->
+    <TextView
+        android:id="@+id/tvNombreArticulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guiaColumna1"
+        app:layout_constraintEnd_toStartOf="@id/guiaColumna2"
+        tools:text="Nombre del producto" />
+    <TextView
+        android:id="@+id/tvEtiquetaCantidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvNombreArticulo"
+        app:layout_constraintStart_toStartOf="@id/guiaColumna1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:text="Cantidad:" />
+    <LinearLayout
+        android:id="@+id/llContenedorCantidad"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginStart="8dp"
+        app:layout_constraintTop_toTopOf="@id/tvEtiquetaCantidad"
+        app:layout_constraintBottom_toBottomOf="@id/tvEtiquetaCantidad"
+        app:layout_constraintStart_toEndOf="@id/tvEtiquetaCantidad"
+        app:layout_constraintEnd_toStartOf="@id/guiaColumna2">
+        <ImageButton
+            android:id="@+id/btnDisminuirCantidad"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@drawable/btn_redondo"
+            android:src="@drawable/btn_menos"
+            android:contentDescription="Agregar" />
+        <TextView
+            android:id="@+id/tvCantidad"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:gravity="center"
+            android:paddingHorizontal="12dp"
+            tools:text="1" />
+        <ImageButton
+            android:id="@+id/btnIncrementarCantidadCantidad"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@drawable/btn_redondo"
+            android:src="@drawable/btn_mas"
+            android:contentDescription="Disminuir" />
+    </LinearLayout>
+
+
+    <!-- COLUMNA 3: PRECIO + ELIMINAR -->
+    <TextView
+        android:id="@+id/tvPrecioArticulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guiaColumna3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guiaColumna2"
+        tools:text="40 Bs." />
+    <ImageButton
+        android:id="@+id/ibEliminarArticulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guiaColumna3"
+        tools:src="@drawable/btn_basurero" />
+</androidx.constraintlayout.widget.ConstraintLayout>
