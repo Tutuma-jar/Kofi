@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:background="@color/beige_claro"
     tools:context=".CategoriaMenuActivity">
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guiaSuperior"
@@ -22,7 +23,7 @@
         app:layout_constraintGuide_percent="0.90">
     </androidx.constraintlayout.widget.Guideline>
     <ImageButton
-        android:id="@+id/ibRegreso"
+        android:id="@+id/arrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/arrow"
@@ -69,10 +70,12 @@
             tools:listitem="@layout/producto_categoria_menu" />
     </LinearLayout>
     <ImageButton
+        android:id="@+id/nueva_receta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_redondo"
         android:src="@drawable/btn_mas_grande"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:tint="@color/azul_oscuro" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,8 +37,26 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="subtitulos_categoria">
+        <item name="android:textColor">@color/blanco</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="subtitulos_orden">
+        <item name="android:textColor">@color/texto</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="texto">
         <item name="android:textColor">@color/texto</item>
         <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="texto_con_negrillas">
+        <item name="android:textColor">@color/texto</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>
