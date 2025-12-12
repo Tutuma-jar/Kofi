@@ -6,7 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/beige_claro"
-    android:padding="16dp"
+    android:paddingTop="16dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="16dp"
+    android:paddingStart="16dp"
     tools:context=".FinalizarOrdenActivity">
 
 
@@ -93,9 +96,7 @@
         app:layout_constraintTop_toTopOf="@+id/articulosGuiaTop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/articulosGuiaBottom"
-        app:layout_constraintStart_toStartOf="parent"
-        >
-
+        app:layout_constraintStart_toStartOf="parent">
 
         <!-- GUIAS INTERNAS -->
         <androidx.constraintlayout.widget.Guideline
