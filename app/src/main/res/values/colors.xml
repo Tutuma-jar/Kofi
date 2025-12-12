@@ -9,5 +9,10 @@
     <color name="blanco">#fafafa</color>
     <color name="boton_listo">#aac0cd</color>
     <color name="boton_pendiente">#d5ceb2</color>
+
+    <color name="drawer_bg">#8091A5</color>
+    <color name="drawer_item_selected">#3B4C66</color>
+    <color name="texto_blanco">#FFFFFF</color>
+
     <color name="negro_opacidad">#66373737</color>
 </resources>

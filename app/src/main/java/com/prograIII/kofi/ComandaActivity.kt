@@ -28,7 +28,7 @@ class ComandaActivity : AppCompatActivity() {
             insets
         }
 
-        // ------ Puerba ------
+        // ------ Prueba ------
         val productos = listOf(
             Producto(
                 id = 1,

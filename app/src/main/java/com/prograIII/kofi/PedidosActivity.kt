@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.prograIII.kofi.databinding.ActivityPedidosBinding
@@ -21,7 +22,7 @@ class PedidosActivity : AppCompatActivity() {
         binding = ActivityPedidosBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -30,6 +31,31 @@ class PedidosActivity : AppCompatActivity() {
         binding.arrow.setOnClickListener {
             val intentCambioAPrincipal = Intent(context, PrincipalActivity::class.java)
             startActivity(intentCambioAPrincipal)
+        }
+
+
+        //Barra lateral
+        binding.menuButton.setOnClickListener {
+            binding.drawerLayout.openDrawer(GravityCompat.END)
+        }
+
+        binding.navBtnInicio.setOnClickListener {
+            val intent = Intent(context, PrincipalActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.navBtnMenu.setOnClickListener {
+            val intent = Intent(context, MenuActivity::class.java) // Asegúrate de crear esta Activity
+            startActivity(intent)
+        }
+
+        binding.navBtnPedidos.setOnClickListener {
+            binding.drawerLayout.closeDrawer(GravityCompat.END)
+        }
+
+        binding.navBtnComanda.setOnClickListener {
+            val intent = Intent(context, ComandaActivity::class.java)
+            startActivity(intent)
         }
     }
 }
