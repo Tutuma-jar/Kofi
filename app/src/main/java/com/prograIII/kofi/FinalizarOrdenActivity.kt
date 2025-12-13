@@ -19,7 +19,6 @@ class FinalizarOrdenActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
 
         binding = ActivityFinalizarOrdenBinding.inflate(layoutInflater)
         setContentView(binding.root)
