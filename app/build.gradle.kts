@@ -1,8 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    kotlin("plugin.serialization") version "1.9.22"
     id("com.google.gms.google-services")
-    kotlin("plugin.serialization") version "1.9.0"
 }
 
 android {
@@ -50,7 +50,9 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.activity)
+
     implementation(libs.kotlinx.serialization.json)
+
     implementation(platform("com.google.firebase:firebase-bom:34.6.0"))
     implementation("com.google.firebase:firebase-auth")
     testImplementation(libs.junit)

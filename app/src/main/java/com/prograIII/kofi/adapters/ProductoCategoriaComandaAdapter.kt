@@ -25,7 +25,7 @@ class ProductoCategoriaComandaAdapter(
         with(holder.binding) {
             nombreProducto.text = producto.nombre
             precioProducto.text = "${producto.precio} Bs."
-            imagenProducto.setImageResource(producto.imagenResId)
+//            imagenProducto.setImageResource(producto.imagenResId)
         }
     }
 

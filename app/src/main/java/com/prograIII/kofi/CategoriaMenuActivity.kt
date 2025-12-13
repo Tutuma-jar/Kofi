@@ -2,7 +2,9 @@ package com.prograIII.kofi
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -10,12 +12,24 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.prograIII.kofi.adapters.ProductoCategoriaMenuAdapter
 import com.prograIII.kofi.databinding.ActivityCategoriaBinding
-import com.prograIII.kofi.databinding.ActivityMenuBinding
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
+import java.io.IOException
 
 class CategoriaMenuActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCategoriaBinding
+    private lateinit var sharedPreferences: SharedPreferences
     val context: Context = this
+    private var productos: MutableList<Producto> = mutableListOf()
+    private lateinit var adapter: ProductoCategoriaMenuAdapter
+
+    companion object {
+        const val FICHERO_SP = "COMIDA"
+        const val KEY_SANDWICHES = "lista_sandwiches_data"
+        const val sandwichJson = "sandwich.json"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,48 +38,52 @@ class CategoriaMenuActivity : AppCompatActivity() {
         binding = ActivityCategoriaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Configurar Recycler
+        sharedPreferences = context.getSharedPreferences(FICHERO_SP, MODE_PRIVATE)
+
         binding.rvArticulosCategoria.layoutManager = LinearLayoutManager(context)
 
-        val productos = listOf(
-            Producto(
-                1,
-                "Sandwich Club",
-                "Sándwich de tres capas preparado con pan tostado, pollo, tocino, lechuga, tomate y mayonesa casera.",
-                40.0,
-                R.drawable.food_1_svgrepo_com
-            ),
-            Producto(
-                2,
-                "Sandwich Pollo",
-                "Pechuga de pollo a la plancha con tomate fresco, lechuga y salsa especial.",
-                32.0,
-                R.drawable.food_1_svgrepo_com
-            ),
-            Producto(
-                3,
-                "Veggie Sandwich",
-                "Hummus, vegetales frescos y pan integral tostado. Ligero y nutritivo.",
-                28.0,
-                R.drawable.food_1_svgrepo_com
-            )
-        )
+        cargarDatos()
 
         binding.rvArticulosCategoria.adapter = ProductoCategoriaMenuAdapter(productos)
 
-        // Insets
+
+
+        binding.arrow.setOnClickListener {
+            val intentCambioAPrincipal = Intent(context, PrincipalActivity::class.java)
+            startActivity(intentCambioAPrincipal)
+        }
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        binding.arrow.setOnClickListener {
-            val intentCambioAPrincipal = Intent(context, PrincipalActivity::class.java)
-            startActivity(intentCambioAPrincipal)
-        }
+    }
 
-        binding.nuevaReceta.setOnClickListener {
+    private fun cargarDatos() {
+        val jsonGuardado = sharedPreferences.getString(KEY_SANDWICHES, null)
+
+        if (jsonGuardado != null) {
+            productos = Json.decodeFromString<MutableList<Producto>>(jsonGuardado)
+        } else {
+            cargarAssets()
         }
+    }
+
+    // Lee el archivo sandwich.json desde assets
+    private fun cargarAssets() {
+        val jsonString = assets.open(sandwichJson).bufferedReader().use {
+            it.readText()
+        }
+        productos = Json.decodeFromString<MutableList<Producto>>(jsonString)
+        guardarEnMemoria()
+
+    }
+
+    private fun guardarEnMemoria() {
+        val jsonString = Json.encodeToString(productos)
+        val editor = sharedPreferences.edit()
+        editor.putString(KEY_SANDWICHES, jsonString)
+        editor.apply()
     }
 }

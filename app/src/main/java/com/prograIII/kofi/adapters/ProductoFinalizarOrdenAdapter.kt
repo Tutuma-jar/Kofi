@@ -25,7 +25,7 @@ class ProductoFinalizarOrdenAdapter(
         holder.binding.apply {
             tvNombreArticulo.text = producto.nombre
             tvPrecioArticulo.text = "${producto.precio} Bs."
-            ivImagenArticulo.setImageResource(producto.imagenResId)
+//            ivImagenArticulo.setImageResource(producto.imagenResId)
         }
     }
 

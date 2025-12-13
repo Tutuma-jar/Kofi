@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1001,
+    "nombre": "Sandwich Club House",
+    "descripcion": "El clásico de tres pisos. Pollo desmenuzado, jamón, queso, tocino crujiente, lechuga, tomate y mayonesa en pan tostado.",
+    "precio": 45.0,
+    "imagenRuta": "bebidas"
+  },
+  {
+    "id": 1002,
+    "nombre": "Sandwich de Lomito",
+    "descripcion": "Tiras de carne de res salteadas con cebolla y pimientos, cubiertas con queso fundido en pan ciabatta.",
+    "precio": 38.5,
+    "imagenRuta": "bebidas"
+  },
+  {
+    "id": 1003,
+    "nombre": "Sandwich Vegano",
+    "descripcion": "Hummus casero, aguacate, rúcula, pepino y tomates secos en pan integral de masa madre.",
+    "precio": 32.0,
+    "imagenRuta": "bebidas"
+  },
+  {
+    "id": 1004,
+    "nombre": "Choripán Clásico",
+    "descripcion": "Chorizo parrillero en pan francés crujiente, acompañado de chimichurri picante y salsa criolla.",
+    "precio": 25.0,
+    "imagenRuta": "bebidas"
+  },
+  {
+    "id": 1005,
+    "nombre": "Sandwich de Huevo y Tocino",
+    "descripcion": "Ideal para el desayuno. Huevos revueltos cremosos con trozos de tocino y queso cheddar.",
+    "precio": 28.0,
+    "imagenRuta": "bebidas"
+  }
+]

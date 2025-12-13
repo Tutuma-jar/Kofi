@@ -30,40 +30,40 @@ class ComandaActivity : AppCompatActivity() {
         }
 
         // ------ Prueba ------
-        val productos = listOf(
-            Producto(
-                id = 1,
-                nombre = "Capuccino",
-                descripcion = "Espresso con leche vaporizada y espuma suave.",
-                precio = 20.0,
-                imagenResId = R.drawable.ic_launcher_foreground
-            ),
-            Producto(
-                id = 2,
-                nombre = "Latte Vainilla",
-                descripcion = "Café suave con un toque de vainilla.",
-                precio = 22.0,
-                imagenResId = R.drawable.ic_launcher_foreground
-            ),
-            Producto(
-                id = 3,
-                nombre = "Mocca",
-                descripcion = "Café con chocolate y leche cremosa.",
-                precio = 25.0,
-                imagenResId = R.drawable.ic_launcher_foreground
-            ),
-            Producto(
-                id = 4,
-                nombre = "Frappe",
-                descripcion = "Café frío batido con hielo.",
-                precio = 24.0,
-                imagenResId = R.drawable.ic_launcher_foreground
-            )
-        )
+//        val productos = listOf(
+//            Producto(
+//                id = 1,
+//                nombre = "Capuccino",
+//                descripcion = "Espresso con leche vaporizada y espuma suave.",
+//                precio = 20.0,
+//                imagenResId = R.drawable.ic_launcher_foreground
+//            ),
+//            Producto(
+//                id = 2,
+//                nombre = "Latte Vainilla",
+//                descripcion = "Café suave con un toque de vainilla.",
+//                precio = 22.0,
+//                imagenResId = R.drawable.ic_launcher_foreground
+//            ),
+//            Producto(
+//                id = 3,
+//                nombre = "Mocca",
+//                descripcion = "Café con chocolate y leche cremosa.",
+//                precio = 25.0,
+//                imagenResId = R.drawable.ic_launcher_foreground
+//            ),
+//            Producto(
+//                id = 4,
+//                nombre = "Frappe",
+//                descripcion = "Café frío batido con hielo.",
+//                precio = 24.0,
+//                imagenResId = R.drawable.ic_launcher_foreground
+//            )
+//        )
 
         // ------ RecyclerView de productos ------
         binding.recyclerProductos.layoutManager = GridLayoutManager(context, 2)
-        binding.recyclerProductos.adapter = ProductoCategoriaComandaAdapter(productos)
+//        binding.recyclerProductos.adapter = ProductoCategoriaComandaAdapter(productos)
 
         // ------ Botón de regreso ------
         binding.arrow.setOnClickListener {
