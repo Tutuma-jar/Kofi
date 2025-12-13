@@ -1,5 +1,6 @@
 package com.prograIII.kofi
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -13,10 +14,10 @@ import com.prograIII.kofi.databinding.ActivityComandaBinding
 class ComandaActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityComandaBinding
+    val context: Context = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
 
         binding = ActivityComandaBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -27,7 +28,7 @@ class ComandaActivity : AppCompatActivity() {
             insets
         }
 
-        // ------ Puerba ------
+        // ------ Prueba ------
         val productos = listOf(
             Producto(
                 id = 1,
@@ -60,13 +61,19 @@ class ComandaActivity : AppCompatActivity() {
         )
 
         // ------ RecyclerView de productos ------
-        binding.recyclerProductos.layoutManager = GridLayoutManager(this, 2)
+        binding.recyclerProductos.layoutManager = GridLayoutManager(context, 2)
         binding.recyclerProductos.adapter = ProductoCategoriaComandaAdapter(productos)
 
         // ------ Botón de regreso ------
         binding.arrow.setOnClickListener {
-            val intentCambioAPrincipal = Intent(this, PrincipalActivity::class.java)
+            val intentCambioAPrincipal = Intent(context, PrincipalActivity::class.java)
             startActivity(intentCambioAPrincipal)
+        }
+
+
+        binding.finalizarOrden.setOnClickListener {
+            val intentCambioAFinalizarOrden = Intent(context, FinalizarOrdenActivity::class.java)
+            startActivity(intentCambioAFinalizarOrden)
         }
     }
 }

@@ -1,5 +1,7 @@
 package com.prograIII.kofi
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import androidx.activity.enableEdgeToEdge
@@ -13,10 +15,10 @@ import com.prograIII.kofi.databinding.ActivityFinalizarOrdenBinding
 class FinalizarOrdenActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityFinalizarOrdenBinding
+    val context: Context = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
 
         binding = ActivityFinalizarOrdenBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -70,6 +72,16 @@ class FinalizarOrdenActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        binding.arrow.setOnClickListener {
+            val intentCambioAComanda = Intent(context, ComandaActivity::class.java)
+            startActivity(intentCambioAComanda)
+        }
+
+        binding.btnConfirmarPedido.setOnClickListener {
+            val intentCambioAPedidos = Intent(context, PedidosActivity::class.java)
+            startActivity(intentCambioAPedidos)
         }
     }
 }

@@ -5,7 +5,11 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:background="@color/beige_claro"
+    android:paddingTop="16dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="16dp"
+    android:paddingStart="16dp"
     tools:context=".FinalizarOrdenActivity">
 
 
@@ -61,14 +65,15 @@
 
     <!-- ==================== BOTONES ==================== -->
     <ImageButton
-        android:id="@+id/ibVolver"
+        android:id="@+id/arrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/tvTituloFinalizar"
         app:layout_constraintBottom_toBottomOf="@+id/tvTituloFinalizar"
         app:layout_constraintStart_toStartOf="parent"
         android:src="@drawable/arrow"
-        android:backgroundTint="@color/beige_claro" />
+        android:background="@color/beige_claro"/>
+
     <Button
         android:id="@+id/btnConfirmarPedido"
         android:layout_width="0dp"
@@ -87,11 +92,11 @@
         android:id="@+id/clContenedorArticulos"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@color/beige_medio"
         app:layout_constraintTop_toTopOf="@+id/articulosGuiaTop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/articulosGuiaBottom"
         app:layout_constraintStart_toStartOf="parent">
-
 
         <!-- GUIAS INTERNAS -->
         <androidx.constraintlayout.widget.Guideline
@@ -129,7 +134,8 @@
             app:layout_constraintEnd_toStartOf="@+id/articulosCol1"
             app:layout_constraintBottom_toBottomOf="@id/articulosGuiaTitulos"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="Articulo" />
+            android:text="PRODUCTOS"
+            style="@style/subtitulos_orden"/>
         <TextView
             android:id="@+id/tvTituloDescripcion"
             android:layout_width="wrap_content"
@@ -138,7 +144,8 @@
             app:layout_constraintEnd_toStartOf="@+id/articulosCol2"
             app:layout_constraintBottom_toBottomOf="@id/articulosGuiaTitulos"
             app:layout_constraintStart_toStartOf="@id/articulosCol1"
-            android:text="Descripccion" />
+            android:text="DESCRIPCIÓN"
+            style="@style/subtitulos_orden"/>
         <TextView
             android:id="@+id/tvTituloPrecio"
             android:layout_width="wrap_content"
@@ -147,7 +154,8 @@
             app:layout_constraintEnd_toEndOf="@id/articulosCol3"
             app:layout_constraintBottom_toBottomOf="@id/articulosGuiaTitulos"
             app:layout_constraintStart_toStartOf="@id/articulosCol2"
-            android:text="Precio" />
+            android:text="PRECIO"
+            style="@style/subtitulos_orden"/>
 
 
         <!-- RECYCLER -->
@@ -183,9 +191,10 @@
             android:layout_weight="1"
             android:hint="Escribir comentarios"
             android:gravity="top|start"
-            android:inputType="textMultiLine"
+            android:layout_marginTop="8dp"
             android:scrollbars="vertical"
-            android:overScrollMode="always" />
+            android:overScrollMode="always"
+            android:background="@color/blanco"/>
 
 
         <!-- DATOS FACTURACION -->
@@ -194,7 +203,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="horizontal"
-            android:layout_weight="2">
+            android:layout_weight="2"
+            android:background="@color/blanco">
 
 
             <!-- COLUMNA ETIQUETAS -->
@@ -211,6 +221,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:text="PROMOCIONES:"
+                    style="@style/subtitulos_orden"
                     android:gravity="center_vertical"
                     android:padding="5dp" />
                 <View
@@ -223,6 +234,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:text="TOTAL:"
+                    style="@style/subtitulos_orden"
                     android:gravity="center_vertical"
                     android:paddingStart="5dp" />
                 <View
@@ -235,6 +247,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:text="NOMBRE:"
+                    style="@style/subtitulos_orden"
                     android:gravity="center_vertical"
                     android:paddingStart="5dp" />
                 <View
@@ -248,7 +261,8 @@
                     android:layout_weight="1"
                     android:text="NIT:"
                     android:gravity="center_vertical"
-                    android:paddingStart="5dp" />
+                    android:paddingStart="5dp"
+                    style="@style/subtitulos_orden"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -264,15 +278,17 @@
                 android:orientation="vertical"
                 android:layout_weight="2">
 
-                <TextView
+                <EditText
                     android:id="@+id/tvPromocion"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:text="Aplicar código de promoción"
+                    android:hint="Aplicar código de promoción"
+                    android:background="@android:color/transparent"
                     android:gravity="center_vertical"
                     android:paddingStart="8dp"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    style="@style/texto"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -285,7 +301,8 @@
                     android:text="0 Bs."
                     android:gravity="center_vertical"
                     android:paddingStart="8dp"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    style="@style/texto"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -299,8 +316,8 @@
                     android:background="@android:color/transparent"
                     android:gravity="center_vertical"
                     android:paddingStart="8dp"
-                    android:inputType="textPersonName"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    style="@style/texto"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -314,8 +331,8 @@
                     android:background="@android:color/transparent"
                     android:gravity="center_vertical"
                     android:paddingStart="8dp"
-                    android:inputType="number"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    style="@style/texto"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -330,6 +347,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="horizontal"
+            android:background="@color/blanco"
             android:layout_weight="0.5"
             android:gravity="center">
             <RadioButton
@@ -339,6 +357,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="EFECTIVO"
+                style="@style/subtitulos_orden"
                 android:layoutDirection="rtl" />
             <View
                 android:layout_width="1dp"
@@ -354,6 +373,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="TARJETA"
+                style="@style/subtitulos_orden"
                 android:layoutDirection="rtl" />
             <View
                 android:layout_width="1dp"
@@ -366,6 +386,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="QR"
+                style="@style/subtitulos_orden"
                 android:layoutDirection="rtl" />
         </RadioGroup>
     </LinearLayout>

@@ -44,7 +44,7 @@
         android:id="@+id/tvNombreArticulo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
+        style="@style/texto_con_negrillas"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="@id/guiaColumna1"
         app:layout_constraintEnd_toStartOf="@id/guiaColumna2"
@@ -56,7 +56,8 @@
         app:layout_constraintTop_toBottomOf="@id/tvNombreArticulo"
         app:layout_constraintStart_toStartOf="@id/guiaColumna1"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:text="Cantidad:" />
+        tools:text="Cantidad:"
+        style="@style/texto"/>
     <LinearLayout
         android:id="@+id/llContenedorCantidad"
         android:layout_width="0dp"
@@ -74,20 +75,24 @@
             android:layout_height="28dp"
             android:background="@drawable/btn_redondo"
             android:src="@drawable/btn_menos"
-            android:contentDescription="Agregar" />
+            android:contentDescription="Agregar"
+            app:tint="@color/azul_oscuro" />
         <TextView
             android:id="@+id/tvCantidad"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:gravity="center"
             android:paddingHorizontal="12dp"
-            tools:text="1" />
+            android:text="1"
+            android:background="@color/blanco"
+            style="@style/texto"/>
         <ImageButton
             android:id="@+id/btnIncrementarCantidadCantidad"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:background="@drawable/btn_redondo"
             android:src="@drawable/btn_mas"
+            app:tint="@color/azul_oscuro"
             android:contentDescription="Disminuir" />
     </LinearLayout>
 
@@ -102,7 +107,8 @@
         app:layout_constraintEnd_toStartOf="@id/guiaColumna3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/guiaColumna2"
-        tools:text="40 Bs." />
+        android:text="40 bs."
+        style="@style/texto"/>
     <ImageButton
         android:id="@+id/ibEliminarArticulo"
         android:layout_width="wrap_content"
@@ -112,5 +118,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/guiaColumna3"
-        tools:src="@drawable/btn_basurero" />
+        android:src="@drawable/trash"
+        app:tint="@color/azul_oscuro"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
