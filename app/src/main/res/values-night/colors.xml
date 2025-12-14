@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="beige_claro">#2c241c</color>
+    <color name="beige_medio">#3b2d18</color>
+    <color name="beige_oscuro">#5d401e</color>
+    <color name="azul_medio">#766656</color>
+    <color name="azul_oscuro">#c1a786</color>
+    <color name="texto">#c9c8c5</color>
+    <color name="blanco">#050505</color>
+    <color name="boton_listo">#533f32</color>
+    <color name="boton_pendiente">#4b412d</color>
+    <color name="drawer_bg">#3c4958</color>
+    <color name="drawer_item_selected">#8d9eab</color>
+    <color name="texto_blanco">#FFFFFF</color>
+    <color name="negro_opacidad">#66373737</color>
+</resources>
