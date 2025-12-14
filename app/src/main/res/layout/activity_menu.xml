@@ -63,14 +63,13 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/categoria1"
+            android:id="@+id/breakfast"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_margin="5dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1">
             <ImageView
-                android:id="@+id/breakfast"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/breakfast"
@@ -91,14 +90,13 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/categoria2"
+            android:id="@+id/cafes"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_margin="5dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="2">
             <ImageView
-                android:id="@+id/cafes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/cafes"
@@ -119,14 +117,13 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/categoria3"
+            android:id="@+id/infusiones"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_margin="5dp"
             android:layout_columnWeight="2"
             android:layout_rowWeight="1">
             <ImageView
-                android:id="@+id/infusiones"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/infusiones"
@@ -148,14 +145,13 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/categoria4"
+            android:id="@+id/bebidas"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_margin="5dp"
             android:layout_columnWeight="2"
             android:layout_rowWeight="2">
             <ImageView
-                android:id="@+id/bebidas"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/bebidas"
@@ -177,14 +173,13 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/categoria5"
+            android:id="@+id/sandwiches"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_margin="5dp"
             android:layout_columnWeight="3"
             android:layout_rowWeight="1">
             <ImageView
-                android:id="@+id/sandwiches"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/sandwich"
@@ -206,14 +201,13 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/categoria6"
+            android:id="@+id/panaderia"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_margin="5dp"
             android:layout_columnWeight="3"
             android:layout_rowWeight="2">
             <ImageView
-                android:id="@+id/panaderia"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/panaderia"
@@ -235,14 +229,13 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/categoria7"
+            android:id="@+id/pasteles"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_margin="5dp"
             android:layout_columnWeight="4"
             android:layout_rowWeight="1">
             <ImageView
-                android:id="@+id/pasteles"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/pastel"
@@ -264,14 +257,13 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/categoria8"
+            android:id="@+id/helados"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_margin="5dp"
             android:layout_columnWeight="4"
             android:layout_rowWeight="2">
             <ImageView
-                android:id="@+id/helados"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/helado"

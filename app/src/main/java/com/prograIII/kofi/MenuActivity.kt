@@ -15,6 +15,10 @@ class MenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMenuBinding
     val context: Context = this
 
+    companion object{
+        val categoria = "categoria"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -33,6 +37,66 @@ class MenuActivity : AppCompatActivity() {
             startActivity(intentCambioAPrincipal)
         }
 
+        //Pasar dato de pantalla a categoria menu
+        binding.breakfast.setOnClickListener {
+            val cambio: Intent = Intent(context, CategoriaMenuActivity::class.java)
+            cambio.apply {
+                putExtra(categoria, "Breakfast")
+            }
+            startActivity(cambio)
+        }
+        binding.cafes.setOnClickListener {
+            val cambio: Intent = Intent(context, CategoriaMenuActivity::class.java)
+            cambio.apply {
+                putExtra(categoria, "Cafe")
+            }
+            startActivity(cambio)
+        }
+        binding.infusiones.setOnClickListener {
+            val cambio: Intent = Intent(context, CategoriaMenuActivity::class.java)
+            cambio.apply {
+                putExtra(categoria, "Infusiones")
+            }
+            startActivity(cambio)
+        }
+        binding.bebidas.setOnClickListener {
+            val cambio: Intent = Intent(context, CategoriaMenuActivity::class.java)
+            cambio.apply {
+                putExtra(categoria, "Bebidas")
+            }
+            startActivity(cambio)
+        }
+        binding.sandwiches.setOnClickListener {
+            val cambio: Intent = Intent(context, CategoriaMenuActivity::class.java)
+            cambio.apply {
+                putExtra(categoria, "Sandwiches")
+            }
+            startActivity(cambio)
+        }
+        binding.panaderia.setOnClickListener {
+            val cambio: Intent = Intent(context, CategoriaMenuActivity::class.java)
+            cambio.apply {
+                putExtra(categoria, "Panaderia")
+            }
+            startActivity(cambio)
+        }
+        binding.pasteles.setOnClickListener {
+            val cambio: Intent = Intent(context, CategoriaMenuActivity::class.java)
+            cambio.apply {
+                putExtra(categoria, "Pasteles")
+            }
+            startActivity(cambio)
+        }
+        binding.helados.setOnClickListener {
+            val cambio: Intent = Intent(context, CategoriaMenuActivity::class.java)
+            cambio.apply {
+                putExtra(categoria, "Helados")
+            }
+            startActivity(cambio)
+        }
+
+
+
 
         //Barra lateral
         binding.menuButton.setOnClickListener {
@@ -46,7 +110,6 @@ class MenuActivity : AppCompatActivity() {
 
         binding.navBtnMenu.setOnClickListener {
             binding.drawerLayout.closeDrawer(GravityCompat.END)
-
         }
 
         binding.navBtnPedidos.setOnClickListener {

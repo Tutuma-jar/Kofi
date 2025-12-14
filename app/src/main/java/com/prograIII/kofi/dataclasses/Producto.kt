@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Producto(
-    val id: Long = System.currentTimeMillis(), // ID único automático basado en el tiempo
+    val id: Int, // ID único automático basado en el tiempo
     val nombre: String,
     val descripcion: String,
     val precio: Double,
