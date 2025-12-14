@@ -63,7 +63,7 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/breakfast"
+            android:id="@+id/categoria1"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_margin="5dp"
@@ -90,7 +90,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cafes"
+            android:id="@+id/categoria2"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_margin="5dp"
@@ -117,7 +117,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/infusiones"
+            android:id="@+id/categoria3"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_margin="5dp"
@@ -145,7 +145,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/bebidas"
+            android:id="@+id/categoria4"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_margin="5dp"
@@ -173,7 +173,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/sandwiches"
+            android:id="@+id/categoria5"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_margin="5dp"
@@ -201,7 +201,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/panaderia"
+            android:id="@+id/categoria6"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_margin="5dp"
@@ -229,7 +229,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/pasteles"
+            android:id="@+id/categoria7"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_margin="5dp"
@@ -257,7 +257,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/helados"
+            android:id="@+id/categoria8"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_margin="5dp"

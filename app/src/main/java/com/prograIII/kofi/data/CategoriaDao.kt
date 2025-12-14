@@ -18,6 +18,4 @@ interface CategoriaDao {
 
     @Query("SELECT * FROM categorias WHERE codigo = :codigo LIMIT 1")
     fun obtenerCategoriaPorCodigo(codigo: String): CategoriaEntity?
-
-
 }
