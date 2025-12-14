@@ -27,6 +27,7 @@ class CategoriaMenuActivity : AppCompatActivity() {
     val ffff: Int = 0
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
