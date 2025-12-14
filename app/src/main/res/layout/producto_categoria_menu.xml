@@ -52,8 +52,10 @@
     <!-- IMAGEN A LA DERECHA -->
     <ImageView
         android:id="@+id/ivArticulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="115dp"
+        android:layout_height="115dp"
+        android:scaleType="centerInside"
+        android:padding="3dp"
         android:src="@drawable/food_1_svgrepo_com"
         app:layout_constraintStart_toStartOf="@id/guideline_text_image"
         app:layout_constraintEnd_toEndOf="parent"

@@ -69,21 +69,23 @@ class CategoriaMenuActivity : AppCompatActivity() {
     private fun cargarProductosPorCodigo(codigo: String) {
         GlobalScope.launch(Dispatchers.IO) {
 
-
             val categoria = db.categoriaDao().obtenerCategoriaPorCodigo(codigo)
             println("CODIGO=$codigo  CATEGORIA=${categoria?.id} ${categoria?.nombre}")
 
             if (categoria != null) {
 
-                val productosDb = db.productoDao().obtenerPorCategoria(categoria.id) //Traer productos con id
+                val productosDb = db.productoDao().obtenerPorCategoria(categoria.id)
 
-                val productosUi = productosDb.map { p -> //De clase a UI de producto
+                val productosUi = productosDb.map { p ->
+                    val resId = resources.getIdentifier(p.imagen, "drawable", packageName)
+                    val imagenFinal = if (resId != 0) resId else R.drawable.food_1_svgrepo_com
+
                     Producto(
                         id = p.id,
                         nombre = p.nombre,
                         descripcion = p.descripcion,
                         precio = p.precio,
-                        imagenRes = R.drawable.food_1_svgrepo_com,
+                        imagenRes = imagenFinal,
                         categoriaId = p.categoriaId
                     )
                 }
@@ -94,4 +96,5 @@ class CategoriaMenuActivity : AppCompatActivity() {
             }
         }
     }
+
 }

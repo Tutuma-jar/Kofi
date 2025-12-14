@@ -4,112 +4,432 @@
       "codigo": "BREAKFAST",
       "nombre": "Breakfast",
       "productos": [
-        { "nombre": "Desayuno Americano", "descripcion": "Huevos, tocino, pan tostado y café.", "precio": 28.0 },
-        { "nombre": "Desayuno Continental", "descripcion": "Croissant, mantequilla, mermelada y café.", "precio": 22.0 },
-        { "nombre": "Panqueques", "descripcion": "Panqueques con miel y mantequilla.", "precio": 24.0 },
-        { "nombre": "Omelette de Queso", "descripcion": "Omelette suave relleno de queso.", "precio": 23.0 },
-        { "nombre": "Omelette Mixto", "descripcion": "Omelette con jamón y queso.", "precio": 25.0 },
-        { "nombre": "Tostadas Francesas", "descripcion": "Pan bañado en huevo y dorado.", "precio": 26.0 },
-        { "nombre": "Avena Caliente", "descripcion": "Avena cocida con frutas.", "precio": 20.0 },
-        { "nombre": "Sandwich Desayuno", "descripcion": "Huevo, queso y jamón en pan.", "precio": 21.0 }
+        {
+          "nombre": "Desayuno Americano",
+          "descripcion": "Clásico desayuno completo que incluye huevos preparados al gusto, tocino crujiente y pan tostado recién hecho. Se acompaña con una taza de café caliente, ideal para comenzar el día con energía y buen sabor.",
+          "precio": 28.0,
+          "imagen": "breakfast_desayuno_americano"
+        },
+        {
+          "nombre": "Desayuno Continental",
+          "descripcion": "Croissant fresco de mantequilla acompañado de mermelada y mantequilla. Se sirve junto a una taza de café caliente, logrando un desayuno ligero, equilibrado y elegante para cualquier mañana.",
+          "precio": 22.0,
+          "imagen": "breakfast_desayuno_continental"
+        },
+        {
+          "nombre": "Panqueques",
+          "descripcion": "Panqueques suaves y esponjosos preparados al momento. Servidos con miel natural y mantequilla derretida que realzan su sabor dulce y reconfortante, perfectos para empezar el día con algo especial.",
+          "precio": 24.0,
+          "imagen": "breakfast_panqueques"
+        },
+        {
+          "nombre": "Omelette de Queso",
+          "descripcion": "Omelette suave y bien cocido, relleno con queso derretido. Preparado al momento para conservar su textura cremosa y su sabor delicado, ideal si buscas algo simple pero delicioso.",
+          "precio": 23.0,
+          "imagen": "breakfast_omelette_queso"
+        },
+        {
+          "nombre": "Omelette Mixto",
+          "descripcion": "Omelette elaborado con huevos frescos, jamón y queso. Una opción clásica, caliente y bien equilibrada que combina proteína y sabor para un desayuno completo y satisfactorio.",
+          "precio": 25.0,
+          "imagen": "breakfast_omelette_mixto"
+        },
+        {
+          "nombre": "Tostadas Francesas",
+          "descripcion": "Pan bañado en una mezcla de huevo y leche, dorado a la perfección. Crujiente por fuera y suave por dentro, ideal para un desayuno dulce con una textura irresistible.",
+          "precio": 26.0,
+          "imagen": "breakfast_tostadas_francesas"
+        },
+        {
+          "nombre": "Avena Caliente",
+          "descripcion": "Avena cocida lentamente hasta lograr una textura cremosa. Servida con frutas frescas que aportan sabor, energía y frescura, perfecta para una opción nutritiva y ligera.",
+          "precio": 20.0,
+          "imagen": "breakfast_avena_caliente"
+        },
+        {
+          "nombre": "Sandwich Desayuno",
+          "descripcion": "Sandwich caliente preparado con huevo, queso y jamón en pan fresco. Práctico, sabroso y perfecto para empezar el día sin perder tiempo, pero comiendo bien.",
+          "precio": 21.0,
+          "imagen": "breakfast_sandwich_desayuno"
+        }
       ]
     },
     {
       "codigo": "CAFES",
       "nombre": "Cafés",
       "productos": [
-        { "nombre": "Espresso", "descripcion": "Café negro intenso.", "precio": 15.0 },
-        { "nombre": "Americano", "descripcion": "Espresso con agua caliente.", "precio": 16.0 },
-        { "nombre": "Capuccino", "descripcion": "Espresso con leche vaporizada.", "precio": 20.0 },
-        { "nombre": "Latte", "descripcion": "Café con abundante leche.", "precio": 18.0 },
-        { "nombre": "Mocca", "descripcion": "Café con chocolate.", "precio": 22.0 },
-        { "nombre": "Latte Vainilla", "descripcion": "Latte con esencia de vainilla.", "precio": 23.0 },
-        { "nombre": "Latte Caramelo", "descripcion": "Latte con caramelo.", "precio": 23.0 },
-        { "nombre": "Café Frío", "descripcion": "Café servido con hielo.", "precio": 19.0 }
+        {
+          "nombre": "Espresso",
+          "descripcion": "Café negro concentrado de sabor intenso y aroma profundo. Preparado con granos seleccionados para resaltar su carácter fuerte, ideal para quienes disfrutan el café en su forma más pura.",
+          "precio": 15.0,
+          "imagen": "cafes_espresso"
+        },
+        {
+          "nombre": "Americano",
+          "descripcion": "Espresso combinado con agua caliente para un sabor más suave y ligero. Mantiene el aroma del café y es perfecto para disfrutarlo lentamente durante el día.",
+          "precio": 16.0,
+          "imagen": "cafes_americano"
+        },
+        {
+          "nombre": "Capuccino",
+          "descripcion": "Espresso acompañado de leche vaporizada y una capa cremosa de espuma. Equilibrio perfecto entre intensidad y suavidad, con una textura clásica y muy agradable.",
+          "precio": 20.0,
+          "imagen": "cafes_capuccino"
+        },
+        {
+          "nombre": "Latte",
+          "descripcion": "Café suave preparado con espresso y abundante leche caliente. Textura cremosa y sabor delicado, ideal para quienes prefieren una experiencia más ligera y dulce.",
+          "precio": 18.0,
+          "imagen": "cafes_latte"
+        },
+        {
+          "nombre": "Mocca",
+          "descripcion": "Espresso combinado con chocolate y leche vaporizada. Dulce, cremoso y reconfortante, ideal si quieres un café con un toque chocolatoso y más indulgente.",
+          "precio": 22.0,
+          "imagen": "cafes_mocca"
+        },
+        {
+          "nombre": "Latte Vainilla",
+          "descripcion": "Latte clásico con un toque aromático de vainilla. Suave, ligeramente dulce y muy agradable, perfecto para una pausa relajante y con buen aroma.",
+          "precio": 23.0,
+          "imagen": "cafes_latte_vainilla"
+        },
+        {
+          "nombre": "Latte Caramelo",
+          "descripcion": "Latte cremoso con jarabe de caramelo. Una combinación dulce y equilibrada que realza el sabor del café, ideal para quienes disfrutan sabores más suaves.",
+          "precio": 23.0,
+          "imagen": "cafes_latte_caramelo"
+        },
+        {
+          "nombre": "Café Frío",
+          "descripcion": "Café servido con hielo para una experiencia refrescante. Mantiene su sabor y aroma con una sensación ligera, ideal para días calurosos o para algo diferente.",
+          "precio": 19.0,
+          "imagen": "cafes_cafe_frio"
+        }
       ]
     },
     {
       "codigo": "INFUSIONES",
       "nombre": "Tés e infusiones",
       "productos": [
-        { "nombre": "Té Negro", "descripcion": "Té clásico aromático.", "precio": 12.0 },
-        { "nombre": "Té Verde", "descripcion": "Té antioxidante natural.", "precio": 13.0 },
-        { "nombre": "Manzanilla", "descripcion": "Infusión relajante.", "precio": 12.0 },
-        { "nombre": "Hierbaluisa", "descripcion": "Infusión digestiva.", "precio": 12.0 },
-        { "nombre": "Menta", "descripcion": "Infusión refrescante.", "precio": 12.0 },
-        { "nombre": "Anís", "descripcion": "Infusión suave.", "precio": 12.0 },
-        { "nombre": "Té Chai", "descripcion": "Té especiado con leche.", "precio": 18.0 },
-        { "nombre": "Infusión Frutal", "descripcion": "Mezcla de frutas naturales.", "precio": 14.0 }
+        {
+          "nombre": "Té Negro",
+          "descripcion": "Té tradicional de sabor intenso y aroma marcado. Ideal para comenzar el día o acompañar una comida, servido caliente para resaltar su carácter clásico.",
+          "precio": 12.0,
+          "imagen": "infusiones_te_negro"
+        },
+        {
+          "nombre": "Té Verde",
+          "descripcion": "Infusión ligera con propiedades antioxidantes y sabor suave. Refrescante y equilibrada, ideal para quienes buscan una bebida más natural y ligera.",
+          "precio": 13.0,
+          "imagen": "infusiones_te_verde"
+        },
+        {
+          "nombre": "Manzanilla",
+          "descripcion": "Infusión natural conocida por su efecto relajante. Sabor suave y delicado, perfecta para momentos de descanso o para terminar el día con calma.",
+          "precio": 12.0,
+          "imagen": "infusiones_manzanilla"
+        },
+        {
+          "nombre": "Hierbaluisa",
+          "descripcion": "Infusión digestiva de aroma fresco y sabor suave. Ideal después de las comidas, reconfortante y ligera para cualquier momento del día.",
+          "precio": 12.0,
+          "imagen": "infusiones_hierbaluisa"
+        },
+        {
+          "nombre": "Menta",
+          "descripcion": "Infusión refrescante con aroma intenso y sabor herbal. Ligera y revitalizante, ideal para limpiar el paladar o disfrutar algo suave.",
+          "precio": 12.0,
+          "imagen": "infusiones_menta"
+        },
+        {
+          "nombre": "Anís",
+          "descripcion": "Infusión suave de sabor característico y aroma delicado. Tradicionalmente utilizada para la digestión, ideal como bebida cálida y relajante.",
+          "precio": 12.0,
+          "imagen": "infusiones_anis"
+        },
+        {
+          "nombre": "Té Chai",
+          "descripcion": "Té especiado preparado con leche, con aroma intenso y notas cálidas. Perfecto para quienes disfrutan sabores diferentes, aromáticos y reconfortantes.",
+          "precio": 18.0,
+          "imagen": "infusiones_te_chai"
+        },
+        {
+          "nombre": "Infusión Frutal",
+          "descripcion": "Mezcla de frutas naturales deshidratadas que aporta un sabor dulce y aromático. Ligera y refrescante, ideal para cualquier momento del día.",
+          "precio": 14.0,
+          "imagen": "infusiones_frutal"
+        }
       ]
     },
     {
       "codigo": "BEBIDAS",
       "nombre": "Bebidas",
       "productos": [
-        { "nombre": "Jugo de Naranja", "descripcion": "Jugo natural recién exprimido.", "precio": 15.0 },
-        { "nombre": "Limonada", "descripcion": "Limonada fresca.", "precio": 14.0 },
-        { "nombre": "Refresco", "descripcion": "Bebida gaseosa.", "precio": 12.0 },
-        { "nombre": "Agua", "descripcion": "Agua mineral.", "precio": 8.0 },
-        { "nombre": "Agua Saborizada", "descripcion": "Agua con frutas.", "precio": 10.0 },
-        { "nombre": "Batido de Frutas", "descripcion": "Batido natural.", "precio": 18.0 },
-        { "nombre": "Chocolate Caliente", "descripcion": "Chocolate caliente cremoso.", "precio": 20.0 },
-        { "nombre": "Leche", "descripcion": "Leche caliente o fría.", "precio": 10.0 }
+        {
+          "nombre": "Jugo de Naranja",
+          "descripcion": "Jugo natural recién exprimido, fresco y lleno de sabor. Ideal para acompañar desayunos o para una bebida revitalizante con un toque cítrico.",
+          "precio": 15.0,
+          "imagen": "bebidas_jugo_naranja"
+        },
+        {
+          "nombre": "Limonada",
+          "descripcion": "Limonada fresca preparada con limón natural. Equilibrio perfecto entre dulce y ácido, ideal para refrescarse en cualquier momento.",
+          "precio": 14.0,
+          "imagen": "bebidas_limonada"
+        },
+        {
+          "nombre": "Refresco",
+          "descripcion": "Bebida gaseosa servida bien fría. Una opción clásica para acompañar comidas, perfecta para quienes buscan algo rápido y refrescante.",
+          "precio": 12.0,
+          "imagen": "bebidas_refresco"
+        },
+        {
+          "nombre": "Agua",
+          "descripcion": "Agua mineral fría, ideal para acompañar cualquier producto del menú. Simple, refrescante y esencial para mantenerse hidratado.",
+          "precio": 8.0,
+          "imagen": "bebidas_agua"
+        },
+        {
+          "nombre": "Agua Saborizada",
+          "descripcion": "Agua infusionada con frutas, ligera y refrescante. Una alternativa suave a las bebidas dulces, ideal para hidratarse con un toque de sabor.",
+          "precio": 10.0,
+          "imagen": "bebidas_agua_saborizada"
+        },
+        {
+          "nombre": "Batido de Frutas",
+          "descripcion": "Batido natural preparado con frutas frescas. Cremoso, nutritivo y refrescante, ideal como bebida energética o para acompañar un snack.",
+          "precio": 18.0,
+          "imagen": "bebidas_batido_frutas"
+        },
+        {
+          "nombre": "Chocolate Caliente",
+          "descripcion": "Chocolate caliente cremoso y dulce, perfecto para días fríos. Reconfortante y suave, ideal para acompañar panadería o pasteles.",
+          "precio": 20.0,
+          "imagen": "bebidas_chocolate_caliente"
+        },
+        {
+          "nombre": "Leche",
+          "descripcion": "Leche servida caliente o fría según preferencia. Una opción simple y nutritiva, ideal para acompañar postres o para algo ligero.",
+          "precio": 10.0,
+          "imagen": "bebidas_leche"
+        }
       ]
     },
     {
       "codigo": "SANDWICHES",
       "nombre": "Sándwiches",
       "productos": [
-        { "nombre": "Sandwich Club", "descripcion": "Pollo, tocino, lechuga y tomate.", "precio": 40.0 },
-        { "nombre": "Sandwich Pollo", "descripcion": "Pechuga de pollo a la plancha.", "precio": 32.0 },
-        { "nombre": "Sandwich Jamón Queso", "descripcion": "Clásico jamón y queso.", "precio": 28.0 },
-        { "nombre": "Sandwich Vegetariano", "descripcion": "Vegetales frescos y hummus.", "precio": 26.0 },
-        { "nombre": "Sandwich Atún", "descripcion": "Atún con mayonesa.", "precio": 30.0 },
-        { "nombre": "Sandwich BBQ", "descripcion": "Pollo con salsa BBQ.", "precio": 35.0 },
-        { "nombre": "Sandwich Integral", "descripcion": "Pan integral con pollo.", "precio": 30.0 },
-        { "nombre": "Sandwich Especial", "descripcion": "Receta de la casa.", "precio": 38.0 }
+        {
+          "nombre": "Sandwich Club",
+          "descripcion": "Sandwich completo con pollo, tocino, lechuga y tomate en pan tostado. Abundante y muy satisfactorio, ideal para una comida fuerte.",
+          "precio": 40.0,
+          "imagen": "sandwiches_club"
+        },
+        {
+          "nombre": "Sandwich Pollo",
+          "descripcion": "Pechuga de pollo a la plancha servida en pan fresco. Jugoso, bien sazonado y perfecto para una comida ligera pero deliciosa.",
+          "precio": 32.0,
+          "imagen": "sandwiches_pollo"
+        },
+        {
+          "nombre": "Sandwich Jamón Queso",
+          "descripcion": "Clásica combinación de jamón y queso derretido. Simple, caliente y reconfortante, ideal para cualquier momento del día.",
+          "precio": 28.0,
+          "imagen": "sandwiches_jamon_queso"
+        },
+        {
+          "nombre": "Sandwich Vegetariano",
+          "descripcion": "Sandwich con vegetales frescos y hummus, ligero y lleno de sabor. Una opción saludable para quienes prefieren alternativas sin carne.",
+          "precio": 26.0,
+          "imagen": "sandwiches_vegetariano"
+        },
+        {
+          "nombre": "Sandwich Atún",
+          "descripcion": "Atún mezclado con mayonesa, suave y cremoso. Un clásico muy solicitado, ideal para una comida rápida y sabrosa.",
+          "precio": 30.0,
+          "imagen": "sandwiches_atun"
+        },
+        {
+          "nombre": "Sandwich BBQ",
+          "descripcion": "Pollo a la plancha con salsa BBQ, con un toque dulce y ahumado. Muy sabroso y contundente, ideal si buscas algo con carácter.",
+          "precio": 35.0,
+          "imagen": "sandwiches_bbq"
+        },
+        {
+          "nombre": "Sandwich Integral",
+          "descripcion": "Pan integral relleno de pollo, opción más equilibrada y nutritiva. Ideal para quienes quieren comer rico pero más ligero.",
+          "precio": 30.0,
+          "imagen": "sandwiches_integral"
+        },
+        {
+          "nombre": "Sandwich Especial",
+          "descripcion": "Receta especial de la casa con ingredientes seleccionados. Un sandwich único, sabroso y diferente, pensado para quienes quieren algo distinto.",
+          "precio": 38.0,
+          "imagen": "sandwiches_especial"
+        }
       ]
     },
     {
       "codigo": "PANADERIA",
       "nombre": "Panadería",
       "productos": [
-        { "nombre": "Pan Francés", "descripcion": "Pan recién horneado.", "precio": 6.0 },
-        { "nombre": "Croissant", "descripcion": "Croissant de mantequilla.", "precio": 10.0 },
-        { "nombre": "Pan Integral", "descripcion": "Pan saludable.", "precio": 8.0 },
-        { "nombre": "Pan de Queso", "descripcion": "Pan relleno de queso.", "precio": 9.0 },
-        { "nombre": "Pan Dulce", "descripcion": "Pan con azúcar.", "precio": 8.0 },
-        { "nombre": "Empanada", "descripcion": "Empanada horneada.", "precio": 12.0 },
-        { "nombre": "Queque", "descripcion": "Queque casero.", "precio": 14.0 },
-        { "nombre": "Rosca", "descripcion": "Rosca tradicional.", "precio": 11.0 }
+        {
+          "nombre": "Pan Francés",
+          "descripcion": "Pan tradicional recién horneado, crujiente por fuera y suave por dentro. Ideal para acompañar café o para armar un desayuno simple.",
+          "precio": 6.0,
+          "imagen": "panaderia_pan_frances"
+        },
+        {
+          "nombre": "Croissant",
+          "descripcion": "Croissant de mantequilla hojaldrado y aromático. Suave, delicado y perfecto para acompañar una bebida caliente.",
+          "precio": 10.0,
+          "imagen": "panaderia_croissant"
+        },
+        {
+          "nombre": "Pan Integral",
+          "descripcion": "Pan elaborado con harina integral, una opción más saludable y ligera. Ideal para quienes buscan algo nutritivo sin perder sabor.",
+          "precio": 8.0,
+          "imagen": "panaderia_pan_integral"
+        },
+        {
+          "nombre": "Pan de Queso",
+          "descripcion": "Pan suave relleno de queso derretido. Muy sabroso y perfecto para comer caliente, ideal como snack o para acompañar café.",
+          "precio": 9.0,
+          "imagen": "panaderia_pan_queso"
+        },
+        {
+          "nombre": "Pan Dulce",
+          "descripcion": "Pan ligeramente dulce, suave y aromático. Ideal para acompañar una bebida caliente o para un antojo rápido.",
+          "precio": 8.0,
+          "imagen": "panaderia_pan_dulce"
+        },
+        {
+          "nombre": "Empanada",
+          "descripcion": "Empanada horneada, crujiente por fuera y sabrosa por dentro. Perfecta como opción rápida para acompañar bebidas.",
+          "precio": 12.0,
+          "imagen": "panaderia_empanada"
+        },
+        {
+          "nombre": "Queque",
+          "descripcion": "Queque casero de textura esponjosa y sabor suave. Ideal para acompañar café o té, perfecto para una merienda dulce.",
+          "precio": 14.0,
+          "imagen": "panaderia_queque"
+        },
+        {
+          "nombre": "Rosca",
+          "descripcion": "Rosca tradicional de panadería, suave y ligeramente dulce. Perfecta para compartir o para acompañar una bebida caliente.",
+          "precio": 11.0,
+          "imagen": "panaderia_rosca"
+        }
       ]
     },
     {
       "codigo": "PASTELES",
       "nombre": "Pasteles",
       "productos": [
-        { "nombre": "Pastel de Chocolate", "descripcion": "Pastel húmedo de chocolate.", "precio": 18.0 },
-        { "nombre": "Pastel de Vainilla", "descripcion": "Pastel suave de vainilla.", "precio": 17.0 },
-        { "nombre": "Cheesecake", "descripcion": "Cheesecake clásico.", "precio": 22.0 },
-        { "nombre": "Brownie", "descripcion": "Brownie de chocolate.", "precio": 15.0 },
-        { "nombre": "Torta Tres Leches", "descripcion": "Torta tradicional.", "precio": 20.0 },
-        { "nombre": "Pastel de Zanahoria", "descripcion": "Pastel con zanahoria.", "precio": 19.0 },
-        { "nombre": "Cupcake", "descripcion": "Cupcake decorado.", "precio": 10.0 },
-        { "nombre": "Tarta de Frutas", "descripcion": "Tarta con frutas frescas.", "precio": 21.0 }
+        {
+          "nombre": "Pastel de Chocolate",
+          "descripcion": "Pastel húmedo de chocolate con sabor intenso y textura suave. Perfecto para los amantes del chocolate y ideal para acompañar un café.",
+          "precio": 18.0,
+          "imagen": "pasteles_chocolate"
+        },
+        {
+          "nombre": "Pastel de Vainilla",
+          "descripcion": "Pastel suave y esponjoso con aroma a vainilla. Ligero, delicado y perfecto para quienes prefieren sabores clásicos.",
+          "precio": 17.0,
+          "imagen": "pasteles_vainilla"
+        },
+        {
+          "nombre": "Cheesecake",
+          "descripcion": "Cheesecake clásico de textura cremosa y sabor equilibrado. Suave, delicioso y perfecto para una pausa dulce.",
+          "precio": 22.0,
+          "imagen": "pasteles_cheesecake"
+        },
+        {
+          "nombre": "Brownie",
+          "descripcion": "Brownie de chocolate denso y húmedo, con sabor intenso. Ideal para un antojo dulce y para acompañar bebidas calientes.",
+          "precio": 15.0,
+          "imagen": "pasteles_brownie"
+        },
+        {
+          "nombre": "Torta Tres Leches",
+          "descripcion": "Torta tradicional bañada en tres leches, muy suave y jugosa. Perfecta para quienes disfrutan postres cremosos y dulces.",
+          "precio": 20.0,
+          "imagen": "pasteles_tres_leches"
+        },
+        {
+          "nombre": "Pastel de Zanahoria",
+          "descripcion": "Pastel de zanahoria con especias, húmedo y aromático. Un clásico diferente, suave y con un sabor muy especial.",
+          "precio": 19.0,
+          "imagen": "pasteles_zanahoria"
+        },
+        {
+          "nombre": "Cupcake",
+          "descripcion": "Cupcake individual decorado, suave y dulce. Perfecto como postre rápido o para acompañar un café.",
+          "precio": 10.0,
+          "imagen": "pasteles_cupcake"
+        },
+        {
+          "nombre": "Tarta de Frutas",
+          "descripcion": "Tarta con base suave y frutas frescas, ligera y refrescante. Ideal para quienes buscan un postre equilibrado y frutal.",
+          "precio": 21.0,
+          "imagen": "pasteles_tarta_frutas"
+        }
       ]
     },
     {
       "codigo": "HELADOS",
       "nombre": "Helados",
       "productos": [
-        { "nombre": "Helado Vainilla", "descripcion": "Helado cremoso de vainilla.", "precio": 12.0 },
-        { "nombre": "Helado Chocolate", "descripcion": "Helado intenso de chocolate.", "precio": 12.0 },
-        { "nombre": "Helado Fresa", "descripcion": "Helado de fresa natural.", "precio": 12.0 },
-        { "nombre": "Helado Mixto", "descripcion": "Mezcla de sabores.", "precio": 14.0 },
-        { "nombre": "Copa Helada", "descripcion": "Helado con toppings.", "precio": 18.0 },
-        { "nombre": "Banana Split", "descripcion": "Helado con banana.", "precio": 20.0 },
-        { "nombre": "Helado Artesanal", "descripcion": "Helado de la casa.", "precio": 16.0 },
-        { "nombre": "Milkshake", "descripcion": "Batido helado.", "precio": 18.0 }
+        {
+          "nombre": "Helado Vainilla",
+          "descripcion": "Helado cremoso de vainilla, suave y clásico. Perfecto para disfrutar solo o como acompañamiento de otros postres.",
+          "precio": 12.0,
+          "imagen": "helados_vainilla"
+        },
+        {
+          "nombre": "Helado Chocolate",
+          "descripcion": "Helado de chocolate intenso, cremoso y con sabor profundo. Ideal para amantes del chocolate y para un antojo dulce.",
+          "precio": 12.0,
+          "imagen": "helados_chocolate"
+        },
+        {
+          "nombre": "Helado Fresa",
+          "descripcion": "Helado elaborado con fresa, de sabor frutal y fresco. Ligero, dulce y perfecto para una opción refrescante.",
+          "precio": 12.0,
+          "imagen": "helados_fresa"
+        },
+        {
+          "nombre": "Helado Mixto",
+          "descripcion": "Mezcla de sabores para quienes quieren variedad en una sola porción. Equilibrado, refrescante y perfecto para indecisos.",
+          "precio": 14.0,
+          "imagen": "helados_mixto"
+        },
+        {
+          "nombre": "Copa Helada",
+          "descripcion": "Helado servido en copa con toppings y detalles dulces. Una opción más completa, ideal para disfrutar como postre especial.",
+          "precio": 18.0,
+          "imagen": "helados_copa"
+        },
+        {
+          "nombre": "Banana Split",
+          "descripcion": "Clásico banana split con helado, banana y toppings. Abundante, dulce y perfecto para compartir o para un postre grande.",
+          "precio": 20.0,
+          "imagen": "helados_banana_split"
+        },
+        {
+          "nombre": "Helado Artesanal",
+          "descripcion": "Helado de la casa preparado al estilo artesanal. Sabor auténtico, textura cremosa y una opción especial del menú.",
+          "precio": 16.0,
+          "imagen": "helados_artesanal"
+        },
+        {
+          "nombre": "Milkshake",
+          "descripcion": "Batido helado cremoso y espeso, dulce y refrescante. Ideal para acompañar postres o para disfrutar como bebida fría.",
+          "precio": 18.0,
+          "imagen": "helados_milkshake"
+        }
       ]
     }
   ]

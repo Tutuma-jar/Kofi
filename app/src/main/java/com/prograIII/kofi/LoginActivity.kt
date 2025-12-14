@@ -137,7 +137,8 @@ class LoginActivity : AppCompatActivity() {
                                 nombre = productoJson.nombre,
                                 descripcion = productoJson.descripcion,
                                 precio = productoJson.precio,
-                                categoriaId = categoriaEntity.id
+                                categoriaId = categoriaEntity.id,
+                                imagen = productoJson.imagen
                             )
                         )
                     }
