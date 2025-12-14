@@ -104,7 +104,7 @@
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_gravity="end"
-        android:background="@drawable/bg_drawer_custom"
+        android:background="@color/azul_medio"
         android:padding="24dp">
 
         <LinearLayout
@@ -201,7 +201,7 @@
                 android:id="@+id/nav_btn_pedidos"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@drawable/bg_item_selected"
+                android:background="@color/azul_oscuro"
                 android:gravity="center_vertical"
                 android:paddingStart="16dp"
                 android:clickable="true"
