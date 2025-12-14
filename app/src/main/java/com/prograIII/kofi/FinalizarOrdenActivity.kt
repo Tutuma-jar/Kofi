@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.prograIII.kofi.adapters.ProductoFinalizarOrdenAdapter
 import com.prograIII.kofi.databinding.ActivityFinalizarOrdenBinding
+import com.prograIII.kofi.dataclasses.Producto
 
 class FinalizarOrdenActivity : AppCompatActivity() {
 
@@ -29,39 +30,20 @@ class FinalizarOrdenActivity : AppCompatActivity() {
         // Prueba
         val productos = listOf(
             Producto(
-                1,
-                "Capuccino",
-                "Espresso combinado con leche vaporizada y una capa suave de espuma. Equilibrado, cremoso y aromático.",
-                20.0,
-                R.drawable.ic_launcher_foreground
+                id = 1,
+                nombre = "Capuccino",
+                descripcion = "Espresso con leche vaporizada y espuma suave.",
+                precio = 20.0,
+                imagenRes = R.drawable.ic_launcher_foreground,
+                categoriaId = 2
             ),
             Producto(
-                2,
-                "Latte",
-                "Espresso con abundante leche caliente y una fina capa de espuma. Suave, ligero y perfecto para quienes prefieren sabores delicados.",
-                18.0,
-                R.drawable.ic_launcher_foreground
-            ),
-            Producto(
-                3,
-                "Mocca",
-                "Mezcla de espresso, leche vaporizada y chocolate. Dulce, intenso y con un toque de cacao que realza el aroma.",
-                22.0,
-                R.drawable.ic_launcher_foreground
-            ),
-            Producto(
-                4,
-                "Americano",
-                "Espresso diluido en agua caliente. Sabor limpio, ligero y con la intensidad justa del grano.",
-                15.0,
-                R.drawable.ic_launcher_foreground
-            ),
-            Producto(
-                5,
-                "Frappe",
-                "Café frío mezclado con hielo y leche hasta lograr una textura cremosa. Refrescante y ligeramente dulce.",
-                25.0,
-                R.drawable.ic_launcher_foreground
+                id = 2,
+                nombre = "Latte Vainilla",
+                descripcion = "Café suave con un toque de vainilla.",
+                precio = 22.0,
+                imagenRes = R.drawable.ic_launcher_foreground,
+                categoriaId = 2
             )
         )
 

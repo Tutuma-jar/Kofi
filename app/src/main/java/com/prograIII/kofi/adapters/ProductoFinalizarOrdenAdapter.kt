@@ -3,7 +3,7 @@ package com.prograIII.kofi.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.prograIII.kofi.Producto
+import com.prograIII.kofi.dataclasses.Producto
 import com.prograIII.kofi.databinding.ProductoFinalizarOrdenBinding
 
 class ProductoFinalizarOrdenAdapter(
@@ -25,7 +25,7 @@ class ProductoFinalizarOrdenAdapter(
         holder.binding.apply {
             tvNombreArticulo.text = producto.nombre
             tvPrecioArticulo.text = "${producto.precio} Bs."
-            ivImagenArticulo.setImageResource(producto.imagenResId)
+            ivImagenArticulo.setImageResource(producto.imagenRes)
         }
     }
 
