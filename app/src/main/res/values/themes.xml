@@ -38,7 +38,7 @@
     </style>
 
     <style name="subtitulos_categoria">
-        <item name="android:textColor">@color/blanco</item>
+        <item name="android:textColor">@color/texto_blanco</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
     </style>
