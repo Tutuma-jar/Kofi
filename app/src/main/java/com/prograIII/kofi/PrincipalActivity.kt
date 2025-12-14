@@ -69,14 +69,14 @@ class PrincipalActivity : AppCompatActivity() {
 
         binding.switchModoOscuro
             .setOnCheckedChangeListener { _, seleccionado ->
-            if(seleccionado){
-                //seleccionado
-                habilitarModoOscuro()
-            } else {
-                //no seleccionado
-                deshabilitarModoOscuro()
+                if(seleccionado){
+                    //seleccionado
+                    habilitarModoOscuro()
+                } else {
+                    //no seleccionado
+                    deshabilitarModoOscuro()
+                }
             }
-        }
     }
 
     private fun inicializarSwitchModoOscuro() {

@@ -24,7 +24,6 @@ class CategoriaMenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCategoriaBinding
     private lateinit var db: AppDatabase
     val context: Context = this
-    val ffff: Int = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
