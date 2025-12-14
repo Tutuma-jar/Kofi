@@ -15,10 +15,6 @@ class MenuActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMenuBinding
     val context: Context = this
 
-    companion object{
-        val categoria = "categoria"
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -32,80 +28,27 @@ class MenuActivity : AppCompatActivity() {
             insets
         }
 
+        //CATEGORIAS
+        binding.categoria1.setOnClickListener { abrirCategoria("BREAKFAST") }
+        binding.categoria2.setOnClickListener { abrirCategoria("CAFES") }
+        binding.categoria3.setOnClickListener { abrirCategoria("INFUSIONES") }
+        binding.categoria4.setOnClickListener { abrirCategoria("BEBIDAS") }
+        binding.categoria5.setOnClickListener { abrirCategoria("SANDWICHES") }
+        binding.categoria6.setOnClickListener { abrirCategoria("PANADERIA") }
+        binding.categoria7.setOnClickListener { abrirCategoria("PASTELES") }
+        binding.categoria8.setOnClickListener { abrirCategoria("HELADOS") }
+
+        // UI
         binding.arrow.setOnClickListener {
-            val intentCambioAPrincipal = Intent(context, PrincipalActivity::class.java)
-            startActivity(intentCambioAPrincipal)
+            startActivity(Intent(context, PrincipalActivity::class.java))
         }
 
-        //Pasar dato de pantalla a categoria menu
-        binding.breakfast.setOnClickListener {
-            val cambio: Intent = Intent(context, CategoriaMenuActivity::class.java)
-            cambio.apply {
-                putExtra(categoria, "Breakfast")
-            }
-            startActivity(cambio)
-        }
-        binding.cafes.setOnClickListener {
-            val cambio: Intent = Intent(context, CategoriaMenuActivity::class.java)
-            cambio.apply {
-                putExtra(categoria, "Cafe")
-            }
-            startActivity(cambio)
-        }
-        binding.infusiones.setOnClickListener {
-            val cambio: Intent = Intent(context, CategoriaMenuActivity::class.java)
-            cambio.apply {
-                putExtra(categoria, "Infusiones")
-            }
-            startActivity(cambio)
-        }
-        binding.bebidas.setOnClickListener {
-            val cambio: Intent = Intent(context, CategoriaMenuActivity::class.java)
-            cambio.apply {
-                putExtra(categoria, "Bebidas")
-            }
-            startActivity(cambio)
-        }
-        binding.sandwiches.setOnClickListener {
-            val cambio: Intent = Intent(context, CategoriaMenuActivity::class.java)
-            cambio.apply {
-                putExtra(categoria, "Sandwiches")
-            }
-            startActivity(cambio)
-        }
-        binding.panaderia.setOnClickListener {
-            val cambio: Intent = Intent(context, CategoriaMenuActivity::class.java)
-            cambio.apply {
-                putExtra(categoria, "Panaderia")
-            }
-            startActivity(cambio)
-        }
-        binding.pasteles.setOnClickListener {
-            val cambio: Intent = Intent(context, CategoriaMenuActivity::class.java)
-            cambio.apply {
-                putExtra(categoria, "Pasteles")
-            }
-            startActivity(cambio)
-        }
-        binding.helados.setOnClickListener {
-            val cambio: Intent = Intent(context, CategoriaMenuActivity::class.java)
-            cambio.apply {
-                putExtra(categoria, "Helados")
-            }
-            startActivity(cambio)
-        }
-
-
-
-
-        //Barra lateral
         binding.menuButton.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.END)
         }
 
         binding.navBtnInicio.setOnClickListener {
-            val intent = Intent(context, PrincipalActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(context, PrincipalActivity::class.java))
         }
 
         binding.navBtnMenu.setOnClickListener {
@@ -113,13 +56,17 @@ class MenuActivity : AppCompatActivity() {
         }
 
         binding.navBtnPedidos.setOnClickListener {
-            val intent = Intent(context, PedidosActivity::class.java) // Asegúrate de crear esta Activity
-            startActivity(intent)
+            startActivity(Intent(context, PedidosActivity::class.java))
         }
 
         binding.navBtnComanda.setOnClickListener {
-            val intent = Intent(context, ComandaActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(context, ComandaActivity::class.java))
         }
+    }
+
+    private fun abrirCategoria(codigo: String) {
+        val intent = Intent(context, CategoriaMenuActivity::class.java)
+        intent.putExtra("codigoCategoria", codigo)
+        startActivity(intent)
     }
 }

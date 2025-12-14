@@ -1,12 +1,10 @@
-package com.prograIII.kofi
+package com.prograIII.kofi.dataclasses
 
-import kotlinx.serialization.Serializable
-
-@Serializable
 data class Producto(
-    val id: Int, // ID único automático basado en el tiempo
+    val id: Int,
     val nombre: String,
     val descripcion: String,
     val precio: Double,
-    val imagenRuta: String // Cambiado a String para soportar URIs de cámara y recursos
+    val imagenRes: Int,
+    val categoriaId: Int
 )

@@ -3,8 +3,8 @@ package com.prograIII.kofi.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.prograIII.kofi.Producto
 import com.prograIII.kofi.databinding.ProductoCategoriaComandaBinding
+import com.prograIII.kofi.dataclasses.Producto
 
 class ProductoCategoriaComandaAdapter(
     private val productos: List<Producto>
@@ -25,7 +25,7 @@ class ProductoCategoriaComandaAdapter(
         with(holder.binding) {
             nombreProducto.text = producto.nombre
             precioProducto.text = "${producto.precio} Bs."
-//            imagenProducto.setImageResource(producto.imagenResId)
+            imagenProducto.setImageResource(producto.imagenRes)
         }
     }
 
