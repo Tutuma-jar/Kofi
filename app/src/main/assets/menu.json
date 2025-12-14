@@ -1,0 +1,116 @@
+{
+  "categorias": [
+    {
+      "codigo": "BREAKFAST",
+      "nombre": "Breakfast",
+      "productos": [
+        { "nombre": "Desayuno Americano", "descripcion": "Huevos, tocino, pan tostado y café.", "precio": 28.0 },
+        { "nombre": "Desayuno Continental", "descripcion": "Croissant, mantequilla, mermelada y café.", "precio": 22.0 },
+        { "nombre": "Panqueques", "descripcion": "Panqueques con miel y mantequilla.", "precio": 24.0 },
+        { "nombre": "Omelette de Queso", "descripcion": "Omelette suave relleno de queso.", "precio": 23.0 },
+        { "nombre": "Omelette Mixto", "descripcion": "Omelette con jamón y queso.", "precio": 25.0 },
+        { "nombre": "Tostadas Francesas", "descripcion": "Pan bañado en huevo y dorado.", "precio": 26.0 },
+        { "nombre": "Avena Caliente", "descripcion": "Avena cocida con frutas.", "precio": 20.0 },
+        { "nombre": "Sandwich Desayuno", "descripcion": "Huevo, queso y jamón en pan.", "precio": 21.0 }
+      ]
+    },
+    {
+      "codigo": "CAFES",
+      "nombre": "Cafés",
+      "productos": [
+        { "nombre": "Espresso", "descripcion": "Café negro intenso.", "precio": 15.0 },
+        { "nombre": "Americano", "descripcion": "Espresso con agua caliente.", "precio": 16.0 },
+        { "nombre": "Capuccino", "descripcion": "Espresso con leche vaporizada.", "precio": 20.0 },
+        { "nombre": "Latte", "descripcion": "Café con abundante leche.", "precio": 18.0 },
+        { "nombre": "Mocca", "descripcion": "Café con chocolate.", "precio": 22.0 },
+        { "nombre": "Latte Vainilla", "descripcion": "Latte con esencia de vainilla.", "precio": 23.0 },
+        { "nombre": "Latte Caramelo", "descripcion": "Latte con caramelo.", "precio": 23.0 },
+        { "nombre": "Café Frío", "descripcion": "Café servido con hielo.", "precio": 19.0 }
+      ]
+    },
+    {
+      "codigo": "INFUSIONES",
+      "nombre": "Tés e infusiones",
+      "productos": [
+        { "nombre": "Té Negro", "descripcion": "Té clásico aromático.", "precio": 12.0 },
+        { "nombre": "Té Verde", "descripcion": "Té antioxidante natural.", "precio": 13.0 },
+        { "nombre": "Manzanilla", "descripcion": "Infusión relajante.", "precio": 12.0 },
+        { "nombre": "Hierbaluisa", "descripcion": "Infusión digestiva.", "precio": 12.0 },
+        { "nombre": "Menta", "descripcion": "Infusión refrescante.", "precio": 12.0 },
+        { "nombre": "Anís", "descripcion": "Infusión suave.", "precio": 12.0 },
+        { "nombre": "Té Chai", "descripcion": "Té especiado con leche.", "precio": 18.0 },
+        { "nombre": "Infusión Frutal", "descripcion": "Mezcla de frutas naturales.", "precio": 14.0 }
+      ]
+    },
+    {
+      "codigo": "BEBIDAS",
+      "nombre": "Bebidas",
+      "productos": [
+        { "nombre": "Jugo de Naranja", "descripcion": "Jugo natural recién exprimido.", "precio": 15.0 },
+        { "nombre": "Limonada", "descripcion": "Limonada fresca.", "precio": 14.0 },
+        { "nombre": "Refresco", "descripcion": "Bebida gaseosa.", "precio": 12.0 },
+        { "nombre": "Agua", "descripcion": "Agua mineral.", "precio": 8.0 },
+        { "nombre": "Agua Saborizada", "descripcion": "Agua con frutas.", "precio": 10.0 },
+        { "nombre": "Batido de Frutas", "descripcion": "Batido natural.", "precio": 18.0 },
+        { "nombre": "Chocolate Caliente", "descripcion": "Chocolate caliente cremoso.", "precio": 20.0 },
+        { "nombre": "Leche", "descripcion": "Leche caliente o fría.", "precio": 10.0 }
+      ]
+    },
+    {
+      "codigo": "SANDWICHES",
+      "nombre": "Sándwiches",
+      "productos": [
+        { "nombre": "Sandwich Club", "descripcion": "Pollo, tocino, lechuga y tomate.", "precio": 40.0 },
+        { "nombre": "Sandwich Pollo", "descripcion": "Pechuga de pollo a la plancha.", "precio": 32.0 },
+        { "nombre": "Sandwich Jamón Queso", "descripcion": "Clásico jamón y queso.", "precio": 28.0 },
+        { "nombre": "Sandwich Vegetariano", "descripcion": "Vegetales frescos y hummus.", "precio": 26.0 },
+        { "nombre": "Sandwich Atún", "descripcion": "Atún con mayonesa.", "precio": 30.0 },
+        { "nombre": "Sandwich BBQ", "descripcion": "Pollo con salsa BBQ.", "precio": 35.0 },
+        { "nombre": "Sandwich Integral", "descripcion": "Pan integral con pollo.", "precio": 30.0 },
+        { "nombre": "Sandwich Especial", "descripcion": "Receta de la casa.", "precio": 38.0 }
+      ]
+    },
+    {
+      "codigo": "PANADERIA",
+      "nombre": "Panadería",
+      "productos": [
+        { "nombre": "Pan Francés", "descripcion": "Pan recién horneado.", "precio": 6.0 },
+        { "nombre": "Croissant", "descripcion": "Croissant de mantequilla.", "precio": 10.0 },
+        { "nombre": "Pan Integral", "descripcion": "Pan saludable.", "precio": 8.0 },
+        { "nombre": "Pan de Queso", "descripcion": "Pan relleno de queso.", "precio": 9.0 },
+        { "nombre": "Pan Dulce", "descripcion": "Pan con azúcar.", "precio": 8.0 },
+        { "nombre": "Empanada", "descripcion": "Empanada horneada.", "precio": 12.0 },
+        { "nombre": "Queque", "descripcion": "Queque casero.", "precio": 14.0 },
+        { "nombre": "Rosca", "descripcion": "Rosca tradicional.", "precio": 11.0 }
+      ]
+    },
+    {
+      "codigo": "PASTELES",
+      "nombre": "Pasteles",
+      "productos": [
+        { "nombre": "Pastel de Chocolate", "descripcion": "Pastel húmedo de chocolate.", "precio": 18.0 },
+        { "nombre": "Pastel de Vainilla", "descripcion": "Pastel suave de vainilla.", "precio": 17.0 },
+        { "nombre": "Cheesecake", "descripcion": "Cheesecake clásico.", "precio": 22.0 },
+        { "nombre": "Brownie", "descripcion": "Brownie de chocolate.", "precio": 15.0 },
+        { "nombre": "Torta Tres Leches", "descripcion": "Torta tradicional.", "precio": 20.0 },
+        { "nombre": "Pastel de Zanahoria", "descripcion": "Pastel con zanahoria.", "precio": 19.0 },
+        { "nombre": "Cupcake", "descripcion": "Cupcake decorado.", "precio": 10.0 },
+        { "nombre": "Tarta de Frutas", "descripcion": "Tarta con frutas frescas.", "precio": 21.0 }
+      ]
+    },
+    {
+      "codigo": "HELADOS",
+      "nombre": "Helados",
+      "productos": [
+        { "nombre": "Helado Vainilla", "descripcion": "Helado cremoso de vainilla.", "precio": 12.0 },
+        { "nombre": "Helado Chocolate", "descripcion": "Helado intenso de chocolate.", "precio": 12.0 },
+        { "nombre": "Helado Fresa", "descripcion": "Helado de fresa natural.", "precio": 12.0 },
+        { "nombre": "Helado Mixto", "descripcion": "Mezcla de sabores.", "precio": 14.0 },
+        { "nombre": "Copa Helada", "descripcion": "Helado con toppings.", "precio": 18.0 },
+        { "nombre": "Banana Split", "descripcion": "Helado con banana.", "precio": 20.0 },
+        { "nombre": "Helado Artesanal", "descripcion": "Helado de la casa.", "precio": 16.0 },
+        { "nombre": "Milkshake", "descripcion": "Batido helado.", "precio": 18.0 }
+      ]
+    }
+  ]
+}

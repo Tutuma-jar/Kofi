@@ -3,7 +3,7 @@ package com.prograIII.kofi.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.prograIII.kofi.Producto
+import com.prograIII.kofi.dataclasses.Producto
 import com.prograIII.kofi.databinding.ProductoCategoriaMenuBinding
 
 class ProductoCategoriaMenuAdapter(
@@ -29,7 +29,7 @@ class ProductoCategoriaMenuAdapter(
             tvNombreArticulo.text = producto.nombre
             tvDescripcionArticulo.text = producto.descripcion
             tvPrecioArticulo.text = "${producto.precio} Bs."
-            ivArticulo.setImageResource(producto.imagenResId)
+            ivArticulo.setImageResource(producto.imagenRes)
         }
     }
 

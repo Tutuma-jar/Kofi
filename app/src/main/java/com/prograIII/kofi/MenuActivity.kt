@@ -28,35 +28,45 @@ class MenuActivity : AppCompatActivity() {
             insets
         }
 
+        //CATEGORIAS
+        binding.categoria1.setOnClickListener { abrirCategoria("BREAKFAST") }
+        binding.categoria2.setOnClickListener { abrirCategoria("CAFES") }
+        binding.categoria3.setOnClickListener { abrirCategoria("INFUSIONES") }
+        binding.categoria4.setOnClickListener { abrirCategoria("BEBIDAS") }
+        binding.categoria5.setOnClickListener { abrirCategoria("SANDWICHES") }
+        binding.categoria6.setOnClickListener { abrirCategoria("PANADERIA") }
+        binding.categoria7.setOnClickListener { abrirCategoria("PASTELES") }
+        binding.categoria8.setOnClickListener { abrirCategoria("HELADOS") }
+
+        // UI
         binding.arrow.setOnClickListener {
-            val intentCambioAPrincipal = Intent(context, PrincipalActivity::class.java)
-            startActivity(intentCambioAPrincipal)
+            startActivity(Intent(context, PrincipalActivity::class.java))
         }
 
-
-        //Barra lateral
         binding.menuButton.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.END)
         }
 
         binding.navBtnInicio.setOnClickListener {
-            val intent = Intent(context, PrincipalActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(context, PrincipalActivity::class.java))
         }
 
         binding.navBtnMenu.setOnClickListener {
             binding.drawerLayout.closeDrawer(GravityCompat.END)
-
         }
 
         binding.navBtnPedidos.setOnClickListener {
-            val intent = Intent(context, PedidosActivity::class.java) // Asegúrate de crear esta Activity
-            startActivity(intent)
+            startActivity(Intent(context, PedidosActivity::class.java))
         }
 
         binding.navBtnComanda.setOnClickListener {
-            val intent = Intent(context, ComandaActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(context, ComandaActivity::class.java))
         }
+    }
+
+    private fun abrirCategoria(codigo: String) {
+        val intent = Intent(context, CategoriaMenuActivity::class.java)
+        intent.putExtra("codigoCategoria", codigo)
+        startActivity(intent)
     }
 }
