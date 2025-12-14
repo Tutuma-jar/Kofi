@@ -25,6 +25,7 @@ class CategoriaMenuActivity : AppCompatActivity() {
     private lateinit var db: AppDatabase
     val context: Context = this
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
