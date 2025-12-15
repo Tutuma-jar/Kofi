@@ -17,33 +17,33 @@
 
         <activity
             android:name=".CategoriaMenuActivity"
-            android:exported="true" />
+            android:exported="true"/>
         <activity
             android:name=".FinalizarOrdenActivity"
-            android:exported="true" />
+            android:exported="true"/>
         <activity
             android:name=".PedidosActivity"
-            android:exported="true" />
+            android:exported="true"/>
         <activity
             android:name=".PrincipalActivity"
-            android:exported="true" />
+            android:exported="true"/>
         <activity
             android:name=".ComandaActivity"
-            android:exported="true" />
+            android:exported="true"/>
         <activity
             android:name=".MenuActivity"
-            android:exported="true" />
+            android:exported="true"/>
         <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:exported="true"/>
     </application>
 </manifest>
