@@ -99,11 +99,14 @@ class CategoriaMenuActivity : AppCompatActivity() {
 
                 runOnUiThread {
                     binding.TituloCategoria.text = categoria.nombre
-                    binding.rvArticulosCategoria.adapter = ProductoCategoriaMenuAdapter(productosUi) { producto ->
-                        val intent = Intent(context, ProductoIndividualActivity::class.java)
-                        intent.putExtra("productoId", producto.id)
-                        startActivity(intent)
-                    }
+                    binding.rvArticulosCategoria.adapter =
+                        ProductoCategoriaMenuAdapter(productosUi) { producto ->
+
+                            val intent = Intent(context, ProductoIndividualActivity::class.java)
+                            intent.putExtra(ProductoIndividualActivity.EXTRA_PRODUCTO_ID, producto.id)
+                            startActivity(intent)
+                        }
+
 
                 }
             }

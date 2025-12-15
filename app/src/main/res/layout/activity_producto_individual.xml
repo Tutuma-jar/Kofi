@@ -37,8 +37,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/descripccionGuia">
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/ivProducto"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:scaleType="centerInside"
             android:layout_gravity="center"
             android:padding="16dp"
             android:src="@drawable/food_1_svgrepo_com">
@@ -75,9 +77,10 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.85"/>
     <Button
+        android:id="@+id/btnEditar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/boton_kofi"
+        style="@style/botones_azules"
         android:text="EDITAR"
        app:layout_constraintTop_toTopOf="@id/descripccionGuia"
         app:layout_constraintEnd_toEndOf="parent"
