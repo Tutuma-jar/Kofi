@@ -20,6 +20,7 @@ import com.prograIII.kofi.dataclasses.Pedido
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import com.prograIII.kofi.LoginActivity.Companion.nombreDB
 
 class ComandaActivity : AppCompatActivity() {
 
@@ -38,7 +39,7 @@ class ComandaActivity : AppCompatActivity() {
         db = Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java,
-            "kofi-db"
+            nombreDB
         ).build()
         binding.recyclerProductos.layoutManager = GridLayoutManager(context,2)
 
