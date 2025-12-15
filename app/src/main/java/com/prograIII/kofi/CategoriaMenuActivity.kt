@@ -45,8 +45,8 @@ class CategoriaMenuActivity : AppCompatActivity() {
         binding.rvArticulosCategoria.layoutManager = LinearLayoutManager(context) //Recycler
 
         binding.arrow.setOnClickListener {
-            val intentCambioAPrincipal = Intent(context, PrincipalActivity::class.java)
-            startActivity(intentCambioAPrincipal)
+            val intentCambioAMenu = Intent(context, MenuActivity::class.java)
+            startActivity(intentCambioAMenu)
         }
 
         binding.nuevaReceta.setOnClickListener {

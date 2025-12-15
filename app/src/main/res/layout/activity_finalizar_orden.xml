@@ -83,7 +83,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintWidth_percent="0.75"
-        android:background="@drawable/boton_kofi"
+        style="@style/botones_azules"
         android:text="HACER PEDIDO" />
 
 
