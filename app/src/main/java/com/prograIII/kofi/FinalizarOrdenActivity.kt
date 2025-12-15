@@ -50,9 +50,19 @@ class FinalizarOrdenActivity : AppCompatActivity() {
         // Conectar adapter
         binding.rvArticulosPedido.adapter = ProductoFinalizarOrdenAdapter(productos)
 
+        val pL = binding.main.paddingLeft
+        val pT = binding.main.paddingTop
+        val pR = binding.main.paddingRight
+        val pB = binding.main.paddingBottom
+
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            v.setPadding(
+                pL + systemBars.left,
+                pT + systemBars.top,
+                pR + systemBars.right,
+                pB + systemBars.bottom
+            )
             insets
         }
 

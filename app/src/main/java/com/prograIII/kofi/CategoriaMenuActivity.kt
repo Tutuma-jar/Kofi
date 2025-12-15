@@ -19,8 +19,6 @@ import kotlinx.coroutines.launch
 import com.prograIII.kofi.LoginActivity.Companion.nombreDB
 
 
-
-
 class CategoriaMenuActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCategoriaBinding

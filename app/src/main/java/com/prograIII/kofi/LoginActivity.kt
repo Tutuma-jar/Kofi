@@ -29,6 +29,9 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var db: AppDatabase
 
     val context: Context = this
+    companion object {
+        val nombreDB = "kofi-db"
+    }
 
     companion object{
         val nombreDB = "kofi-db"
