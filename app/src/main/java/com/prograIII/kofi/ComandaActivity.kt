@@ -73,6 +73,7 @@ class ComandaActivity : AppCompatActivity() {
             //pasar lista
             val intentCambioAFinalizarOrden = Intent(context, FinalizarOrdenActivity::class.java)
             startActivity(intentCambioAFinalizarOrden)
+
         }
     }
 
@@ -86,12 +87,14 @@ class ComandaActivity : AppCompatActivity() {
                 val productosDb = db.productoDao().obtenerPorCategoria(categoria.id) //Traer productos con id
 
                 val productosUi = productosDb.map { p -> //De clase a UI de producto
+                    val resId = resources.getIdentifier(p.imagen, "drawable", packageName)
+                    val imagenFinal = if (resId != 0) resId else R.drawable.food_1_svgrepo_com
                     Producto(
                         id = p.id,
                         nombre = p.nombre,
                         descripcion = p.descripcion,
                         precio = p.precio,
-                        imagenRes = R.drawable.food_1_svgrepo_com,
+                        imagenRes = imagenFinal,
                         categoriaId = p.categoriaId
                     )
                 }
