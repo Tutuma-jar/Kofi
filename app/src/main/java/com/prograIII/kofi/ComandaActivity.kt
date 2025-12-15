@@ -59,7 +59,6 @@ class ComandaActivity : AppCompatActivity() {
             startActivity(intentCambioAPrincipal)
         }
 
-
         binding.finalizarOrden.setOnClickListener {
             val intentCambioAFinalizarOrden = Intent(context, FinalizarOrdenActivity::class.java)
             startActivity(intentCambioAFinalizarOrden)

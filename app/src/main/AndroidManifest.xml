@@ -14,7 +14,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Kofi">
-
+        <activity
+            android:name=".dataclasses.GuardarProductoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GuardarProductoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GuardarProducto"
+            android:exported="false" />
         <activity
             android:name=".CategoriaMenuActivity"
             android:exported="true" />
@@ -46,4 +54,5 @@
             android:name=".MainActivity"
             android:exported="true" />
     </application>
+
 </manifest>

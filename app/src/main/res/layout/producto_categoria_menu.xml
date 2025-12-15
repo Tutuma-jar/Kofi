@@ -29,7 +29,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:maxLines="5"
+        android:maxLines="4"
         android:ellipsize="end"
         android:text="Sándwich de tres capas con pollo, tocino, lechuga fresca, tomate y mayonesa, servido en pan tostado y cortado en triángulos. Un clásico crujiente y abundante."
         style="@style/texto"
