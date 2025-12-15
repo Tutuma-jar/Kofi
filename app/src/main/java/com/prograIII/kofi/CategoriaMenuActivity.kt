@@ -16,7 +16,7 @@ import com.prograIII.kofi.dataclasses.Producto
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-
+import com.prograIII.kofi.LoginActivity.Companion.nombreDB
 
 
 class CategoriaMenuActivity : AppCompatActivity() {
@@ -38,7 +38,7 @@ class CategoriaMenuActivity : AppCompatActivity() {
         db = Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java,
-            "kofi-db"
+            nombreDB
         ).build()
 
         //UI

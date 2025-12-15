@@ -62,20 +62,19 @@
             app:layout_constraintTop_toBottomOf="@id/separador"
             app:layout_constraintBottom_toBottomOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/categoria1"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:layout_margin="5dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="1">
-                <ImageView
-                    android:id="@+id/breakfast"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/breakfast"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/categoria1"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/breakfast"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -90,20 +89,19 @@
                     app:layout_constraintStart_toStartOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/categoria2"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:layout_margin="5dp"
-                android:layout_columnWeight="1"
-                android:layout_rowWeight="2">
-                <ImageView
-                    android:id="@+id/cafes"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/cafes"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/categoria2"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="2">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/cafes"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -118,21 +116,20 @@
                     app:layout_constraintStart_toStartOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/categoria3"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:layout_margin="5dp"
-                android:layout_columnWeight="2"
-                android:layout_rowWeight="1">
-                <ImageView
-                    android:id="@+id/infusiones"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/infusiones"
-                    android:adjustViewBounds="true"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/categoria3"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:layout_columnWeight="2"
+            android:layout_rowWeight="1">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/infusiones"
+                android:adjustViewBounds="true"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -147,21 +144,20 @@
                     app:layout_constraintStart_toStartOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/categoria4"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:layout_margin="5dp"
-                android:layout_columnWeight="2"
-                android:layout_rowWeight="2">
-                <ImageView
-                    android:id="@+id/bebidas"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/bebidas"
-                    android:adjustViewBounds="true"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/categoria4"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:layout_columnWeight="2"
+            android:layout_rowWeight="2">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/bebidas"
+                android:adjustViewBounds="true"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -176,21 +172,20 @@
                     app:layout_constraintStart_toStartOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/categoria5"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:layout_margin="5dp"
-                android:layout_columnWeight="3"
-                android:layout_rowWeight="1">
-                <ImageView
-                    android:id="@+id/sandwiches"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/sandwich"
-                    android:adjustViewBounds="true"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/categoria5"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:layout_columnWeight="3"
+            android:layout_rowWeight="1">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/sandwich"
+                android:adjustViewBounds="true"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -205,21 +200,20 @@
                     app:layout_constraintStart_toStartOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/categoria6"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:layout_margin="5dp"
-                android:layout_columnWeight="3"
-                android:layout_rowWeight="2">
-                <ImageView
-                    android:id="@+id/panaderia"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/panaderia"
-                    android:adjustViewBounds="true"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/categoria6"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:layout_columnWeight="3"
+            android:layout_rowWeight="2">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/panaderia"
+                android:adjustViewBounds="true"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -234,21 +228,20 @@
                     app:layout_constraintStart_toStartOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/categoria7"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:layout_margin="5dp"
-                android:layout_columnWeight="4"
-                android:layout_rowWeight="1">
-                <ImageView
-                    android:id="@+id/pasteles"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/pastel"
-                    android:adjustViewBounds="true"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/categoria7"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:layout_columnWeight="4"
+            android:layout_rowWeight="1">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/pastel"
+                android:adjustViewBounds="true"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -263,21 +256,20 @@
                     app:layout_constraintStart_toStartOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/categoria8"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:layout_margin="5dp"
-                android:layout_columnWeight="4"
-                android:layout_rowWeight="2">
-                <ImageView
-                    android:id="@+id/helados"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/helado"
-                    android:adjustViewBounds="true"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/categoria8"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:layout_columnWeight="4"
+            android:layout_rowWeight="2">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/helado"
+                android:adjustViewBounds="true"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
                 <TextView
                     android:layout_width="match_parent"

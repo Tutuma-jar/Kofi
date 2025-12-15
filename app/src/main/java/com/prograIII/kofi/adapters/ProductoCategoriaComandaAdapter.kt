@@ -7,7 +7,9 @@ import com.prograIII.kofi.databinding.ProductoCategoriaComandaBinding
 import com.prograIII.kofi.dataclasses.Producto
 
 class ProductoCategoriaComandaAdapter(
-    private val productos: List<Producto>
+    private val productos: List<Producto>,
+    // 1. NUEVO: Agregamos la función que avisa el click
+    private val onAddClick: (Producto) -> Unit
 ) : RecyclerView.Adapter<ProductoCategoriaComandaAdapter.ProductoViewHolder>() {
 
     inner class ProductoViewHolder(val binding: ProductoCategoriaComandaBinding) :
@@ -26,8 +28,14 @@ class ProductoCategoriaComandaAdapter(
             nombreProducto.text = producto.nombre
             precioProducto.text = "${producto.precio} Bs."
             imagenProducto.setImageResource(producto.imagenRes)
+
+            // 2. NUEVO: Detectamos el click en el botón "addButton"
+            addButton.setOnClickListener {
+                onAddClick(producto)
+            }
         }
     }
 
     override fun getItemCount(): Int = productos.size
+
 }

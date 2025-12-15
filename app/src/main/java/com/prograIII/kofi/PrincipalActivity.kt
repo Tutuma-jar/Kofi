@@ -25,7 +25,6 @@ class PrincipalActivity : AppCompatActivity() {
         binding = ActivityPrincipalBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Usamos binding.root que siempre se refiere a la vista principal (el DrawerLayout)
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -57,7 +56,7 @@ class PrincipalActivity : AppCompatActivity() {
         }
 
         binding.navBtnPedidos.setOnClickListener {
-            val intent = Intent(context, PedidosActivity::class.java) // Asegúrate de crear esta Activity
+            val intent = Intent(context, PedidosActivity::class.java)
             startActivity(intent)
         }
 

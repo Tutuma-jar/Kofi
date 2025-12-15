@@ -42,6 +42,8 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="20dp"
         android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/separador">
 
         <LinearLayout
@@ -93,7 +95,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/cafes"
+                android:id="@+id/categoria1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -120,7 +122,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/infusiones"
+                android:id="@+id/categoria2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -146,7 +148,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/breakfast"
+                android:id="@+id/categoria3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -173,7 +175,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/panaderia"
+                android:id="@+id/categoria4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -199,7 +201,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/pasteles"
+                android:id="@+id/categoria5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -225,7 +227,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/sandwiches"
+                android:id="@+id/categoria6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -251,7 +253,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/helados"
+                android:id="@+id/categoria7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -277,7 +279,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/bebidas"
+                android:id="@+id/categoria8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"

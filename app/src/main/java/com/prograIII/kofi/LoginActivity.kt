@@ -29,6 +29,13 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var db: AppDatabase
 
     val context: Context = this
+    companion object {
+        val nombreDB = "kofi-db"
+    }
+
+    companion object{
+        val nombreDB = "kofi-db"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
         db = Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java,
-            "kofi-db"
+            nombreDB
         ).build()
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content)) { v, insets ->
