@@ -1,8 +1,11 @@
 package com.prograIII.kofi
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -26,9 +29,20 @@ class GuardarProductoActivity : AppCompatActivity() {
 
     private var productoId: Int = -1
     private var categoriaId: Int = -1
+    private var imagenActual: String = ""
 
-    private var imagenActual: String = "food_1_svgrepo_com"
-    private var categoriaActual: Int = -1
+    // Selector de imagen
+    private val seleccionarImagen =
+        registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri: Uri? ->
+            uri?.let {
+                contentResolver.takePersistableUriPermission(
+                    it,
+                    Intent.FLAG_GRANT_READ_URI_PERMISSION
+                )
+                imagenActual = it.toString()
+                binding.ivProducto.setImageURI(it)
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,12 +63,9 @@ class GuardarProductoActivity : AppCompatActivity() {
             AppDatabase::class.java,
             "kofi-db"
         ).build()
-
-        // Modo
         productoId = intent.getIntExtra(EXTRA_PRODUCTO_ID, -1)
         val esEdicion = productoId != -1
 
-        // Leer codigoCategoria (viene desde CategoriaMenuActivity)
         val codigoCategoria = intent.getStringExtra("codigoCategoria")
 
         if (esEdicion) {
@@ -65,7 +76,6 @@ class GuardarProductoActivity : AppCompatActivity() {
             binding.tvDetallesProducto.text = "NUEVO PRODUCTO"
             binding.btnGuardar.text = "AÑADIR"
 
-            // Convertir codigoCategoria -> categoriaId
             if (codigoCategoria == null) {
                 Toast.makeText(this, "Falta la categoría", Toast.LENGTH_SHORT).show()
                 finish()
@@ -90,6 +100,11 @@ class GuardarProductoActivity : AppCompatActivity() {
         }
 
         binding.ibRegresar.setOnClickListener { finish() }
+
+        // Abrir galería
+        binding.ivProducto.setOnClickListener {
+            seleccionarImagen.launch(arrayOf("image/*"))
+        }
 
         binding.btnGuardar.setOnClickListener {
             if (esEdicion) guardarCambios()
@@ -117,7 +132,11 @@ class GuardarProductoActivity : AppCompatActivity() {
                 binding.etDescripcionProducto.setText(producto.descripcion)
 
                 imagenActual = producto.imagen
-                categoriaActual = producto.categoriaId
+                categoriaId = producto.categoriaId
+
+                if (imagenActual.isNotEmpty()) {
+                    binding.ivProducto.setImageURI(Uri.parse(imagenActual))
+                }
             }
         }
     }
@@ -185,7 +204,7 @@ class GuardarProductoActivity : AppCompatActivity() {
             nombre = nombre,
             descripcion = descripcion,
             precio = precio,
-            categoriaId = if (categoriaActual != -1) categoriaActual else categoriaId,
+            categoriaId = categoriaId,
             imagen = imagenActual
         )
 
