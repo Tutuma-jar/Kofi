@@ -1,14 +1,18 @@
 package com.prograIII.kofi.data
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface ProductoDao {
 
     @Insert
     fun insertarProducto(producto: ProductoEntity): Long
+
+    @Update
+    fun actualizarProducto(producto: ProductoEntity): Int
+
+    @Query("SELECT * FROM productos WHERE id = :id LIMIT 1")
+    fun obtenerPorId(id: Int): ProductoEntity?
 
     @Query("SELECT * FROM productos")
     fun obtenerTodos(): List<ProductoEntity>

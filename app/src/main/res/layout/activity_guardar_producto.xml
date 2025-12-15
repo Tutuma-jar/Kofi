@@ -8,79 +8,106 @@
     android:background="@color/beige_claro"
     android:padding="16dp"
     tools:context=".ProductoIndividualActivity">
-    <TextView
-        android:id="@+id/tvDetallesProducto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/titulos"
-        android:text="DETALLES"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-    </TextView>
+
+    <!-- Back -->
     <ImageButton
         android:id="@+id/ibRegresar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Título dinámico: "Detalles" / "Nueva receta" / "Editar producto" -->
+    <TextView
+        android:id="@+id/tvDetallesProducto"
+        style="@style/titulos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/arrow"
-        android:background="@color/beige_claro"
+        android:text="DETALLES"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvDetallesProducto"
-        app:layout_constraintBottom_toBottomOf="@+id/tvDetallesProducto">
-    </ImageButton>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/tvDetallesProducto"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/descripccionGuia">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="16dp"
-            android:src="@drawable/food_1_svgrepo_com">
-        </ImageView>
-        <EditText
-            android:id="@+id/tvNombreProducto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            style="@style/subtitulos"
-            android:text="Nombre del producto"/>
-        <EditText
-            android:id="@+id/tvPrecioProducto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingBottom="16dp"
-            style="@style/texto"
-            android:text="15 Bs."/>
-        <EditText
-            android:id="@+id/tvDescripcionProducto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="16dp"
-            style="@style/texto"
-            android:text="Una combinación de pechuga de ave (pavo o pollo), tocino crujiente, lechuga fresca y tomate maduro. Se presenta cortado en cuartos triangulares y asegurado con palillos, sirviéndose habitualmente como plato principal acompañado de papas fritas."/>
-    </LinearLayout>
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/descripccionGuia"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.85"/>
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Botón inferior fijo -->
     <Button
+        android:id="@+id/btnGuardar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/boton_kofi"
-        android:text="EDITAR"
-        app:layout_constraintTop_toTopOf="@id/descripccionGuia"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="GUARDAR"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Contenido con scroll -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollContenido"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/tvDetallesProducto"
+        app:layout_constraintBottom_toTopOf="@id/btnGuardar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="12dp">
+
+            <!-- Imagen -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:background="@color/beige_medio"
+                android:padding="12dp">
+
+                <ImageView
+                    android:id="@+id/ivProducto"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/food_1_svgrepo_com"
+                    tools:src="@drawable/food_1_svgrepo_com" />
+            </FrameLayout>
+
+            <!-- Nombre -->
+            <EditText
+                android:id="@+id/etNombreProducto"
+                style="@style/subtitulos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="Nombre del producto"
+                android:padding="12dp" />
+
+            <!-- Precio -->
+            <EditText
+                android:id="@+id/etPrecioProducto"
+                style="@style/texto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="Precio (Bs.)"
+                android:inputType="numberDecimal"
+                android:padding="12dp" />
+
+            <!-- Descripción -->
+            <EditText
+                android:id="@+id/etDescripcionProducto"
+                style="@style/texto"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_marginTop="8dp"
+                android:hint="Descripción"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:padding="12dp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
