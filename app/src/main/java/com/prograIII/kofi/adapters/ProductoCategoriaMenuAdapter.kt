@@ -7,7 +7,8 @@ import com.prograIII.kofi.dataclasses.Producto
 import com.prograIII.kofi.databinding.ProductoCategoriaMenuBinding
 
 class ProductoCategoriaMenuAdapter(
-    private val productos: List<Producto>
+    private val productos: List<Producto>,
+    private val onClick: (Producto) -> Unit
 ) : RecyclerView.Adapter<ProductoCategoriaMenuAdapter.ProductoViewHolder>() {
 
     inner class ProductoViewHolder(val binding: ProductoCategoriaMenuBinding) :
@@ -30,6 +31,10 @@ class ProductoCategoriaMenuAdapter(
             tvDescripcionArticulo.text = producto.descripcion
             tvPrecioArticulo.text = "${producto.precio} Bs."
             ivArticulo.setImageResource(producto.imagenRes)
+
+            root.setOnClickListener {
+                onClick(producto)
+            }
         }
     }
 

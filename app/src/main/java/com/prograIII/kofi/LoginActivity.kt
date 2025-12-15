@@ -33,10 +33,6 @@ class LoginActivity : AppCompatActivity() {
         val nombreDB = "kofi-db"
     }
 
-    companion object{
-        val nombreDB = "kofi-db"
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

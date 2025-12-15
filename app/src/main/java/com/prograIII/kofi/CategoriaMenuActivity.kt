@@ -18,49 +18,54 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import com.prograIII.kofi.LoginActivity.Companion.nombreDB
 
-
 class CategoriaMenuActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCategoriaBinding
     private lateinit var db: AppDatabase
+    private var codigoCategoria: String? = null
     val context: Context = this
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        //Binding
+        // Binding
         binding = ActivityCategoriaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //Room
+        // Room
         db = Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java,
             nombreDB
         ).build()
 
-        //UI
-        binding.rvArticulosCategoria.layoutManager = LinearLayoutManager(context) //Recycler
+        // UI
+        binding.rvArticulosCategoria.layoutManager = LinearLayoutManager(context)
 
         binding.arrow.setOnClickListener {
             val intentCambioAMenu = Intent(context, MenuActivity::class.java)
             startActivity(intentCambioAMenu)
         }
 
+        // Obtener categoría actual
+        codigoCategoria = intent.getStringExtra("codigoCategoria")
+
+        // Botón +
         binding.nuevaReceta.setOnClickListener {
+            val intentGuardarProducto =
+                Intent(context, GuardarProductoActivity::class.java)
 
+            intentGuardarProducto.putExtra("codigoCategoria", codigoCategoria)
+            startActivity(intentGuardarProducto)
         }
 
-        //Datos
-        val codigoCategoria = intent.getStringExtra("codigoCategoria")
-
+        // Cargar productos de la categoría
         if (codigoCategoria != null) {
-            cargarProductosPorCodigo(codigoCategoria)
+            cargarProductosPorCodigo(codigoCategoria!!)
         }
 
-        //Insets
+        // Insets
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -72,7 +77,6 @@ class CategoriaMenuActivity : AppCompatActivity() {
         GlobalScope.launch(Dispatchers.IO) {
 
             val categoria = db.categoriaDao().obtenerCategoriaPorCodigo(codigo)
-            println("CODIGO=$codigo  CATEGORIA=${categoria?.id} ${categoria?.nombre}")
 
             if (categoria != null) {
 
@@ -80,7 +84,8 @@ class CategoriaMenuActivity : AppCompatActivity() {
 
                 val productosUi = productosDb.map { p ->
                     val resId = resources.getIdentifier(p.imagen, "drawable", packageName)
-                    val imagenFinal = if (resId != 0) resId else R.drawable.food_1_svgrepo_com
+                    val imagenFinal =
+                        if (resId != 0) resId else R.drawable.food_1_svgrepo_com
 
                     Producto(
                         id = p.id,
@@ -93,9 +98,23 @@ class CategoriaMenuActivity : AppCompatActivity() {
                 }
 
                 runOnUiThread {
-                    binding.rvArticulosCategoria.adapter = ProductoCategoriaMenuAdapter(productosUi)
+                    binding.TituloCategoria.text = categoria.nombre
+                    binding.rvArticulosCategoria.adapter = ProductoCategoriaMenuAdapter(productosUi) { producto ->
+                        val intent = Intent(context, ProductoIndividualActivity::class.java)
+                        intent.putExtra("productoId", producto.id)
+                        startActivity(intent)
+                    }
+
                 }
             }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        if (codigoCategoria != null) {
+            cargarProductosPorCodigo(codigoCategoria!!)
         }
     }
 
