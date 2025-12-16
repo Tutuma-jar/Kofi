@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -24,32 +23,19 @@ class FinalizarOrdenActivity : AppCompatActivity() {
         binding = ActivityFinalizarOrdenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Comentarios con scroll
         binding.etComentario.movementMethod = ScrollingMovementMethod()
+
+        // RecyclerView
         binding.rvArticulosPedido.layoutManager = LinearLayoutManager(this)
 
-        // Prueba
-        val productos = listOf(
-            Producto(
-                id = 1,
-                nombre = "Capuccino",
-                descripcion = "Espresso con leche vaporizada y espuma suave.",
-                precio = 20.0,
-                imagenRes = R.drawable.ic_launcher_foreground,
-                categoriaId = 2
-            ),
-            Producto(
-                id = 2,
-                nombre = "Latte Vainilla",
-                descripcion = "Café suave con un toque de vainilla.",
-                precio = 22.0,
-                imagenRes = R.drawable.ic_launcher_foreground,
-                categoriaId = 2
-            )
-        )
+        // Inicia vacío; luego recibirás los productos reales
+        val productos: List<Producto> = emptyList()
 
-        // Conectar adapter
-        binding.rvArticulosPedido.adapter = ProductoFinalizarOrdenAdapter(productos)
+        binding.rvArticulosPedido.adapter =
+            ProductoFinalizarOrdenAdapter(productos)
 
+        // Insets
         val pL = binding.main.paddingLeft
         val pT = binding.main.paddingTop
         val pR = binding.main.paddingRight
@@ -66,15 +52,16 @@ class FinalizarOrdenActivity : AppCompatActivity() {
             insets
         }
 
+        // Volver a Comanda
         binding.arrow.setOnClickListener {
             val intentCambioAComanda = Intent(context, ComandaActivity::class.java)
             startActivity(intentCambioAComanda)
         }
 
+        // Confirmar pedido
         binding.btnConfirmarPedido.setOnClickListener {
             val intentCambioAPedidos = Intent(context, PedidosActivity::class.java)
             startActivity(intentCambioAPedidos)
         }
     }
 }
-

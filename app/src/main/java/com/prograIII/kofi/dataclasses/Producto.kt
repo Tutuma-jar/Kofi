@@ -5,6 +5,7 @@ data class Producto(
     val nombre: String,
     val descripcion: String,
     val precio: Double,
-    val imagenRes: Int,
-    val categoriaId: Int
+    val categoriaId: Int,
+    val imagen: String,   //URI o nombre drawable
+    val imagenRes: Int = 0
 )

@@ -1,6 +1,7 @@
 package com.prograIII.kofi
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -39,12 +40,14 @@ class ProductoIndividualActivity : AppCompatActivity() {
             insets
         }
 
+        // Room
         db = Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java,
             nombreDB
         ).build()
 
+        // Recibir ID
         productoId = intent.getIntExtra(EXTRA_PRODUCTO_ID, -1)
         if (productoId == -1) {
             Toast.makeText(this, "Producto inválido", Toast.LENGTH_SHORT).show()
@@ -52,7 +55,7 @@ class ProductoIndividualActivity : AppCompatActivity() {
             return
         }
 
-        // Mostrar datos
+        // Cargar producto
         cargarProducto(productoId)
 
         // Volver
@@ -72,25 +75,38 @@ class ProductoIndividualActivity : AppCompatActivity() {
 
             withContext(Dispatchers.Main) {
                 if (producto == null) {
-                    Toast.makeText(this@ProductoIndividualActivity, "Producto no encontrado", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@ProductoIndividualActivity,
+                        "Producto no encontrado",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     finish()
                     return@withContext
                 }
 
+                // Texto
                 binding.tvNombreProducto.text = producto.nombre
                 binding.tvPrecioProducto.text = "${producto.precio} Bs."
                 binding.tvDescripcionProducto.text = producto.descripcion
 
-                val resId = resources.getIdentifier(producto.imagen, "drawable", packageName)
-                binding.ivProducto.setImageResource(
-                    if (resId != 0) resId else R.drawable.food_1_svgrepo_com
-                )
+                // Imagen: URI o drawable
+                val img = producto.imagen
+                if (img.startsWith("content://")) {
+                    binding.ivProducto.setImageURI(Uri.parse(img))
+                } else {
+                    val resId = resources.getIdentifier(img, "drawable", packageName)
+                    binding.ivProducto.setImageResource(
+                        if (resId != 0) resId else R.drawable.food_1_svgrepo_com
+                    )
+                }
             }
         }
     }
 
     override fun onResume() {
         super.onResume()
-        if (productoId != -1) cargarProducto(productoId) // refresca si editaste
+        if (productoId != -1) {
+            cargarProducto(productoId) // refresca si editaste
+        }
     }
 }
