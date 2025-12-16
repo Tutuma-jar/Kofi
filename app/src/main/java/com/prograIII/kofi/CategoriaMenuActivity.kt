@@ -64,11 +64,25 @@ class CategoriaMenuActivity : AppCompatActivity() {
         }
 
         // Insets
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+        val root = binding.root
+
+        val pL = root.paddingLeft
+        val pT = root.paddingTop
+        val pR = root.paddingRight
+        val pB = root.paddingBottom
+
+        ViewCompat.setOnApplyWindowInsetsListener(root) { v, insets ->
+            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(
+                pL + bars.left,
+                pT + bars.top,
+                pR + bars.right,
+                pB + bars.bottom
+            )
             insets
         }
+
+
     }
 
     private fun cargarProductosPorCodigo(codigo: String) {

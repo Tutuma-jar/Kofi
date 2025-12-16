@@ -2,42 +2,40 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="140dp"
+    android:paddingVertical="8dp">
 
-    <!-- GUIDELINE (70% / 30%) -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_text_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.7" />
-    <!-- NOMBRE DEL ARTÍCULO -->
+
     <TextView
         android:id="@+id/tvNombreArticulo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
+        android:paddingBottom="4dp"
         android:text="Sandwich Club"
         style="@style/subtitulos"
-        android:paddingBottom="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/guideline_text_image"
         app:layout_constraintTop_toTopOf="parent" />
-    <!-- DESCRIPCIÓN DEL ARTÍCULO -->
+
     <TextView
         android:id="@+id/tvDescripcionArticulo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:maxLines="4"
+        android:maxLines="3"
         android:ellipsize="end"
-        android:text="Sándwich de tres capas con pollo, tocino, lechuga fresca, tomate y mayonesa, servido en pan tostado y cortado en triángulos. Un clásico crujiente y abundante."
-        style="@style/texto"
         android:paddingBottom="4dp"
+        style="@style/texto"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/guideline_text_image"
         app:layout_constraintTop_toBottomOf="@id/tvNombreArticulo" />
-    <!-- PRECIO DEL ARTÍCULO -->
+
     <TextView
         android:id="@+id/tvPrecioArticulo"
         android:layout_width="0dp"
@@ -49,26 +47,24 @@
         app:layout_constraintEnd_toStartOf="@id/guideline_text_image"
         app:layout_constraintTop_toBottomOf="@id/tvDescripcionArticulo" />
 
-    <!-- IMAGEN A LA DERECHA -->
     <ImageView
         android:id="@+id/ivArticulo"
         android:layout_width="115dp"
         android:layout_height="115dp"
-        android:scaleType="centerInside"
         android:padding="3dp"
+        android:scaleType="centerInside"
         android:src="@drawable/food_1_svgrepo_com"
         app:layout_constraintStart_toStartOf="@id/guideline_text_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
-    <!-- LÍNEA INFERIOR -->
+
     <View
         android:id="@+id/divider"
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:background="#C0C0C0"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/tvPrecioArticulo"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
