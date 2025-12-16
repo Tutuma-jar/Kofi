@@ -12,19 +12,25 @@ import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 import com.prograIII.kofi.databinding.ActivityPedidosBinding
 
 class PedidosActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPedidosBinding
+    lateinit var auth: FirebaseAuth
     val context: Context = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
 
         binding = ActivityPedidosBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        auth = Firebase.auth
 
         val root = binding.root
 
@@ -75,35 +81,10 @@ class PedidosActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        inicializarSwitchModoOscuro()
-
-        binding.switchModoOscuro
-            .setOnCheckedChangeListener { _, seleccionado ->
-                if(seleccionado){
-                    //seleccionado
-                    habilitarModoOscuro()
-                } else {
-                    //no seleccionado
-                    deshabilitarModoOscuro()
-                }
-            }
+        binding.btnCerrarSesion.setOnClickListener {
+            auth.signOut()
+            val intentCambioALogin = Intent(context, LoginActivity::class.java)
+            startActivity(intentCambioALogin)
+        }
     }
-
-    private fun inicializarSwitchModoOscuro() {
-        val nightModeFlags =
-            resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-
-        binding.switchModoOscuro.isChecked =
-            nightModeFlags == Configuration.UI_MODE_NIGHT_YES
-    }
-
-    private fun habilitarModoOscuro(){
-        AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
-
-    }
-
-    private fun deshabilitarModoOscuro(){
-        AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
-    }
-
 }
