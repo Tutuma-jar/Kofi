@@ -62,7 +62,7 @@
             android:gravity="center"
             android:layout_weight="1">
 
-            <Switch
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -73,8 +73,8 @@
                 android:id="@+id/btn_ver_detalles"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ver detalles"
-                android:textSize="14dp"
+                android:text="@string/ver_detalles"
+                android:textSize="14sp"
                 style="@style/botones_azules"/>
         </LinearLayout>
     </LinearLayout>

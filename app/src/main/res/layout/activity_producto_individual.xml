@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/titulos"
-        android:text="DETALLES"
+        android:text="@string/detalles"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -82,7 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/botones_azules"
-        android:text="EDITAR"
+        android:text="@string/editar"
        app:layout_constraintTop_toTopOf="@id/descripccionGuia"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -45,7 +45,6 @@
         android:layout_marginEnd="8dp"
         android:src="@drawable/plus"
         android:background="@color/beige_medio"
-        android:contentDescription="Añadir producto"
         app:layout_constraintBottom_toBottomOf="@id/precio_producto"
         app:layout_constraintTop_toTopOf="@id/nombre_producto"
         app:layout_constraintEnd_toEndOf="parent"

@@ -45,7 +45,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="FINALIZAR ORDEN"
+        android:text="@string/finalizar_orden"
         style="@style/titulos" />
     <TextView
         android:id="@+id/tvNumeroPedido"
@@ -82,7 +82,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintWidth_percent="0.75"
         style="@style/botones_azules"
-        android:text="HACER PEDIDO" />
+        android:text="@string/hacer_pedido" />
 
 
     <!-- ==================== CONTENEDOR ARTICULOS ==================== -->
@@ -132,7 +132,7 @@
             app:layout_constraintEnd_toStartOf="@+id/articulosCol1"
             app:layout_constraintBottom_toBottomOf="@id/articulosGuiaTitulos"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="PRODUCTOS"
+            android:text="@string/productos"
             style="@style/subtitulos_orden"/>
         <TextView
             android:id="@+id/tvTituloDescripcion"
@@ -142,7 +142,7 @@
             app:layout_constraintEnd_toStartOf="@+id/articulosCol2"
             app:layout_constraintBottom_toBottomOf="@id/articulosGuiaTitulos"
             app:layout_constraintStart_toStartOf="@id/articulosCol1"
-            android:text="DESCRIPCIÓN"
+            android:text="@string/descripcion"
             style="@style/subtitulos_orden"/>
         <TextView
             android:id="@+id/tvTituloPrecio"
@@ -152,7 +152,7 @@
             app:layout_constraintEnd_toEndOf="@id/articulosCol3"
             app:layout_constraintBottom_toBottomOf="@id/articulosGuiaTitulos"
             app:layout_constraintStart_toStartOf="@id/articulosCol2"
-            android:text="PRECIO"
+            android:text="@string/precio"
             style="@style/subtitulos_orden"/>
 
 
@@ -187,7 +187,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:hint="Escribir comentarios"
+            android:hint="@string/escribir_comentarios"
             android:gravity="top|start"
             android:layout_marginTop="8dp"
             android:scrollbars="vertical"
@@ -218,7 +218,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:text="PROMOCIONES:"
+                    android:text="@string/promociones"
                     style="@style/subtitulos_orden"
                     android:gravity="center_vertical"
                     android:padding="5dp" />
@@ -231,7 +231,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:text="TOTAL:"
+                    android:text="@string/total"
                     style="@style/subtitulos_orden"
                     android:gravity="center_vertical"
                     android:paddingStart="5dp" />
@@ -244,7 +244,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:text="NOMBRE:"
+                    android:text="@string/nombre"
                     style="@style/subtitulos_orden"
                     android:gravity="center_vertical"
                     android:paddingStart="5dp" />
@@ -257,7 +257,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:text="NIT:"
+                    android:text="@string/nit"
                     android:gravity="center_vertical"
                     android:paddingStart="5dp"
                     style="@style/subtitulos_orden"/>
@@ -281,7 +281,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:hint="Aplicar código de promoción"
+                    android:hint="@string/aplicar_codigo_de_promocion"
                     android:background="@android:color/transparent"
                     android:gravity="center_vertical"
                     android:paddingStart="8dp"
@@ -296,7 +296,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:text="0 Bs."
+                    android:text="@string/bs"
                     android:gravity="center_vertical"
                     android:paddingStart="8dp"
                     android:textSize="14sp"
@@ -310,7 +310,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:hint="Escribir aquí"
+                    android:hint="@string/escribir_aqui"
                     android:background="@android:color/transparent"
                     android:gravity="center_vertical"
                     android:paddingStart="8dp"
@@ -325,7 +325,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:hint="Escribir aquí"
+                    android:hint="@string/escribir_aqui"
                     android:background="@android:color/transparent"
                     android:gravity="center_vertical"
                     android:paddingStart="8dp"
@@ -354,7 +354,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="EFECTIVO"
+                android:text="@string/efectivo"
                 style="@style/subtitulos_orden"
                 android:layoutDirection="rtl" />
             <View
@@ -370,7 +370,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="TARJETA"
+                android:text="@string/tarjeta"
                 style="@style/subtitulos_orden"
                 android:layoutDirection="rtl" />
             <View
@@ -383,10 +383,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="QR"
+                android:text="@string/qr"
                 style="@style/subtitulos_orden"
                 android:layoutDirection="rtl" />
         </RadioGroup>
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
