@@ -12,11 +12,15 @@ import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 import com.prograIII.kofi.databinding.ActivityPedidosBinding
 
 class PedidosActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPedidosBinding
+    lateinit var auth: FirebaseAuth
     val context: Context = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +29,7 @@ class PedidosActivity : AppCompatActivity() {
 
         binding = ActivityPedidosBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        auth = Firebase.auth
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -60,6 +65,12 @@ class PedidosActivity : AppCompatActivity() {
         binding.navBtnComanda.setOnClickListener {
             val intent = Intent(context, ComandaActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.btnCerrarSesion.setOnClickListener {
+            auth.signOut()
+            val intentCambioALogin = Intent(context, LoginActivity::class.java)
+            startActivity(intentCambioALogin)
         }
 
         inicializarSwitchModoOscuro()
