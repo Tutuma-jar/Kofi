@@ -155,14 +155,13 @@ class ComandaActivity : AppCompatActivity() {
             runOnUiThread {
                 binding.recyclerProductos.adapter =
                     ProductoCategoriaComandaAdapter(productosUi) { productoSeleccionado ->
-
-                        // Lógica del carrito (Memoria)
+                        // Agregar el producto a la lista de pedidos
                         val nombre = productoSeleccionado.nombre
                         val existe = listaPedidos.any { it.nombre == nombre }
 
                         if (!existe) {
                             listaPedidos.add(
-                                Pedido(nombre, productoSeleccionado.imagen, productoSeleccionado.precio)
+                                ItemPedido(productoSeleccionado.id, productoSeleccionado.nombre, productoSeleccionado.precio, productoSeleccionado.imagen, 1)
                             )
                             Toast.makeText(
                                 context,

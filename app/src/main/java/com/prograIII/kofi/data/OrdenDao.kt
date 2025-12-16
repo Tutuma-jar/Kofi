@@ -20,7 +20,8 @@ interface OrdenDao {
     @Query("SELECT * FROM tabla_detalles WHERE ordenId = :ordenId")
     fun obtenerDetallesDeOrden(ordenId: Int): List<DetalleOrdenEntity>
 
-
+    @Query("SELECT * FROM tabla_detalles WHERE id = :id LIMIT 1")
+    fun obtenerDetallePorId(id: Int): DetalleOrdenEntity?
     //ELIMINAR
     @Delete
     fun eliminarProducto(detalle: DetalleOrdenEntity)

@@ -7,9 +7,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.prograIII.kofi.R
 import com.prograIII.kofi.data.DetalleOrdenEntity
 import com.prograIII.kofi.databinding.ProductoFinalizarOrdenBinding
+import com.prograIII.kofi.dataclasses.ItemPedido
 
 class ProductoFinalizarOrdenAdapter(
-    private val detallesOrden: List<DetalleOrdenEntity>
+    private val detallesOrden: List<ItemPedido>,
+    private val onSumar: (ItemPedido) -> Unit,
+    private val onRestar: (ItemPedido) -> Unit,
+    private val onEliminar: (ItemPedido) -> Unit
+
 ) : RecyclerView.Adapter<ProductoFinalizarOrdenAdapter.ProductoViewHolder>() {
 
     inner class ProductoViewHolder(val binding: ProductoFinalizarOrdenBinding) :
@@ -26,13 +31,23 @@ class ProductoFinalizarOrdenAdapter(
 
         holder.binding.apply {
             // Datos traídos de la BD
-            tvNombreArticulo.text = producto.nombreProducto
+            tvNombreArticulo.text = producto.nombre
 
             // Mostramos precio y cantidad
-            tvPrecioArticulo.text = "${producto.precio} Bs. (x${producto.cantidad})"
+            val precioTotalItem = producto.precio * producto.cantidad
+            tvPrecioArticulo.text = "$precioTotalItem Bs."
+
+            // Cantidad en el medio de los botones
+            tvCantidad.text = producto.cantidad.toString()
+
+            // --- LISTENERS DE BOTONES ---
+            btnIncrementarCantidadCantidad.setOnClickListener { onSumar(producto) }
+            btnDisminuirCantidad.setOnClickListener { onRestar(producto) }
+            ibEliminarArticulo.setOnClickListener { onEliminar(producto) }
+
 
             // IMAGEN: Usamos el recurso por defecto ya que la Entity no guarda la ruta de imagen.
-            val img = producto.imagenProducto
+            val img = producto.imagen
             if (img.startsWith("content://")) {
                 ivImagenArticulo.setImageURI(Uri.parse(img))
             } else {

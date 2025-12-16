@@ -79,7 +79,7 @@
             app:tint="@color/azul_oscuro" />
         <TextView
             android:id="@+id/tvCantidad"
-            android:layout_width="28dp"
+            android:layout_width="wrap_content"
             android:layout_height="28dp"
             android:gravity="center"
             android:paddingHorizontal="12dp"
