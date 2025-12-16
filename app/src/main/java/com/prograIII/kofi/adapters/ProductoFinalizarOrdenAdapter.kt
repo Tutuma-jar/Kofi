@@ -1,8 +1,10 @@
 package com.prograIII.kofi.adapters
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.prograIII.kofi.R
 import com.prograIII.kofi.dataclasses.Producto
 import com.prograIII.kofi.databinding.ProductoFinalizarOrdenBinding
 
@@ -25,7 +27,21 @@ class ProductoFinalizarOrdenAdapter(
         holder.binding.apply {
             tvNombreArticulo.text = producto.nombre
             tvPrecioArticulo.text = "${producto.precio} Bs."
-            ivImagenArticulo.setImageResource(producto.imagenRes)
+
+            //URI o drawable
+            val img = producto.imagen
+            if (img.startsWith("content://")) {
+                ivImagenArticulo.setImageURI(Uri.parse(img))
+            } else {
+                val resId = holder.itemView.context.resources.getIdentifier(
+                    img,
+                    "drawable",
+                    holder.itemView.context.packageName
+                )
+                ivImagenArticulo.setImageResource(
+                    if (resId != 0) resId else R.drawable.food_1_svgrepo_com
+                )
+            }
         }
     }
 
