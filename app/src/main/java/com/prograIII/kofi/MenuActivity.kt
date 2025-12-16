@@ -2,9 +2,13 @@ package com.prograIII.kofi
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -62,11 +66,41 @@ class MenuActivity : AppCompatActivity() {
         binding.navBtnComanda.setOnClickListener {
             startActivity(Intent(context, ComandaActivity::class.java))
         }
+
+        inicializarSwitchModoOscuro()
+
+        binding.switchModoOscuro
+            .setOnCheckedChangeListener { _, seleccionado ->
+                if(seleccionado){
+                    //seleccionado
+                    habilitarModoOscuro()
+                } else {
+                    //no seleccionado
+                    deshabilitarModoOscuro()
+                }
+            }
     }
 
     private fun abrirCategoria(codigo: String) {
         val intent = Intent(context, CategoriaMenuActivity::class.java)
         intent.putExtra("codigoCategoria", codigo)
         startActivity(intent)
+    }
+
+    private fun inicializarSwitchModoOscuro() {
+        val nightModeFlags =
+            resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+
+        binding.switchModoOscuro.isChecked =
+            nightModeFlags == Configuration.UI_MODE_NIGHT_YES
+    }
+
+    private fun habilitarModoOscuro(){
+        AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
+
+    }
+
+    private fun deshabilitarModoOscuro(){
+        AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
     }
 }
