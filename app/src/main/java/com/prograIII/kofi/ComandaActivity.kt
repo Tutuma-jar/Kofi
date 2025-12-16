@@ -4,15 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.prograIII.kofi.adapters.ProductoCategoriaComandaAdapter
-import com.prograIII.kofi.adapters.ProductoCategoriaMenuAdapter
 import com.prograIII.kofi.data.AppDatabase
 import com.prograIII.kofi.databinding.ActivityComandaBinding
 import com.prograIII.kofi.dataclasses.Producto
@@ -27,7 +24,8 @@ class ComandaActivity : AppCompatActivity() {
     private lateinit var db: AppDatabase
     private lateinit var binding: ActivityComandaBinding
     val context: Context = this
-    // 1. NUEVO: Lista para almacenar los pedidos seleccionados
+
+    // Lista de pedidos seleccionados
     private val listaPedidos = mutableListOf<Pedido>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,8 +39,8 @@ class ComandaActivity : AppCompatActivity() {
             AppDatabase::class.java,
             nombreDB
         ).build()
-        binding.recyclerProductos.layoutManager = GridLayoutManager(context,2)
 
+        binding.recyclerProductos.layoutManager = GridLayoutManager(context, 2)
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -50,9 +48,9 @@ class ComandaActivity : AppCompatActivity() {
             insets
         }
 
-
-        //nuevo código para cargar productos según circulito
+        // Categoria inicial
         cargarProductosPorCodigo("CAFES")
+
         binding.categoria1.setOnClickListener { cargarProductosPorCodigo("CAFES") }
         binding.categoria2.setOnClickListener { cargarProductosPorCodigo("INFUSIONES") }
         binding.categoria3.setOnClickListener { cargarProductosPorCodigo("BREAKFAST") }
@@ -62,17 +60,21 @@ class ComandaActivity : AppCompatActivity() {
         binding.categoria7.setOnClickListener { cargarProductosPorCodigo("HELADOS") }
         binding.categoria8.setOnClickListener { cargarProductosPorCodigo("BEBIDAS") }
 
-
-        // ------ Botón de regreso ------
+        // Volver
         binding.arrow.setOnClickListener {
-            val intentCambioAPrincipal = Intent(context, PrincipalActivity::class.java)
-            startActivity(intentCambioAPrincipal)
+            startActivity(Intent(context, PrincipalActivity::class.java))
         }
 
+        // Finalizar orden
         binding.finalizarOrden.setOnClickListener {
-            val intentCambioAFinalizarOrden = Intent(context, FinalizarOrdenActivity::class.java)
-            //pasar lista
-            intent.putExtra("LISTA_PEDIDOS", ArrayList(listaPedidos))
+            val intentCambioAFinalizarOrden =
+                Intent(context, FinalizarOrdenActivity::class.java)
+
+            intentCambioAFinalizarOrden.putExtra(
+                "LISTA_PEDIDOS",
+                ArrayList(listaPedidos)
+            )
+
             startActivity(intentCambioAFinalizarOrden)
         }
     }
@@ -81,47 +83,45 @@ class ComandaActivity : AppCompatActivity() {
         GlobalScope.launch(Dispatchers.IO) {
 
             val categoria = db.categoriaDao().obtenerCategoriaPorCodigo(codigo)
+                ?: return@launch
 
-            if (categoria != null) {
+            val productosDb = db.productoDao().obtenerPorCategoria(categoria.id)
 
-                val productosDb = db.productoDao().obtenerPorCategoria(categoria.id) //Traer productos con id
+            val productosUi = productosDb.map { p ->
+                Producto(
+                    id = p.id,
+                    nombre = p.nombre,
+                    descripcion = p.descripcion,
+                    precio = p.precio,
+                    categoriaId = p.categoriaId,
+                    imagen = p.imagen
+                )
+            }
 
-                val productosUi = productosDb.map { p -> //De clase a UI de producto
-                    val resId = resources.getIdentifier(p.imagen, "drawable", packageName)
-                    val imagenFinal = if (resId != 0) resId else R.drawable.food_1_svgrepo_com
+            runOnUiThread {
+                binding.recyclerProductos.adapter =
+                    ProductoCategoriaComandaAdapter(productosUi) { productoSeleccionado ->
 
-                    Producto(
-                        id = p.id,
-                        nombre = p.nombre,
-                        descripcion = p.descripcion,
-                        precio = p.precio,
-                        categoriaId = p.categoriaId,
-                        imagen = p.imagen,
-                        imagenRes = imagenFinal
-                    )
-                }
-
-                runOnUiThread {
-                    binding.recyclerProductos.adapter = ProductoCategoriaComandaAdapter(productosUi){ productoSeleccionado ->
-
-                        // LÓGICA PARA AGREGAR SIN REPETIR
                         val nombre = productoSeleccionado.nombre
-
-                        // 'any' revisa si existe algún elemento que cumpla la condición
                         val existe = listaPedidos.any { it.nombre == nombre }
 
                         if (!existe) {
-                            // Si no existe, lo agregamos
-                            listaPedidos.add(Pedido(nombre, productoSeleccionado.precio))
-                            Toast.makeText(context, "Agregado: $nombre", Toast.LENGTH_SHORT).show()
-                            println("Lista actual: $listaPedidos") // Para ver en Logcat
+                            listaPedidos.add(
+                                Pedido(nombre, productoSeleccionado.precio)
+                            )
+                            Toast.makeText(
+                                context,
+                                "Agregado: $nombre",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         } else {
-                            // Si ya existe, avisamos
-                            Toast.makeText(context, "El producto ya está en la orden", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                context,
+                                "El producto ya está en la orden",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
-
-                }
             }
         }
     }
