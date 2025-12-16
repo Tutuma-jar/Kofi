@@ -89,13 +89,13 @@ class PrincipalActivity : AppCompatActivity() {
 
     private fun habilitarModoOscuro(){
         AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
-        delegate.applyDayNight()
+//        delegate.applyDayNight()
 
     }
 
     private fun deshabilitarModoOscuro(){
         AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
-        delegate.applyDayNight()
+//        delegate.applyDayNight()
     }
 
 }

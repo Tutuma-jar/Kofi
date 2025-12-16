@@ -9,8 +9,8 @@ data class Pedido(
 )
 
 @Serializable
-data class ordenes(
-    val id: Int,
+data class Orden(
+    val id: Int = 0,
     val cliente: String,
     val totalItems: Int,
     val totalMonto: Double,

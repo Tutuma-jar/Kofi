@@ -15,35 +15,50 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Kofi">
 
-        <activity
-            android:name=".CategoriaMenuActivity"
-            android:exported="true"/>
-        <activity
-            android:name=".FinalizarOrdenActivity"
-            android:exported="true"/>
-        <activity
-            android:name=".PedidosActivity"
-            android:exported="true"/>
-        <activity
-            android:name=".PrincipalActivity"
-            android:exported="true"/>
-        <activity
-            android:name=".ComandaActivity"
-            android:exported="true"/>
-        <activity
-            android:name=".MenuActivity"
-            android:exported="true"/>
+        <!-- Activity principal -->
         <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Flujo principal -->
+        <activity
+            android:name=".PrincipalActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MenuActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CategoriaMenuActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ProductoIndividualActivity"
+            android:exported="true" />
+        <activity
+            android:name=".GuardarProductoActivity"
+            android:exported="true" />
+
+        <!-- Pedidos / Comandas -->
+        <activity
+            android:name=".ComandaActivity"
+            android:exported="true" />
+        <activity
+            android:name=".FinalizarOrdenActivity"
+            android:exported="true" />
+        <activity
+            android:name=".PedidosActivity"
+            android:exported="true" />
+
+
         <activity
             android:name=".MainActivity"
-            android:exported="true"/>
+            android:exported="true"
+            tools:ignore="IntentFilterExportedReceiver" />
+
     </application>
+
 </manifest>

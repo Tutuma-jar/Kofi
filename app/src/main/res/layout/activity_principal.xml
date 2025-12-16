@@ -17,20 +17,33 @@
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:src="@drawable/ic_launcher_background"/> <TextView
-        android:id="@+id/usuario_saludo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hola, usuario!"
-        style="@style/subtitulos"
-        app:layout_constraintTop_toBottomOf="@+id/logo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+            android:src="@drawable/hojas"
+            app:tint="@color/azul_oscuro"/>
+
+        <TextView
+            style="@style/titulos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="KOFI"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+           android:id="@+id/usuario_saludo"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Hola, usuario!"
+            style="@style/subtitulos"
+           app:layout_constraintTop_toBottomOf="@+id/logo"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintEnd_toEndOf="parent" />
 
         <ImageButton
             android:id="@+id/menuButton"
@@ -51,9 +64,10 @@
         <Button
             android:id="@+id/button_nueva_comanda"
             android:layout_width="200dp"
-            android:layout_height="70dp"
+            android:layout_height="60dp"
             android:text="NUEVA COMANDA"
-            android:layout_margin="10dp"
+            style="@style/botones_claros"
+            android:layout_margin="15dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/separador" />
@@ -61,8 +75,9 @@
         <Button
             android:id="@+id/button_menu"
             android:layout_width="200dp"
-            android:layout_height="70dp"
+            android:layout_height="60dp"
             android:text="MENÚ"
+            style="@style/botones_claros"
             android:layout_margin="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -298,14 +313,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="20dp">
 
-            <androidx.appcompat.widget.AppCompatButton
+            <Button
                 android:id="@+id/btnCerrarSesion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_button_beige"
+                style="@style/botones_claros"
                 android:text="CERRAR SESIÓN"
-                android:textStyle="bold"
-                android:textColor="#000"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"

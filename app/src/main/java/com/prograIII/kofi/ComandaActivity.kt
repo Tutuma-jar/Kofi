@@ -20,6 +20,7 @@ import com.prograIII.kofi.dataclasses.Pedido
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import com.prograIII.kofi.LoginActivity.Companion.nombreDB
 
 class ComandaActivity : AppCompatActivity() {
 
@@ -38,7 +39,7 @@ class ComandaActivity : AppCompatActivity() {
         db = Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java,
-            "kofi-db"
+            nombreDB
         ).build()
         binding.recyclerProductos.layoutManager = GridLayoutManager(context,2)
 
@@ -68,7 +69,6 @@ class ComandaActivity : AppCompatActivity() {
             startActivity(intentCambioAPrincipal)
         }
 
-
         binding.finalizarOrden.setOnClickListener {
             //pasar lista
             val intentCambioAFinalizarOrden = Intent(context, FinalizarOrdenActivity::class.java)
@@ -95,8 +95,9 @@ class ComandaActivity : AppCompatActivity() {
                         nombre = p.nombre,
                         descripcion = p.descripcion,
                         precio = p.precio,
-                        imagenRes = imagenFinal,
-                        categoriaId = p.categoriaId
+                        categoriaId = p.categoriaId,
+                        imagen = p.imagen,
+                        imagenRes = imagenFinal
                     )
                 }
 
