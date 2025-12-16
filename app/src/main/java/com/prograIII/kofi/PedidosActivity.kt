@@ -7,8 +7,6 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
-import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -85,6 +83,7 @@ class PedidosActivity : AppCompatActivity() {
             auth.signOut()
             val intentCambioALogin = Intent(context, LoginActivity::class.java)
             startActivity(intentCambioALogin)
+            finish()
         }
     }
 }

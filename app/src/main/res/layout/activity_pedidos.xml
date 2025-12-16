@@ -31,6 +31,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/arrow"
         android:background="@color/beige_claro"
+        app:tint="@color/azul_medio"
         app:layout_constraintTop_toTopOf="@id/pedidos_titulo"
         app:layout_constraintBottom_toBottomOf="@id/pedidos_titulo"
         app:layout_constraintStart_toStartOf="parent" />

@@ -12,10 +12,11 @@
     <!-- Back -->
     <ImageButton
         android:id="@+id/ibRegresar"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@android:color/transparent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/beige_claro"
         android:src="@drawable/arrow"
+        app:tint="@color/azul_medio"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -73,7 +73,9 @@
                 android:id="@+id/btn_ver_detalles"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ver detalles"/>
+                android:text="Ver detalles"
+                android:textSize="14dp"
+                style="@style/botones_azules"/>
         </LinearLayout>
     </LinearLayout>
 

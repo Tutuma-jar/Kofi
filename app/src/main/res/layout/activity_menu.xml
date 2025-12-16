@@ -31,6 +31,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/arrow"
             android:background="@color/beige_claro"
+            app:tint="@color/azul_medio"
             app:layout_constraintTop_toTopOf="@id/menu_titulo"
             app:layout_constraintBottom_toBottomOf="@id/menu_titulo"
             app:layout_constraintStart_toStartOf="parent"/>

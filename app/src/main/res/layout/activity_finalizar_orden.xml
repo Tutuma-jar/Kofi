@@ -69,7 +69,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/tvTituloFinalizar"
         app:layout_constraintStart_toStartOf="parent"
         android:src="@drawable/arrow"
-        android:background="@color/beige_claro"/>
+        android:background="@color/beige_claro"
+        app:tint="@color/azul_medio"/>
 
     <Button
         android:id="@+id/btnConfirmarPedido"

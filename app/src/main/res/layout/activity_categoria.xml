@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/arrow"
         android:background="@color/beige_claro"
+        app:tint="@color/azul_medio"
         app:layout_constraintTop_toTopOf="@+id/TituloCategoria"
         app:layout_constraintBottom_toBottomOf="@+id/TituloCategoria"
         app:layout_constraintStart_toStartOf="parent" />
@@ -45,6 +46,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/menu"
         android:background="@color/beige_claro"
+        app:tint="@color/azul_medio"
         app:layout_constraintTop_toTopOf="@id/TituloCategoria"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/TituloCategoria"/>
