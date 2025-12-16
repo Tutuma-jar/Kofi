@@ -453,6 +453,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"/>
                 <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch_modo_oscuro"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:thumbTint="@color/beige_claro"

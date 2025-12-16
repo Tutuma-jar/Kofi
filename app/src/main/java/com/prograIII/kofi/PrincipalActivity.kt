@@ -19,26 +19,38 @@ class PrincipalActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPrincipalBinding
     val context: Context = this
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        enableEdgeToEdge()
+
         binding = ActivityPrincipalBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+        val content = binding.mainContent
+
+        val pL = content.paddingLeft
+        val pT = content.paddingTop
+        val pR = content.paddingRight
+        val pB = content.paddingBottom
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.drawerLayout) { _, insets ->
+            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            content.setPadding(
+                pL + bars.left,
+                pT + bars.top,
+                pR + bars.right,
+                pB + bars.bottom
+            )
             insets
         }
 
         binding.buttonNuevaComanda.setOnClickListener {
-            val intentCambioAComandas = Intent(context, ComandaActivity::class.java)
-            startActivity(intentCambioAComandas)
+            startActivity(Intent(context, ComandaActivity::class.java))
         }
 
         binding.buttonMenu.setOnClickListener {
-            val intentCambioAMenu = Intent(context, MenuActivity::class.java)
-            startActivity(intentCambioAMenu)
+            startActivity(Intent(context, MenuActivity::class.java))
         }
 
         //Barra lateral
@@ -51,32 +63,22 @@ class PrincipalActivity : AppCompatActivity() {
         }
 
         binding.navBtnMenu.setOnClickListener {
-            val intent = Intent(context, MenuActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(context, MenuActivity::class.java))
         }
 
         binding.navBtnPedidos.setOnClickListener {
-            val intent = Intent(context, PedidosActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(context, PedidosActivity::class.java))
         }
 
         binding.navBtnComanda.setOnClickListener {
-            val intent = Intent(context, ComandaActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(context, ComandaActivity::class.java))
         }
 
         inicializarSwitchModoOscuro()
 
-        binding.switchModoOscuro
-            .setOnCheckedChangeListener { _, seleccionado ->
-                if(seleccionado){
-                    //seleccionado
-                    habilitarModoOscuro()
-                } else {
-                    //no seleccionado
-                    deshabilitarModoOscuro()
-                }
-            }
+        binding.switchModoOscuro.setOnCheckedChangeListener { _, seleccionado ->
+            if (seleccionado) habilitarModoOscuro() else deshabilitarModoOscuro()
+        }
     }
 
     private fun inicializarSwitchModoOscuro() {
@@ -87,15 +89,11 @@ class PrincipalActivity : AppCompatActivity() {
             nightModeFlags == Configuration.UI_MODE_NIGHT_YES
     }
 
-    private fun habilitarModoOscuro(){
+    private fun habilitarModoOscuro() {
         AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
-//        delegate.applyDayNight()
-
     }
 
-    private fun deshabilitarModoOscuro(){
+    private fun deshabilitarModoOscuro() {
         AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
-//        delegate.applyDayNight()
     }
-
 }

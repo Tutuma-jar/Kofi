@@ -41,22 +41,24 @@ class FinalizarOrdenActivity : AppCompatActivity() {
         //scroll
         binding.etComentario.movementMethod = ScrollingMovementMethod()
 
-        //RecyclerView Setup
+        // RecyclerView
         binding.rvArticulosPedido.layoutManager = LinearLayoutManager(this)
 
         // Insets
-        val pL = binding.main.paddingLeft
-        val pT = binding.main.paddingTop
-        val pR = binding.main.paddingRight
-        val pB = binding.main.paddingBottom
+        val root = binding.root
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+        val pL = root.paddingLeft
+        val pT = root.paddingTop
+        val pR = root.paddingRight
+        val pB = root.paddingBottom
+
+        ViewCompat.setOnApplyWindowInsetsListener(root) { v, insets ->
+            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(
-                pL + systemBars.left,
-                pT + systemBars.top,
-                pR + systemBars.right,
-                pB + systemBars.bottom
+                pL + bars.left,
+                pT + bars.top,
+                pR + bars.right,
+                pB + bars.bottom
             )
             insets
         }

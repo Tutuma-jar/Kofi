@@ -15,7 +15,7 @@ import com.prograIII.kofi.data.OrdenEntity
 import com.prograIII.kofi.data.DetalleOrdenEntity
 import com.prograIII.kofi.databinding.ActivityComandaBinding
 import com.prograIII.kofi.dataclasses.Producto
-import com.prograIII.kofi.dataclasses.Pedido
+import com.prograIII.kofi.dataclasses.ItemPedido
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -25,9 +25,10 @@ class ComandaActivity : AppCompatActivity() {
 
     private lateinit var db: AppDatabase
     private lateinit var binding: ActivityComandaBinding
-    val context: Context = this
-    private val listaPedidos = mutableListOf<Pedido>()
+    private val context: Context = this
 
+    // Lista de productos agregados a la orden (con cantidad)
+    private val listaPedidos = mutableListOf<ItemPedido>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,9 +44,20 @@ class ComandaActivity : AppCompatActivity() {
 
         binding.recyclerProductos.layoutManager = GridLayoutManager(context, 2)
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+        val root = binding.root
+        val pL = root.paddingLeft
+        val pT = root.paddingTop
+        val pR = root.paddingRight
+        val pB = root.paddingBottom
+
+        ViewCompat.setOnApplyWindowInsetsListener(root) { v, insets ->
+            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(
+                pL + bars.left,
+                pT + bars.top,
+                pR + bars.right,
+                pB + bars.bottom
+            )
             insets
         }
 
@@ -60,12 +72,12 @@ class ComandaActivity : AppCompatActivity() {
         binding.categoria7.setOnClickListener { cargarProductosPorCodigo("HELADOS") }
         binding.categoria8.setOnClickListener { cargarProductosPorCodigo("BEBIDAS") }
 
-        //Botón Volver
+        // Volver
         binding.arrow.setOnClickListener {
             startActivity(Intent(context, PrincipalActivity::class.java))
         }
 
-        //FINALIZAR ORDEN
+        // Finalizar orden
         binding.finalizarOrden.setOnClickListener {
 
             //Verificamos que haya algo en la lista
