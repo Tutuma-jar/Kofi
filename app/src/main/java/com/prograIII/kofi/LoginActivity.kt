@@ -9,16 +9,13 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.prograIII.kofi.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
-
 import androidx.room.Room
 import com.prograIII.kofi.data.AppDatabase
 import com.prograIII.kofi.data.CategoriaEntity
 import com.prograIII.kofi.data.ProductoEntity
-
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-
 import kotlinx.serialization.json.Json
 import com.prograIII.kofi.dataclasses.MenuJson
 
@@ -72,6 +69,7 @@ class LoginActivity : AppCompatActivity() {
             llenarBaseSiEstaVacia()
             val intentUsuarioLogueado = Intent(context, PrincipalActivity::class.java)
             startActivity(intentUsuarioLogueado)
+            finish()
         }
 
         binding.signIn.setOnClickListener {
@@ -96,6 +94,7 @@ class LoginActivity : AppCompatActivity() {
                     // Nuestro usuario se logeo correctamente
                     val intentLogueado = Intent(context, PrincipalActivity::class.java)
                     startActivity(intentLogueado)
+                    finish()
                 } else {
                     Toast.makeText(
                         baseContext,

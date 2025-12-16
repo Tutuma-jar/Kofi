@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -26,6 +27,8 @@ class PedidosActivity : AppCompatActivity() {
     val context: Context = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
@@ -54,7 +57,8 @@ class PedidosActivity : AppCompatActivity() {
 
         /* ---------------- DRAWER ---------------- */
         binding.arrow.setOnClickListener {
-            startActivity(Intent(context, PrincipalActivity::class.java))
+            val intentCambioAPrincipal = Intent(context, PrincipalActivity::class.java)
+            startActivity(intentCambioAPrincipal)
         }
 
         binding.menuButton.setOnClickListener {
@@ -62,11 +66,13 @@ class PedidosActivity : AppCompatActivity() {
         }
 
         binding.navBtnInicio.setOnClickListener {
-            startActivity(Intent(context, PrincipalActivity::class.java))
+            val intent = Intent(context, PrincipalActivity::class.java)
+            startActivity(intent)
         }
 
         binding.navBtnMenu.setOnClickListener {
-            startActivity(Intent(context, MenuActivity::class.java))
+            val intent = Intent(context, MenuActivity::class.java) // Asegúrate de crear esta Activity
+            startActivity(intent)
         }
 
         binding.navBtnPedidos.setOnClickListener {
@@ -74,12 +80,14 @@ class PedidosActivity : AppCompatActivity() {
         }
 
         binding.navBtnComanda.setOnClickListener {
-            startActivity(Intent(context, ComandaActivity::class.java))
+            val intent = Intent(context, ComandaActivity::class.java)
+            startActivity(intent)
         }
 
         binding.btnCerrarSesion.setOnClickListener {
             auth.signOut()
-            startActivity(Intent(context, LoginActivity::class.java))
+            val intentCambioALogin = Intent(context, LoginActivity::class.java)
+            startActivity(intentCambioALogin)
             finish()
         }
 

@@ -19,7 +19,7 @@
             android:id="@+id/pedidos_titulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PEDIDOS"
+            android:text="@string/pedidos"
             style="@style/titulos"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,6 +31,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/arrow"
         android:background="@color/beige_claro"
+        app:tint="@color/azul_medio"
         app:layout_constraintTop_toTopOf="@id/pedidos_titulo"
         app:layout_constraintBottom_toBottomOf="@id/pedidos_titulo"
         app:layout_constraintStart_toStartOf="parent" />
@@ -69,7 +70,8 @@
                 android:id="@+id/btn_todo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Todo"
+                android:text="@string/todo"
+                android:textSize="15sp"
                 style="@style/botones_azules"
                 android:layout_weight="1"/>
 
@@ -77,8 +79,9 @@
                 android:id="@+id/btn_listo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Listo"
+                android:text="@string/listo"
                 style="@style/botones_azules"
+                android:textSize="15sp"
                 android:layout_weight="1"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"/>
@@ -87,7 +90,8 @@
                 android:id="@+id/btn_pendiente"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Pendiente"
+                android:text="@string/pendiente"
+                android:textSize="15sp"
                 style="@style/botones_azules"
                 android:layout_weight="1"/>
         </LinearLayout>
@@ -125,10 +129,10 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@drawable/bg_circle_beige"
-                android:text="KOFI"
+                android:text="@string/kofi_mayusculas"
                 android:gravity="center"
                 android:textStyle="bold"
-                android:textColor="#000" />
+                android:textColor="@color/texto"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -136,13 +140,13 @@
                 android:orientation="vertical"
                 android:layout_marginStart="16dp">
                 <TextView
-                    android:text="KOFI"
+                    android:text="@string/kofi_mayusculas"
                     android:textColor="@color/texto_blanco"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView
-                    android:text="Hola, usuario!"
+                    android:text="@string/saludo_usuario"
                     android:textColor="@color/texto_blanco"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -162,6 +166,7 @@
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
                 android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:orientation="horizontal">
@@ -171,7 +176,7 @@
                     android:layout_height="24dp"
                     app:tint="@color/beige_medio"/>
                 <TextView
-                    android:text="Inicio"
+                    android:text="@string/inicio"
                     android:textColor="@color/texto_blanco"
                     android:layout_marginStart="16dp"
                     android:textStyle="bold"
@@ -185,6 +190,7 @@
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
                 android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:orientation="horizontal">
@@ -194,7 +200,7 @@
                     android:layout_height="24dp"
                     app:tint="@color/beige_medio"/>
                 <TextView
-                    android:text="Menú"
+                    android:text="@string/menu_minuscula"
                     android:textColor="@color/texto_blanco"
                     android:layout_marginStart="16dp"
                     android:textStyle="bold"
@@ -209,6 +215,7 @@
                 android:background="@color/azul_oscuro"
                 android:gravity="center_vertical"
                 android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:orientation="horizontal">
@@ -218,7 +225,7 @@
                     android:layout_height="24dp"
                     app:tint="@color/beige_medio"/>
                 <TextView
-                    android:text="Pedidos"
+                    android:text="@string/pedidos_minuscula"
                     android:textColor="@color/beige_claro"
                     android:layout_marginStart="16dp"
                     android:textStyle="bold"
@@ -232,6 +239,7 @@
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
                 android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:orientation="horizontal">
@@ -241,41 +249,13 @@
                     android:layout_height="24dp"
                     app:tint="@color/beige_medio"/>
                 <TextView
-                    android:text="Nueva Comanda"
+                    android:text="@string/nueva_comanda_minuscula"
                     android:textColor="@color/texto_blanco"
                     android:layout_marginStart="16dp"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:gravity="center_vertical"
-                android:paddingStart="16dp"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_sun"
-                    app:tint="@color/beige_medio" />
-                <TextView
-                    android:text="Modo oscuro"
-                    android:textColor="@color/texto_blanco"
-                    android:layout_marginStart="16dp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"/>
-                <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/switch_modo_oscuro"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:thumbTint="@color/beige_claro"
-                    android:trackTint="#A0A0A0"/>
-            </LinearLayout>
-
         </LinearLayout>
 
         <LinearLayout
@@ -290,14 +270,14 @@
                 android:id="@+id/btnCerrarSesion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="CERRAR SESIÓN"
+                android:text="@string/cerrar_sesion"
                 android:textStyle="bold"
                 style="@style/botones_claros"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="By: Tap &amp; Serve"
+                android:text="@string/by_tap_amp_serve"
                 android:textColor="@color/texto_blanco"
                 android:textStyle="bold"
                 android:layout_marginTop="16dp"/>

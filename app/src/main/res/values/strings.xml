@@ -43,4 +43,69 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+
+
+    <string name="aplicar_codigo_de_promocion">Aplicar código de promoción</string>
+    <string name="bebidas">BEBIDAS</string>
+    <string name="bebidas_minuscula">Bebidas</string>
+    <string name="breakfast">BREAKFAST</string>
+    <string name="breakfast_minuscula">Breakfast</string>
+    <string name="bs">0 Bs.</string>
+    <string name="buscar">Buscar</string>
+    <string name="by_tap_amp_serve"><![CDATA[By: Tap & Serve]]></string>
+    <string name="cafes">CAFÉS</string>
+    <string name="cafes_minuscula">Cafés</string>
+    <string name="cerrar_sesion">CERRAR SESIÓN</string>
+    <string name="comanda">COMANDA</string>
+    <string name="contrasena">CONTRASEÑA</string>
+    <string name="correo">CORREO</string>
+    <string name="crear_cuenta">CREAR CUENTA</string>
+    <string name="descripcion">DESCRIPCIÓN</string>
+    <string name="descripcion_minuscula">Descripción</string>
+    <string name="detalles">DETALLES</string>
+    <string name="editar">EDITAR</string>
+    <string name="efectivo">EFECTIVO</string>
+    <string name="escribir_aqui">Escribir aquí</string>
+    <string name="escribir_comentarios">Escribir comentarios</string>
+    <string name="finalizar_orden">FINALIZAR ORDEN</string>
+    <string name="guardar">GUARDAR</string>
+    <string name="hacer_pedido">HACER PEDIDO</string>
+    <string name="helados">HELADOS</string>
+    <string name="helados_minuscula">Helados</string>
+    <string name="infusiones_minuscula">Infusiones</string>
+    <string name="inicio">Inicio</string>
+    <string name="kofi_mayusculas">KOFI</string>
+    <string name="listo">Listo</string>
+    <string name="menu">MENÚ</string>
+    <string name="menu_minuscula">Menú</string>
+    <string name="nit">NIT:</string>
+    <string name="nombre">NOMBRE:</string>
+    <string name="nombre_del_producto">Nombre del producto</string>
+    <string name="nueva_comanda">NUEVA COMANDA</string>
+    <string name="nueva_comanda_minuscula">Nueva Comanda</string>
+    <string name="panaderia">PANADERÍA</string>
+    <string name="panaderia_minuscula">Panadería</string>
+    <string name="pasteles">PASTELES</string>
+    <string name="pasteles_minuscula">Pasteles</string>
+    <string name="pendiente">Pendiente</string>
+    <string name="pedidos">PEDIDOS</string>
+    <string name="pedidos_minuscula">Pedidos</string>
+    <string name="pedidos_pendientes">Pedidos Pendientes</string>
+    <string name="precio">PRECIO</string>
+    <string name="precio_bs">Precio (Bs.)</string>
+    <string name="productos">PRODUCTOS</string>
+    <string name="promociones">PROMOCIONES:</string>
+    <string name="qr">QR</string>
+    <string name="saludo_usuario">Hola, usuario!</string>
+    <string name="sandwiches">SÁNDWICHES</string>
+    <string name="sandwiches_minuscula">Sándwiches</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="tarjeta">TARJETA</string>
+    <string name="tes_e_infusiones">TÉS E INFUSIONES</string>
+    <string name="todo">Todo</string>
+    <string name="total">TOTAL:</string>
+    <string name="uno">1</string>
+    <string name="ver_detalles">Ver detalles</string>
+
+
 </resources>

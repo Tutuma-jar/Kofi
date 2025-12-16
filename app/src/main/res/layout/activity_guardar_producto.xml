@@ -12,10 +12,11 @@
     <!-- Back -->
     <ImageButton
         android:id="@+id/ibRegresar"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@android:color/transparent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/beige_claro"
         android:src="@drawable/arrow"
+        app:tint="@color/azul_medio"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,7 +26,7 @@
         style="@style/titulos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DETALLES"
+        android:text="@string/detalles"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -36,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/botones_azules"
-        android:text="GUARDAR"
+        android:text="@string/guardar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -81,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:hint="Nombre del producto"
+                android:hint="@string/nombre_del_producto"
                 android:padding="12dp" />
 
             <!-- Precio -->
@@ -91,7 +92,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:hint="Precio (Bs.)"
+                android:hint="@string/precio_bs"
                 android:inputType="numberDecimal"
                 android:padding="12dp" />
 
@@ -102,7 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
                 android:layout_marginTop="8dp"
-                android:hint="Descripción"
+                android:hint="@string/descripcion_minuscula"
                 android:gravity="top"
                 android:inputType="textMultiLine"
                 android:padding="12dp" />

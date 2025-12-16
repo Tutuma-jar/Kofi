@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:text="KOFI"
+            android:text="@string/kofi_mayusculas"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -39,7 +39,7 @@
            android:id="@+id/usuario_saludo"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:text="Hola, usuario!"
+           android:text="@string/saludo_usuario"
             style="@style/subtitulos"
            app:layout_constraintTop_toBottomOf="@+id/logo"
            app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +65,7 @@
             android:id="@+id/button_nueva_comanda"
             android:layout_width="200dp"
             android:layout_height="60dp"
-            android:text="NUEVA COMANDA"
+            android:text="@string/nueva_comanda"
             style="@style/botones_claros"
             android:layout_margin="15dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -76,7 +76,7 @@
             android:id="@+id/button_menu"
             android:layout_width="200dp"
             android:layout_height="60dp"
-            android:text="MENÚ"
+            android:text="@string/menu"
             style="@style/botones_claros"
             android:layout_margin="10dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -104,7 +104,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pedidos Pendientes"
+                    android:text="@string/pedidos_pendientes"
                     style="@style/subtitulos"
                     android:textColor="@color/texto_blanco"
                     android:layout_marginBottom="10dp"/>
@@ -122,7 +122,7 @@
             android:id="@+id/footer_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="By: Tap&amp;Serve"
+            android:text="@string/by_tap_amp_serve"
             style="@style/texto"
             android:alpha="0.8"
             app:layout_constraintStart_toStartOf="parent"
@@ -152,7 +152,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@drawable/bg_circle_beige"
-                android:text="KOFI"
+                android:text="@string/kofi_mayusculas"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textColor="#000" />
@@ -163,13 +163,13 @@
                 android:orientation="vertical"
                 android:layout_marginStart="16dp">
                 <TextView
-                    android:text="KOFI"
+                    android:text="@string/kofi_mayusculas"
                     android:textColor="@color/texto_blanco"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView
-                    android:text="Hola, usuario!"
+                    android:text="@string/saludo_usuario"
                     android:textColor="@color/texto_blanco"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -190,6 +190,7 @@
                 android:background="@color/azul_oscuro"
                 android:gravity="center_vertical"
                 android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:orientation="horizontal">
@@ -199,7 +200,7 @@
                     android:layout_height="24dp"
                     app:tint="@color/beige_medio"/>
                 <TextView
-                    android:text="Inicio"
+                    android:text="@string/inicio"
                     android:textColor="@color/beige_claro"
                     android:layout_marginStart="16dp"
                     android:textStyle="bold"
@@ -213,6 +214,7 @@
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
                 android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:orientation="horizontal">
@@ -222,7 +224,7 @@
                     android:layout_height="24dp"
                     app:tint="@color/beige_medio"/>
                 <TextView
-                    android:text="Menú"
+                    android:text="@string/menu"
                     android:textColor="@color/texto_blanco"
                     android:layout_marginStart="16dp"
                     android:textStyle="bold"
@@ -236,6 +238,7 @@
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
                 android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:orientation="horizontal">
@@ -245,7 +248,7 @@
                     android:layout_height="24dp"
                     app:tint="@color/beige_medio"/>
                 <TextView
-                    android:text="Pedidos"
+                    android:text="@string/pedidos_minuscula"
                     android:textColor="@color/texto_blanco"
                     android:layout_marginStart="16dp"
                     android:textStyle="bold"
@@ -259,6 +262,7 @@
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
                 android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:orientation="horizontal">
@@ -268,41 +272,13 @@
                     android:layout_height="24dp"
                     app:tint="@color/beige_medio"/>
                 <TextView
-                    android:text="Nueva Comanda"
+                    android:text="@string/nueva_comanda_minuscula"
                     android:textColor="@color/texto_blanco"
                     android:layout_marginStart="16dp"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:gravity="center_vertical"
-                android:paddingStart="16dp"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_sun"
-                    app:tint="@color/beige_medio" />
-                <TextView
-                    android:text="Modo oscuro"
-                    android:textColor="@color/texto_blanco"
-                    android:layout_marginStart="16dp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"/>
-                <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/switch_modo_oscuro"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:thumbTint="@color/beige_claro"
-                    android:trackTint="#A0A0A0"/>
-            </LinearLayout>
-
         </LinearLayout>
 
         <LinearLayout
@@ -318,18 +294,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/botones_claros"
-                android:text="CERRAR SESIÓN"
+                android:text="@string/cerrar_sesion"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="By: Tap &amp; Serve"
+                android:text="@string/by_tap_amp_serve"
                 android:textColor="@color/texto_blanco"
                 android:textStyle="bold"
                 android:layout_marginTop="16dp"/>
         </LinearLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.drawerlayout.widget.DrawerLayout>
