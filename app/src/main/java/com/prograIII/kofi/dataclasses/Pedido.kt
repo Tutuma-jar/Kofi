@@ -5,6 +5,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Pedido(
     val nombre: String,
+    val imagen: String,
     val precio: Double
 )
 

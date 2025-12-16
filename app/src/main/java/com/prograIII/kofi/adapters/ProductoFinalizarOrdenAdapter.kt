@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.prograIII.kofi.R
-import com.prograIII.kofi.dataclasses.Producto
+import com.prograIII.kofi.data.DetalleOrdenEntity
 import com.prograIII.kofi.databinding.ProductoFinalizarOrdenBinding
 
 class ProductoFinalizarOrdenAdapter(
-    private val productos: List<Producto>
+    private val detallesOrden: List<DetalleOrdenEntity>
 ) : RecyclerView.Adapter<ProductoFinalizarOrdenAdapter.ProductoViewHolder>() {
 
     inner class ProductoViewHolder(val binding: ProductoFinalizarOrdenBinding) :
@@ -22,14 +22,17 @@ class ProductoFinalizarOrdenAdapter(
     }
 
     override fun onBindViewHolder(holder: ProductoViewHolder, position: Int) {
-        val producto = productos[position]
+        val producto = detallesOrden[position]
 
         holder.binding.apply {
-            tvNombreArticulo.text = producto.nombre
-            tvPrecioArticulo.text = "${producto.precio} Bs."
+            // Datos traídos de la BD
+            tvNombreArticulo.text = producto.nombreProducto
 
-            //URI o drawable
-            val img = producto.imagen
+            // Mostramos precio y cantidad
+            tvPrecioArticulo.text = "${producto.precio} Bs. (x${producto.cantidad})"
+
+            // IMAGEN: Usamos el recurso por defecto ya que la Entity no guarda la ruta de imagen.
+            val img = producto.imagenProducto
             if (img.startsWith("content://")) {
                 ivImagenArticulo.setImageURI(Uri.parse(img))
             } else {
@@ -45,5 +48,5 @@ class ProductoFinalizarOrdenAdapter(
         }
     }
 
-    override fun getItemCount(): Int = productos.size
+    override fun getItemCount(): Int = detallesOrden.size
 }

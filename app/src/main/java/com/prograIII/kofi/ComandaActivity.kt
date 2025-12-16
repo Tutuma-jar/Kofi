@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.room.Room
 import com.prograIII.kofi.adapters.ProductoCategoriaComandaAdapter
 import com.prograIII.kofi.data.AppDatabase
+import com.prograIII.kofi.data.OrdenEntity
+import com.prograIII.kofi.data.DetalleOrdenEntity
 import com.prograIII.kofi.databinding.ActivityComandaBinding
 import com.prograIII.kofi.dataclasses.Producto
 import com.prograIII.kofi.dataclasses.Pedido
@@ -24,9 +26,8 @@ class ComandaActivity : AppCompatActivity() {
     private lateinit var db: AppDatabase
     private lateinit var binding: ActivityComandaBinding
     val context: Context = this
-
-    // Lista de pedidos seleccionados
     private val listaPedidos = mutableListOf<Pedido>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,10 +49,8 @@ class ComandaActivity : AppCompatActivity() {
             insets
         }
 
-
-        //nuevo código para cargar productos según circulito
+        //cargar productos circulos
         cargarProductosPorCodigo("CAFES")
-
         binding.categoria1.setOnClickListener { cargarProductosPorCodigo("CAFES") }
         binding.categoria2.setOnClickListener { cargarProductosPorCodigo("INFUSIONES") }
         binding.categoria3.setOnClickListener { cargarProductosPorCodigo("BREAKFAST") }
@@ -61,22 +60,64 @@ class ComandaActivity : AppCompatActivity() {
         binding.categoria7.setOnClickListener { cargarProductosPorCodigo("HELADOS") }
         binding.categoria8.setOnClickListener { cargarProductosPorCodigo("BEBIDAS") }
 
-        // Volver
+        //Botón Volver
         binding.arrow.setOnClickListener {
             startActivity(Intent(context, PrincipalActivity::class.java))
         }
 
-        // Finalizar orden
+        //FINALIZAR ORDEN
         binding.finalizarOrden.setOnClickListener {
-            val intentCambioAFinalizarOrden =
-                Intent(context, FinalizarOrdenActivity::class.java)
 
-            intentCambioAFinalizarOrden.putExtra(
-                "LISTA_PEDIDOS",
-                ArrayList(listaPedidos)
-            )
+            //Verificamos que haya algo en la lista
+            if (listaPedidos.isEmpty()) {
+                Toast.makeText(context, "La orden está vacía, agrega productos", Toast.LENGTH_SHORT).show()
+            }
 
-            startActivity(intentCambioAFinalizarOrden)
+            //proceso de guardado en segundo plano
+            GlobalScope.launch(Dispatchers.IO) {
+
+                val totalMonto = listaPedidos.sumOf { it.precio }
+                val totalItems = listaPedidos.size
+
+                //Crear la entidad Orden
+                val nuevaOrden = OrdenEntity(
+                    cliente = "Llenar Aquí",
+                    totalItems = totalItems,
+                    totalMonto = totalMonto,
+                    listo = false
+                )
+
+                //Insertar la orden y recuperar el ID generado
+                val idGeneradoLong = db.ordenDao().insertarOrden(nuevaOrden)
+                val idOrden = idGeneradoLong.toInt()
+
+                //Convertir la lista de Pedidos (UI) a DetalleOrdenEntity (BD)
+                val detallesParaGuardar = listaPedidos.map { pedidoUi ->
+                    DetalleOrdenEntity(
+                        ordenId = idOrden,
+                        imagenProducto = pedidoUi.imagen, //Vinculamos al ID que acabamos de crear
+                        nombreProducto = pedidoUi.nombre,
+                        precio = pedidoUi.precio,
+                        cantidad = 1
+                    )
+                }
+
+                //Guardar todos los productos en la tabla detalles
+                db.ordenDao().insertarDetalles(detallesParaGuardar)
+
+                //Volver al hilo principal para navegar
+                runOnUiThread {
+                    Toast.makeText(context, "Orden #$idOrden creada exitosamente", Toast.LENGTH_SHORT).show()
+
+                    // Navegamos a la siguiente actividad pasando el ID
+                    val intent = Intent(context, FinalizarOrdenActivity::class.java)
+                    intent.putExtra("ID_ORDEN", idOrden) // IMPORTANTE: Pasamos el ID
+                    startActivity(intent)
+
+                    // Opcional: Limpiamos la lista local
+                    listaPedidos.clear()
+                }
+            }
         }
     }
 
@@ -103,12 +144,13 @@ class ComandaActivity : AppCompatActivity() {
                 binding.recyclerProductos.adapter =
                     ProductoCategoriaComandaAdapter(productosUi) { productoSeleccionado ->
 
+                        // Lógica del carrito (Memoria)
                         val nombre = productoSeleccionado.nombre
                         val existe = listaPedidos.any { it.nombre == nombre }
 
                         if (!existe) {
                             listaPedidos.add(
-                                Pedido(nombre, productoSeleccionado.precio)
+                                Pedido(nombre, productoSeleccionado.imagen, productoSeleccionado.precio)
                             )
                             Toast.makeText(
                                 context,

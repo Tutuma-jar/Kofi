@@ -11,6 +11,9 @@ interface OrdenDao {
     @Insert
     fun insertarOrden(orden: OrdenEntity): Long
 
+    @Query("SELECT * FROM tabla_ordenes WHERE id = :id")
+    fun obtenerOrdenPorId(id: Int): OrdenEntity
+
     @Insert
     fun insertarDetalles(detalles: List<DetalleOrdenEntity>)
 

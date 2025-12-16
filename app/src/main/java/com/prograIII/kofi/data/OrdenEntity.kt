@@ -15,6 +15,7 @@ data class OrdenEntity(
 data class DetalleOrdenEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val ordenId: Int,
+    val imagenProducto: String,
     val nombreProducto: String,
     val precio: Double,
     var cantidad:Int = 1
