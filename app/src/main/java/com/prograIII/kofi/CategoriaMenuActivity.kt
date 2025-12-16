@@ -40,29 +40,27 @@ class CategoriaMenuActivity : AppCompatActivity() {
             nombreDB
         ).build()
 
-        // UI
+        // Recycler
         binding.rvArticulosCategoria.layoutManager = LinearLayoutManager(context)
 
+        // Volver
         binding.arrow.setOnClickListener {
-            val intentCambioAMenu = Intent(context, MenuActivity::class.java)
-            startActivity(intentCambioAMenu)
+            startActivity(Intent(context, MenuActivity::class.java))
         }
 
-        // Obtener categoría actual
+        // Categoría actual
         codigoCategoria = intent.getStringExtra("codigoCategoria")
 
         // Botón +
         binding.nuevaReceta.setOnClickListener {
-            val intentGuardarProducto =
-                Intent(context, GuardarProductoActivity::class.java)
-
-            intentGuardarProducto.putExtra("codigoCategoria", codigoCategoria)
-            startActivity(intentGuardarProducto)
+            val intent = Intent(context, GuardarProductoActivity::class.java)
+            intent.putExtra("codigoCategoria", codigoCategoria)
+            startActivity(intent)
         }
 
-        // Cargar productos de la categoría
-        if (codigoCategoria != null) {
-            cargarProductosPorCodigo(codigoCategoria!!)
+        // Cargar productos
+        codigoCategoria?.let {
+            cargarProductosPorCodigo(it)
         }
 
         // Insets
@@ -77,49 +75,41 @@ class CategoriaMenuActivity : AppCompatActivity() {
         GlobalScope.launch(Dispatchers.IO) {
 
             val categoria = db.categoriaDao().obtenerCategoriaPorCodigo(codigo)
+            if (categoria == null) return@launch
 
-            if (categoria != null) {
+            val productosDb = db.productoDao().obtenerPorCategoria(categoria.id)
 
-                val productosDb = db.productoDao().obtenerPorCategoria(categoria.id)
+            val productosUi = productosDb.map { p ->
+                Producto(
+                    id = p.id,
+                    nombre = p.nombre,
+                    descripcion = p.descripcion,
+                    precio = p.precio,
+                    categoriaId = p.categoriaId,
+                    imagen = p.imagen       // ✅ SOLO usamos imagen (URI o drawable)
+                )
+            }
 
-                val productosUi = productosDb.map { p ->
-                    val resId = resources.getIdentifier(p.imagen, "drawable", packageName)
-                    val imagenFinal =
-                        if (resId != 0) resId else R.drawable.food_1_svgrepo_com
+            runOnUiThread {
+                binding.TituloCategoria.text = categoria.nombre
 
-                    Producto(
-                        id = p.id,
-                        nombre = p.nombre,
-                        descripcion = p.descripcion,
-                        precio = p.precio,
-                        categoriaId = p.categoriaId,
-                        imagen = p.imagen,
-                        imagenRes = imagenFinal
-                    )
-                }
-
-                runOnUiThread {
-                    binding.TituloCategoria.text = categoria.nombre
-                    binding.rvArticulosCategoria.adapter =
-                        ProductoCategoriaMenuAdapter(productosUi) { producto ->
-
-                            val intent = Intent(context, ProductoIndividualActivity::class.java)
-                            intent.putExtra(ProductoIndividualActivity.EXTRA_PRODUCTO_ID, producto.id)
-                            startActivity(intent)
-                        }
-
-
-                }
+                binding.rvArticulosCategoria.adapter =
+                    ProductoCategoriaMenuAdapter(productosUi) { producto ->
+                        val intent = Intent(context, ProductoIndividualActivity::class.java)
+                        intent.putExtra(
+                            ProductoIndividualActivity.EXTRA_PRODUCTO_ID,
+                            producto.id
+                        )
+                        startActivity(intent)
+                    }
             }
         }
     }
 
     override fun onResume() {
         super.onResume()
-
-        if (codigoCategoria != null) {
-            cargarProductosPorCodigo(codigoCategoria!!)
+        codigoCategoria?.let {
+            cargarProductosPorCodigo(it)
         }
     }
-
 }
