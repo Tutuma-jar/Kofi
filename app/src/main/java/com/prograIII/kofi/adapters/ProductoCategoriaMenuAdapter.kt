@@ -33,21 +33,19 @@ class ProductoCategoriaMenuAdapter(
             tvDescripcionArticulo.text = producto.descripcion
             tvPrecioArticulo.text = "${producto.precio} Bs."
 
-            // ✅ IMAGEN: URI (galería) o drawable
+            //URI (galería) o drawable
             val img = producto.imagen
             if (img.startsWith("content://")) {
                 ivArticulo.setImageURI(Uri.parse(img))
             } else {
-                // Si viene nombre drawable, usamos imagenRes (ya trae fallback)
-                if (producto.imagenRes != 0) {
-                    ivArticulo.setImageResource(producto.imagenRes)
-                } else {
-                    // fallback extra
-                    val resId = holder.itemView.context.resources.getIdentifier(
-                        img, "drawable", holder.itemView.context.packageName
-                    )
-                    ivArticulo.setImageResource(if (resId != 0) resId else R.drawable.food_1_svgrepo_com)
-                }
+                val resId = holder.itemView.context.resources.getIdentifier(
+                    img,
+                    "drawable",
+                    holder.itemView.context.packageName
+                )
+                ivArticulo.setImageResource(
+                    if (resId != 0) resId else R.drawable.food_1_svgrepo_com
+                )
             }
 
             root.setOnClickListener { onClick(producto) }
