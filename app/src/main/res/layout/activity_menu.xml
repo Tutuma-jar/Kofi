@@ -41,6 +41,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/menu"
             android:background="@color/beige_claro"
+            app:tint="@color/azul_medio"
             app:layout_constraintTop_toTopOf="@id/menu_titulo"
             app:layout_constraintBottom_toBottomOf="@id/menu_titulo"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -470,14 +471,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="20dp">
 
-            <androidx.appcompat.widget.AppCompatButton
+            <Button
                 android:id="@+id/btnCerrarSesion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_button_beige"
                 android:text="CERRAR SESIÓN"
                 android:textStyle="bold"
-                android:textColor="#000"/>
+                style="@style/botones_claros"/>
 
             <TextView
                 android:layout_width="wrap_content"

@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_menu"
-            android:background="?attr/selectableItemBackgroundBorderless"
+            android:background="@color/beige_claro"
             app:tint="@color/azul_medio"
             app:layout_constraintTop_toTopOf="@id/logo"
             app:layout_constraintEnd_toEndOf="parent"/>
