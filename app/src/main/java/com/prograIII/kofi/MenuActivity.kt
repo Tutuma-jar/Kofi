@@ -22,9 +22,21 @@ class MenuActivity : AppCompatActivity() {
         binding = ActivityMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+        val content = binding.mainContent
+
+        val pL = content.paddingLeft
+        val pT = content.paddingTop
+        val pR = content.paddingRight
+        val pB = content.paddingBottom
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.drawerLayout) { _, insets ->
+            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            content.setPadding(
+                pL + bars.left,
+                pT + bars.top,
+                pR + bars.right,
+                pB + bars.bottom
+            )
             insets
         }
 
