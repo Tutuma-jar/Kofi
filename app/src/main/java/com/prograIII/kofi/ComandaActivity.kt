@@ -89,6 +89,7 @@ class ComandaActivity : AppCompatActivity() {
                 val productosUi = productosDb.map { p -> //De clase a UI de producto
                     val resId = resources.getIdentifier(p.imagen, "drawable", packageName)
                     val imagenFinal = if (resId != 0) resId else R.drawable.food_1_svgrepo_com
+
                     Producto(
                         id = p.id,
                         nombre = p.nombre,
