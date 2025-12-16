@@ -43,4 +43,24 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+
+
+    <string name="menu">MENÚ</string>
+    <string name="breakfast">BREAKFAST</string>
+    <string name="cafes">CAFÉS</string>
+    <string name="tes_e_infusiones">TÉS E INFUSIONES</string>
+    <string name="bebidas">BEBIDAS</string>
+    <string name="sandwiches">SÁNDWICHES</string>
+    <string name="panaderia">PANADERÍA</string>
+    <string name="pasteles">PASTELES</string>
+    <string name="helados">HELADOS</string>
+    <string name="kofi_mayusculas">KOFI</string>
+    <string name="saludo_usuario">Hola, usuario!</string>
+    <string name="inicio">Inicio</string>
+    <string name="menu_minuscula">Menú</string>
+    <string name="pedidos_minuscula">Pedidos</string>
+    <string name="nueva_comanda_minuscula">Nueva Comanda</string>
+    <string name="cerrar_sesion">CERRAR SESIÓN</string>
+    <string name="by_tap_amp_serve"><![CDATA[By: Tap & Serve]]></string>
+
 </resources>
