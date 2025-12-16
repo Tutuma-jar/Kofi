@@ -24,8 +24,9 @@ class PedidosActivity : AppCompatActivity() {
     val context: Context = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
 
         binding = ActivityPedidosBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -72,36 +73,5 @@ class PedidosActivity : AppCompatActivity() {
             val intentCambioALogin = Intent(context, LoginActivity::class.java)
             startActivity(intentCambioALogin)
         }
-
-        inicializarSwitchModoOscuro()
-
-        binding.switchModoOscuro
-            .setOnCheckedChangeListener { _, seleccionado ->
-                if(seleccionado){
-                    //seleccionado
-                    habilitarModoOscuro()
-                } else {
-                    //no seleccionado
-                    deshabilitarModoOscuro()
-                }
-            }
     }
-
-    private fun inicializarSwitchModoOscuro() {
-        val nightModeFlags =
-            resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-
-        binding.switchModoOscuro.isChecked =
-            nightModeFlags == Configuration.UI_MODE_NIGHT_YES
-    }
-
-    private fun habilitarModoOscuro(){
-        AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
-
-    }
-
-    private fun deshabilitarModoOscuro(){
-        AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
-    }
-
 }

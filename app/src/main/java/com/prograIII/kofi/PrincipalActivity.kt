@@ -22,21 +22,11 @@ class PrincipalActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPrincipalBinding
     lateinit var auth: FirebaseAuth
-    private lateinit var sharedPreferences: SharedPreferences
     val context: Context = this
-
-    companion object {
-        val NOMBRE_SHARED = "Progra3II"
-        val CLAVE_MODO_OSCURO = "ModoOscuro"
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        sharedPreferences = getSharedPreferences(
-            NOMBRE_SHARED, MODE_PRIVATE
-        )
-        
-        aplicarModoGuardado()
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
 
         super.onCreate(savedInstanceState)
 
@@ -91,54 +81,5 @@ class PrincipalActivity : AppCompatActivity() {
             val intentCambioALogin = Intent(context, LoginActivity::class.java)
             startActivity(intentCambioALogin)
         }
-
-        // ---------------- MODO OSCURO ----------------
-
-        inicializarSwitchModoOscuro()
-
-        binding.switchModoOscuro.setOnCheckedChangeListener { _, seleccionado ->
-            guardarModoOscuro(seleccionado)
-
-            if (seleccionado) {
-                habilitarModoOscuro()
-            } else {
-                deshabilitarModoOscuro()
-            }
-        }
-    }
-
-    // ---------- MODO OSCURO ----------
-
-    private fun inicializarSwitchModoOscuro() {
-        val activado = sharedPreferences.getBoolean(
-            CLAVE_MODO_OSCURO,
-            false
-        )
-        binding.switchModoOscuro.isChecked = activado
-    }
-
-    private fun guardarModoOscuro(activado: Boolean) {
-        val editor = sharedPreferences.edit()
-        editor.putBoolean(CLAVE_MODO_OSCURO, activado)
-        editor.apply()
-    }
-
-    private fun aplicarModoGuardado() {
-        val activado = sharedPreferences.getBoolean(
-            CLAVE_MODO_OSCURO,
-            false
-        )
-
-        AppCompatDelegate.setDefaultNightMode(
-            if (activado) MODE_NIGHT_YES else MODE_NIGHT_NO
-        )
-    }
-
-    private fun habilitarModoOscuro() {
-        AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
-    }
-
-    private fun deshabilitarModoOscuro() {
-        AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
     }
 }
