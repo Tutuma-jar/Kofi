@@ -13,6 +13,8 @@ import com.prograIII.kofi.adapters.ProductoFinalizarOrdenAdapter
 import com.prograIII.kofi.data.AppDatabase
 import com.prograIII.kofi.databinding.ActivityFinalizarOrdenBinding
 import com.prograIII.kofi.LoginActivity.Companion.nombreDB
+import com.prograIII.kofi.dataclasses.Pedido
+import com.prograIII.kofi.dataclasses.Producto
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -106,6 +108,15 @@ class FinalizarOrdenActivity : AppCompatActivity() {
             // Consultamos al DAO
             val listaDetalles = db.ordenDao().obtenerDetallesDeOrden(id)
             val total = listaDetalles.sumOf { it.precio * it.cantidad }
+            val detallesUi = listaDetalles.map { p ->
+                Pedido(
+                    ordenId = p.id,
+                    imagenProducto = p.imagenProducto,
+                    nombreProducto = p.nombreProducto,
+                    precio = p.precio,
+                    cantidad = p.cantidad,
+                )
+            }
             runOnUiThread {
                 // Llenamos el adapter con los datos reales de la BD
                 binding.rvArticulosPedido.adapter = ProductoFinalizarOrdenAdapter(listaDetalles)
