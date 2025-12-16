@@ -6,6 +6,8 @@ import androidx.room.PrimaryKey
 data class OrdenEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val cliente: String,
+    val nit: Int,       // <--- NUEVO CAMPO
+    val comentario: String, // <--- NUEVO CAMPO
     val totalItems: Int,
     val totalMonto: Double,
     val listo: Boolean

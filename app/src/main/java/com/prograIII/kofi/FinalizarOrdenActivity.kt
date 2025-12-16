@@ -81,33 +81,14 @@ class FinalizarOrdenActivity : AppCompatActivity() {
             startActivity(intentCambioAPedidos)
         }
         binding.btnConfirmarPedido.setOnClickListener {
-            val nombreClienteIngresado = binding.etNombreCliente.text.toString()
-
-            if (nombreClienteIngresado.isEmpty()) {
-                binding.etNombreCliente.error = "Ingresa un nombre"
-                return@setOnClickListener
-            }
-
-            // Operación en base de datos (Background)
-            GlobalScope.launch(Dispatchers.IO) {
-
-                val ordenActual = db.ordenDao().obtenerOrdenPorId(ordenIdActual)
-
-                val ordenActualizada = ordenActual.copy(cliente = nombreClienteIngresado)
-
-                db.ordenDao().actualizarOrden(ordenActualizada)
-
-                runOnUiThread {
-                    val intent = Intent(context, PedidosActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-            }
+            confirmarPedidoFinal()
         }
     }
     //cargar db
     fun cargarProductosDeLaOrden(id: Int) {
         GlobalScope.launch(Dispatchers.IO) {
+
+            val ordenHeader = db.ordenDao().obtenerOrdenPorId(id)
 
             val listaDetalles = db.ordenDao().obtenerDetallesDeOrden(id)
 
@@ -123,6 +104,8 @@ class FinalizarOrdenActivity : AppCompatActivity() {
                 )
             }
             runOnUiThread {
+                binding.etNombreCliente.setText(ordenHeader.cliente)
+                binding.etComentario.setText(ordenHeader.comentario)
                 // Llenamos el adapter con los datos reales de la BD
                 binding.rvArticulosPedido.adapter = ProductoFinalizarOrdenAdapter(detallesUi,
                     onSumar = { item -> modificarCantidad(item, 1) },
@@ -174,9 +157,10 @@ class FinalizarOrdenActivity : AppCompatActivity() {
         }
     }
 
-    // --- CONFIRMAR PEDIDO (Guardar nombre cliente) ---
     private fun confirmarPedidoFinal() {
         val nombreCliente = binding.etNombreCliente.text.toString()
+        val comentario = binding.etComentario.text.toString()
+        // val nit = binding.etNit.text.toString() // Si tienes el campo
 
         if (nombreCliente.isEmpty()) {
             binding.etNombreCliente.error = "Ingresa nombre del cliente"
@@ -184,27 +168,28 @@ class FinalizarOrdenActivity : AppCompatActivity() {
         }
 
         GlobalScope.launch(Dispatchers.IO) {
-            // Traemos la orden cabecera
-            val orden = db.ordenDao().obtenerOrdenPorId(ordenIdActual)
-
-            // Recalculamos totales finales por seguridad
+            // 1. Traer la orden vieja
+            val ordenVieja = db.ordenDao().obtenerOrdenPorId(ordenIdActual)
             val detalles = db.ordenDao().obtenerDetallesDeOrden(ordenIdActual)
+
             val totalMontoFinal = detalles.sumOf { it.precio * it.cantidad }
             val totalItemsFinal = detalles.sumOf { it.cantidad }
 
-            // Creamos copia actualizada
-            val ordenFinal = orden.copy(
+            // 2. Crear copia con TODOS los datos nuevos
+            val ordenActualizada = ordenVieja.copy(
                 cliente = nombreCliente,
+                comentario = comentario,
+                // nit = nit,
                 totalMonto = totalMontoFinal,
                 totalItems = totalItemsFinal,
-                listo = true // Marcamos como lista/confirmada si gustas
+                listo = true
             )
 
-            // Guardamos
-            db.ordenDao().actualizarOrden(ordenFinal)
+            // 3. Guardar en BD
+            db.ordenDao().actualizarOrden(ordenActualizada)
 
             runOnUiThread {
-                Toast.makeText(context, "Pedido Confirmado", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Pedido Guardado", Toast.LENGTH_SHORT).show()
                 val intent = Intent(context, PedidosActivity::class.java)
                 startActivity(intent)
                 finish()
