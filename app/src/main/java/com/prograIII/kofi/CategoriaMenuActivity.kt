@@ -92,18 +92,22 @@ class CategoriaMenuActivity : AppCompatActivity() {
                         nombre = p.nombre,
                         descripcion = p.descripcion,
                         precio = p.precio,
-                        imagenRes = imagenFinal,
-                        categoriaId = p.categoriaId
+                        categoriaId = p.categoriaId,
+                        imagen = p.imagen,
+                        imagenRes = imagenFinal
                     )
                 }
 
                 runOnUiThread {
                     binding.TituloCategoria.text = categoria.nombre
-                    binding.rvArticulosCategoria.adapter = ProductoCategoriaMenuAdapter(productosUi) { producto ->
-                        val intent = Intent(context, ProductoIndividualActivity::class.java)
-                        intent.putExtra("productoId", producto.id)
-                        startActivity(intent)
-                    }
+                    binding.rvArticulosCategoria.adapter =
+                        ProductoCategoriaMenuAdapter(productosUi) { producto ->
+
+                            val intent = Intent(context, ProductoIndividualActivity::class.java)
+                            intent.putExtra(ProductoIndividualActivity.EXTRA_PRODUCTO_ID, producto.id)
+                            startActivity(intent)
+                        }
+
 
                 }
             }

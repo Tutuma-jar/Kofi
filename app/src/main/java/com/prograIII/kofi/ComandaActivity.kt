@@ -95,8 +95,9 @@ class ComandaActivity : AppCompatActivity() {
                         nombre = p.nombre,
                         descripcion = p.descripcion,
                         precio = p.precio,
-                        imagenRes = imagenFinal,
-                        categoriaId = p.categoriaId
+                        categoriaId = p.categoriaId,
+                        imagen = p.imagen,
+                        imagenRes = imagenFinal
                     )
                 }
 

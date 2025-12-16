@@ -134,9 +134,16 @@ class GuardarProductoActivity : AppCompatActivity() {
                 imagenActual = producto.imagen
                 categoriaId = producto.categoriaId
 
-                if (imagenActual.isNotEmpty()) {
-                    binding.ivProducto.setImageURI(Uri.parse(imagenActual))
+                val img = imagenActual
+                if (img.startsWith("content://")) {
+                    binding.ivProducto.setImageURI(Uri.parse(img))
+                } else {
+                    val resId = resources.getIdentifier(img, "drawable", packageName)
+                    binding.ivProducto.setImageResource(
+                        if (resId != 0) resId else R.drawable.food_1_svgrepo_com
+                    )
                 }
+
             }
         }
     }
