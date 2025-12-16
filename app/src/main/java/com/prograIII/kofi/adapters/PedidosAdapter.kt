@@ -1,80 +1,57 @@
 package com.prograIII.kofi.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.prograIII.kofi.databinding.ProductoFinalizarOrdenBinding
-import com.prograIII.kofi.dataclasses.ItemPedido
+import com.prograIII.kofi.databinding.ItemLayoutBinding
+import com.prograIII.kofi.dataclasses.Pedido
 
-class ItemPedidoAdapter(
-    private val context: Context,
-    private val items: MutableList<ItemPedido>,
-    private val onListaActualizada: (List<ItemPedido>) -> Unit
-) : RecyclerView.Adapter<ItemPedidoAdapter.ItemPedidoViewHolder>() {
+class PedidosAdapter(
+    private val pedidos: MutableList<Pedido>,
+    private val onVerDetalles: (Pedido) -> Unit,
+    private val onEstadoCambiado: (Pedido, Boolean) -> Unit
+) : RecyclerView.Adapter<PedidosAdapter.PedidoViewHolder>() {
 
-    inner class ItemPedidoViewHolder(
-        val binding: ProductoFinalizarOrdenBinding
-    ) : RecyclerView.ViewHolder(binding.root)
+    inner class PedidoViewHolder(val binding: ItemLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemPedidoViewHolder {
-        val binding = ProductoFinalizarOrdenBinding.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PedidoViewHolder {
+        val binding = ItemLayoutBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
         )
-        return ItemPedidoViewHolder(binding)
+        return PedidoViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ItemPedidoViewHolder, position: Int) {
-        val item = items[position]
+    override fun onBindViewHolder(holder: PedidoViewHolder, position: Int) {
+        val pedido = pedidos[position]
 
         with(holder.binding) {
+            numeroPedido.text = "PEDIDO ${pedido.id}"
+            nombrePedido.text = "Nombre: ${pedido.nombreCliente}"
+            textItems.text = "Total de Items: ${pedido.totalItems}"
+            textTotal.text = "Total: %.2f Bs.".format(pedido.total)
 
-            // ===== Imagen =====
-            val resId = context.resources.getIdentifier(
-                item.imagen,
-                "drawable",
-                context.packageName
-            )
-            if (resId != 0) {
-                ivImagenArticulo.setImageResource(resId)
+            switchStatus.setOnCheckedChangeListener(null)
+            switchStatus.isChecked = pedido.listo
+
+            switchStatus.setOnCheckedChangeListener { _, isChecked ->
+                pedido.listo = isChecked
+                onEstadoCambiado(pedido, isChecked)
             }
 
-            // ===== Textos =====
-            tvNombreArticulo.text = item.nombre
-            tvPrecioArticulo.text = "%.2f Bs.".format(item.precio)
-            tvCantidad.text = item.cantidad.toString()
-
-            // ===== Cantidad - =====
-            btnDisminuirCantidad.setOnClickListener {
-                if (item.cantidad > 1) {
-                    item.cantidad--
-                    tvCantidad.text = item.cantidad.toString()
-                    onListaActualizada(items)
-                }
-            }
-
-            // ===== Cantidad + =====
-            btnIncrementarCantidadCantidad.setOnClickListener {
-                item.cantidad++
-                tvCantidad.text = item.cantidad.toString()
-                onListaActualizada(items)
-            }
-
-            // ===== Eliminar =====
-            ibEliminarArticulo.setOnClickListener {
-                val pos = holder.adapterPosition
-                if (pos != RecyclerView.NO_POSITION) {
-                    items.removeAt(pos)
-                    notifyItemRemoved(pos)
-                    onListaActualizada(items)
-                }
+            btnVerDetalles.setOnClickListener {
+                onVerDetalles(pedido)
             }
         }
     }
 
-    override fun getItemCount(): Int = items.size
+    override fun getItemCount(): Int = pedidos.size
 
-    fun getItems(): List<ItemPedido> = items
+    fun setLista(nuevaLista: List<Pedido>) {
+        pedidos.clear()
+        pedidos.addAll(nuevaLista)
+        notifyDataSetChanged()
+    }
 }

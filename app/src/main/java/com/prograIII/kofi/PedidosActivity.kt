@@ -12,11 +12,17 @@ import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.prograIII.kofi.adapters.PedidosAdapter
 import com.prograIII.kofi.databinding.ActivityPedidosBinding
+import com.prograIII.kofi.dataclasses.Pedido
 
 class PedidosActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPedidosBinding
+    private lateinit var adapter: PedidosAdapter
+    private val listaPedidos = mutableListOf<Pedido>()
+
     val context: Context = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,8 +32,17 @@ class PedidosActivity : AppCompatActivity() {
         binding = ActivityPedidosBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val root = binding.root
+        aplicarInsets()
+        configurarDrawer()
+        configurarModoOscuro()
+        configurarRecyclerView()
+        cargarPedidosMock()
+        configurarFiltros()
+    }
 
+    // ---------------- INSETS ----------------
+    private fun aplicarInsets() {
+        val root = binding.root
         val pL = root.paddingLeft
         val pT = root.paddingTop
         val pR = root.paddingRight
@@ -43,27 +58,25 @@ class PedidosActivity : AppCompatActivity() {
             )
             insets
         }
+    }
 
+    // ---------------- DRAWER ----------------
+    private fun configurarDrawer() {
 
         binding.arrow.setOnClickListener {
-            val intentCambioAPrincipal = Intent(context, PrincipalActivity::class.java)
-            startActivity(intentCambioAPrincipal)
+            startActivity(Intent(context, PrincipalActivity::class.java))
         }
 
-
-        //Barra lateral
         binding.menuButton.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.END)
         }
 
         binding.navBtnInicio.setOnClickListener {
-            val intent = Intent(context, PrincipalActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(context, PrincipalActivity::class.java))
         }
 
         binding.navBtnMenu.setOnClickListener {
-            val intent = Intent(context, MenuActivity::class.java) // Asegúrate de crear esta Activity
-            startActivity(intent)
+            startActivity(Intent(context, MenuActivity::class.java))
         }
 
         binding.navBtnPedidos.setOnClickListener {
@@ -71,22 +84,21 @@ class PedidosActivity : AppCompatActivity() {
         }
 
         binding.navBtnComanda.setOnClickListener {
-            val intent = Intent(context, ComandaActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(context, ComandaActivity::class.java))
         }
+    }
 
+    // ---------------- MODO OSCURO ----------------
+    private fun configurarModoOscuro() {
         inicializarSwitchModoOscuro()
 
-        binding.switchModoOscuro
-            .setOnCheckedChangeListener { _, seleccionado ->
-                if(seleccionado){
-                    //seleccionado
-                    habilitarModoOscuro()
-                } else {
-                    //no seleccionado
-                    deshabilitarModoOscuro()
-                }
+        binding.switchModoOscuro.setOnCheckedChangeListener { _, seleccionado ->
+            if (seleccionado) {
+                AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
             }
+        }
     }
 
     private fun inicializarSwitchModoOscuro() {
@@ -97,13 +109,48 @@ class PedidosActivity : AppCompatActivity() {
             nightModeFlags == Configuration.UI_MODE_NIGHT_YES
     }
 
-    private fun habilitarModoOscuro(){
-        AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
+    // ---------------- RECYCLER VIEW ----------------
+    private fun configurarRecyclerView() {
+        adapter = PedidosAdapter(
+            pedidos = listaPedidos,
+            onVerDetalles = { pedido ->
+                // Aquí luego puedes abrir DetallePedidoActivity
+            },
+            onEstadoCambiado = { pedido, listo ->
+                pedido.listo = listo
+                // Aquí luego guardas en Room
+            }
+        )
 
+        binding.rvPedidos.layoutManager = LinearLayoutManager(this)
+        binding.rvPedidos.adapter = adapter
     }
 
-    private fun deshabilitarModoOscuro(){
-        AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
+    // ---------------- DATOS MOCK ----------------
+    private fun cargarPedidosMock() {
+        listaPedidos.addAll(
+            listOf(
+                Pedido(34, "Pérez", 5, 25.50, false),
+                Pedido(35, "Gómez", 3, 18.00, true),
+                Pedido(36, "Rojas", 7, 42.00, false)
+            )
+        )
+        adapter.notifyDataSetChanged()
     }
 
+    // ---------------- FILTROS ----------------
+    private fun configurarFiltros() {
+
+        binding.btnTodo.setOnClickListener {
+            adapter.setLista(listaPedidos)
+        }
+
+        binding.btnListo.setOnClickListener {
+            adapter.setLista(listaPedidos.filter { it.listo })
+        }
+
+        binding.btnPendiente.setOnClickListener {
+            adapter.setLista(listaPedidos.filter { !it.listo })
+        }
+    }
 }
