@@ -2,6 +2,7 @@ package com.prograIII.kofi
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -12,20 +13,27 @@ import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 import com.prograIII.kofi.databinding.ActivityPrincipalBinding
 
 class PrincipalActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPrincipalBinding
+    lateinit var auth: FirebaseAuth
     val context: Context = this
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
-        enableEdgeToEdge()
+    override fun onCreate(savedInstanceState: Bundle?) {
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+
+        super.onCreate(savedInstanceState)
 
         binding = ActivityPrincipalBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        auth = Firebase.auth
 
         val content = binding.mainContent
 
@@ -45,12 +53,16 @@ class PrincipalActivity : AppCompatActivity() {
             insets
         }
 
+        // ---------------- BOTONES ----------------
+
         binding.buttonNuevaComanda.setOnClickListener {
-            startActivity(Intent(context, ComandaActivity::class.java))
+            val intentCambioAComandas = Intent(context, ComandaActivity::class.java)
+            startActivity(intentCambioAComandas)
         }
 
         binding.buttonMenu.setOnClickListener {
-            startActivity(Intent(context, MenuActivity::class.java))
+            val intentCambioAMenu = Intent(context, MenuActivity::class.java)
+            startActivity(intentCambioAMenu)
         }
 
         //Barra lateral
@@ -63,37 +75,24 @@ class PrincipalActivity : AppCompatActivity() {
         }
 
         binding.navBtnMenu.setOnClickListener {
-            startActivity(Intent(context, MenuActivity::class.java))
+            val intent = Intent(context, MenuActivity::class.java)
+            startActivity(intent)
         }
 
         binding.navBtnPedidos.setOnClickListener {
-            startActivity(Intent(context, PedidosActivity::class.java))
+            val intent = Intent(context, PedidosActivity::class.java)
+            startActivity(intent)
         }
 
         binding.navBtnComanda.setOnClickListener {
-            startActivity(Intent(context, ComandaActivity::class.java))
+            val intent = Intent(context, ComandaActivity::class.java)
+            startActivity(intent)
         }
 
-        inicializarSwitchModoOscuro()
-
-        binding.switchModoOscuro.setOnCheckedChangeListener { _, seleccionado ->
-            if (seleccionado) habilitarModoOscuro() else deshabilitarModoOscuro()
+        binding.btnCerrarSesion.setOnClickListener {
+            auth.signOut()
+            val intentCambioALogin = Intent(context, LoginActivity::class.java)
+            startActivity(intentCambioALogin)
         }
-    }
-
-    private fun inicializarSwitchModoOscuro() {
-        val nightModeFlags =
-            resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-
-        binding.switchModoOscuro.isChecked =
-            nightModeFlags == Configuration.UI_MODE_NIGHT_YES
-    }
-
-    private fun habilitarModoOscuro() {
-        AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
-    }
-
-    private fun deshabilitarModoOscuro() {
-        AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
     }
 }
