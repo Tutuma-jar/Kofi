@@ -13,7 +13,7 @@ import com.prograIII.kofi.adapters.ProductoCategoriaComandaAdapter
 import com.prograIII.kofi.data.AppDatabase
 import com.prograIII.kofi.databinding.ActivityComandaBinding
 import com.prograIII.kofi.dataclasses.Producto
-import com.prograIII.kofi.dataclasses.Pedido
+import com.prograIII.kofi.dataclasses.ItemPedido
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -23,10 +23,10 @@ class ComandaActivity : AppCompatActivity() {
 
     private lateinit var db: AppDatabase
     private lateinit var binding: ActivityComandaBinding
-    val context: Context = this
+    private val context: Context = this
 
-    // Lista de pedidos seleccionados
-    private val listaPedidos = mutableListOf<Pedido>()
+    // Lista de productos agregados a la orden (con cantidad)
+    private val listaPedidos = mutableListOf<ItemPedido>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +43,6 @@ class ComandaActivity : AppCompatActivity() {
         binding.recyclerProductos.layoutManager = GridLayoutManager(context, 2)
 
         val root = binding.root
-
         val pL = root.paddingLeft
         val pT = root.paddingTop
         val pR = root.paddingRight
@@ -59,8 +58,6 @@ class ComandaActivity : AppCompatActivity() {
             )
             insets
         }
-
-
 
         // Categoria inicial
         cargarProductosPorCodigo("CAFES")
@@ -81,12 +78,16 @@ class ComandaActivity : AppCompatActivity() {
 
         // Finalizar orden
         binding.finalizarOrden.setOnClickListener {
-            val intentCambioAFinalizarOrden =
-                Intent(context, FinalizarOrdenActivity::class.java)
+            if (listaPedidos.isEmpty()) {
+                Toast.makeText(context, "No hay productos en la orden", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val intentCambioAFinalizarOrden = Intent(context, FinalizarOrdenActivity::class.java)
 
             intentCambioAFinalizarOrden.putExtra(
                 "LISTA_PEDIDOS",
-                ArrayList(listaPedidos)
+                ArrayList(listaPedidos) // ItemPedido es Serializable
             )
 
             startActivity(intentCambioAFinalizarOrden)
@@ -116,22 +117,28 @@ class ComandaActivity : AppCompatActivity() {
                 binding.recyclerProductos.adapter =
                     ProductoCategoriaComandaAdapter(productosUi) { productoSeleccionado ->
 
-                        val nombre = productoSeleccionado.nombre
-                        val existe = listaPedidos.any { it.nombre == nombre }
+                        val existente = listaPedidos.find { it.productoId == productoSeleccionado.id }
 
-                        if (!existe) {
-                            listaPedidos.add(
-                                Pedido(nombre, productoSeleccionado.precio)
-                            )
+                        if (existente != null) {
+                            existente.cantidad++
                             Toast.makeText(
                                 context,
-                                "Agregado: $nombre",
+                                "Cantidad: ${existente.cantidad} (${existente.nombre})",
                                 Toast.LENGTH_SHORT
                             ).show()
                         } else {
+                            listaPedidos.add(
+                                ItemPedido(
+                                    productoId = productoSeleccionado.id,
+                                    nombre = productoSeleccionado.nombre,
+                                    precio = productoSeleccionado.precio,
+                                    imagen = productoSeleccionado.imagen,
+                                    cantidad = 1
+                                )
+                            )
                             Toast.makeText(
                                 context,
-                                "El producto ya está en la orden",
+                                "Agregado: ${productoSeleccionado.nombre}",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
