@@ -39,4 +39,13 @@ interface OrdenDao {
 
     @Update
     fun actualizarOrden(orden: OrdenEntity)
+
+    @Query("DELETE FROM tabla_detalles WHERE ordenId = :ordenId")
+    fun eliminarDetallesPorOrdenId(ordenId: Int)
+
+    @Query("DELETE FROM tabla_ordenes WHERE id = :ordenId")
+    fun eliminarOrdenPorId(ordenId: Int)
+
+    @Query("SELECT * FROM tabla_ordenes WHERE listo = :estaListo AND cliente != '' ORDER BY id DESC")
+    fun obtenerOrdenesGuardadasPorEstado(estaListo: Boolean): List<OrdenEntity>
 }

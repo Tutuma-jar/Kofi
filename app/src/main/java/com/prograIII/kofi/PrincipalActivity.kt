@@ -135,7 +135,7 @@ class PrincipalActivity : AppCompatActivity() {
     private fun cargarOrdenes() {
         GlobalScope.launch(Dispatchers.IO) {
             // Consultamos al DAO
-            listaCompletaDB = db.ordenDao().obtenerOrdenesPorEstado(false)
+            listaCompletaDB = db.ordenDao().obtenerOrdenesGuardadasPorEstado(false)
 
             val pedidoUi = listaCompletaDB.map { p ->
                 Pedido(
