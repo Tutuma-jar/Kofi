@@ -18,36 +18,38 @@
 
     <TextView
         android:id="@+id/nombre_producto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Café 1"
         style="@style/subtitulos"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="8dp"
+        android:text="@string/nombre_del_producto"
+        android:maxLines="2"
+        android:ellipsize="end"
         app:layout_constraintTop_toBottomOf="@id/imagen_producto"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <TextView
-        android:id="@+id/precio_producto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:text="20 Bs."
-        style="@style/texto"
-        app:layout_constraintTop_toBottomOf="@id/nombre_producto"
-        app:layout_constraintStart_toStartOf="parent"/>
+        <TextView
+            android:id="@+id/precio_producto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/bs"
+            style="@style/texto"
+            app:layout_constraintTop_toBottomOf="@id/nombre_producto"
+            app:layout_constraintStart_toStartOf="parent"/>
 
-    <ImageButton
+
+    <ImageView
         android:id="@+id/add_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_margin="10dp"
         android:src="@drawable/plus"
-        android:background="@color/beige_medio"
-        app:layout_constraintBottom_toBottomOf="@id/precio_producto"
-        app:layout_constraintTop_toTopOf="@id/nombre_producto"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toTopOf="@id/precio_producto"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:tint="@color/azul_oscuro" />
+        app:tint="@color/azul_oscuro"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

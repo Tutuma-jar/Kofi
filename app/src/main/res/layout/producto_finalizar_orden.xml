@@ -56,7 +56,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvNombreArticulo"
         app:layout_constraintStart_toStartOf="@id/guiaColumna1"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:text="Cantidad:"
+        android:text="@string/cantidad"
         style="@style/texto"/>
     <LinearLayout
         android:id="@+id/llContenedorCantidad"
