@@ -77,10 +77,6 @@ class FinalizarOrdenActivity : AppCompatActivity() {
 
         //Confirmar pedido
         binding.btnConfirmarPedido.setOnClickListener {
-            val intentCambioAPedidos = Intent(context, PedidosActivity::class.java)
-            startActivity(intentCambioAPedidos)
-        }
-        binding.btnConfirmarPedido.setOnClickListener {
             val nombreClienteIngresado = binding.etNombreCliente.text.toString()
 
             if (nombreClienteIngresado.isEmpty()) {
