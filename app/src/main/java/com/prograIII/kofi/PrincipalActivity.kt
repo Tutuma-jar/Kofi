@@ -124,6 +124,7 @@ class PrincipalActivity : AppCompatActivity() {
             auth.signOut()
             val intentCambioALogin = Intent(context, LoginActivity::class.java)
             startActivity(intentCambioALogin)
+            finish()
         }
     }
     override fun onResume() {

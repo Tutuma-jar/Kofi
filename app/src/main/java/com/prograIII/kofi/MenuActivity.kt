@@ -99,6 +99,7 @@ class MenuActivity : AppCompatActivity() {
         val intent = Intent(context, CategoriaMenuActivity::class.java)
         intent.putExtra("codigoCategoria", codigo)
         startActivity(intent)
+        finish()
     }
 }
 

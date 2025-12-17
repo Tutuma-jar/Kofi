@@ -96,7 +96,6 @@ class FinalizarOrdenActivity : AppCompatActivity() {
                 binding.tvTotal.text = " $montoOriginal Bs."
             }
         }
-
     }
     //cargar db
     fun cargarProductosDeLaOrden(id: Int) {
@@ -133,8 +132,6 @@ class FinalizarOrdenActivity : AppCompatActivity() {
                     onRestar = { item -> modificarCantidad(item, -1) },
                     onEliminar = { item -> eliminarItem(item) }
                 )
-
-
             }
         }
     }
@@ -179,6 +176,7 @@ class FinalizarOrdenActivity : AppCompatActivity() {
         }
     }
 
+    // --- CONFIRMAR PEDIDO (Guardar nombre cliente) ---
     private fun confirmarPedidoFinal() {
         val nombreCliente = binding.etNombreCliente.text.toString()
         val comentario = binding.etComentario.text.toString()
