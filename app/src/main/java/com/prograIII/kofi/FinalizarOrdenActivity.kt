@@ -73,8 +73,7 @@ class FinalizarOrdenActivity : AppCompatActivity() {
 
         //Volver a Comanda
         binding.arrow.setOnClickListener {
-            val intentCambioAComanda = Intent(context, ComandaActivity::class.java)
-            startActivity(intentCambioAComanda)
+            finish()
         }
 
         //Confirmar pedido
