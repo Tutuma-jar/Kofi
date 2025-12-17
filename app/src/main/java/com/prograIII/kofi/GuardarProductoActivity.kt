@@ -17,6 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import androidx.core.net.toUri
 
 class GuardarProductoActivity : AppCompatActivity() {
 
@@ -30,19 +31,6 @@ class GuardarProductoActivity : AppCompatActivity() {
     private var productoId: Int = -1
     private var categoriaId: Int = -1
     private var imagenActual: String = ""
-
-    // Selector de imagen
-    private val seleccionarImagen =
-        registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri: Uri? ->
-            uri?.let {
-                contentResolver.takePersistableUriPermission(
-                    it,
-                    Intent.FLAG_GRANT_READ_URI_PERMISSION
-                )
-                imagenActual = it.toString()
-                binding.ivProducto.setImageURI(it)
-            }
-        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -126,6 +114,19 @@ class GuardarProductoActivity : AppCompatActivity() {
         }
     }
 
+    // Selector de imagen
+    private val seleccionarImagen =
+        registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri: Uri? ->
+            uri?.let {
+                contentResolver.takePersistableUriPermission(
+                    it,
+                    Intent.FLAG_GRANT_READ_URI_PERMISSION
+                )
+                imagenActual = it.toString()
+                binding.ivProducto.setImageURI(it)
+            }
+        }
+
     private fun cargarProducto(id: Int) {
         GlobalScope.launch(Dispatchers.IO) {
             val producto = db.productoDao().obtenerPorId(id)
@@ -150,7 +151,7 @@ class GuardarProductoActivity : AppCompatActivity() {
 
                 val img = imagenActual
                 if (img.startsWith("content://")) {
-                    binding.ivProducto.setImageURI(Uri.parse(img))
+                    binding.ivProducto.setImageURI(img.toUri())
                 } else {
                     val resId = resources.getIdentifier(img, "drawable", packageName)
                     binding.ivProducto.setImageResource(

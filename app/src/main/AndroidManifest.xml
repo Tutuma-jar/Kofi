@@ -53,12 +53,6 @@
             android:name=".PedidosActivity"
             android:exported="true" />
 
-
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            tools:ignore="IntentFilterExportedReceiver" />
-
     </application>
 
 </manifest>
