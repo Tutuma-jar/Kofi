@@ -7,9 +7,9 @@ import com.prograIII.kofi.databinding.ItemLayoutBinding
 import com.prograIII.kofi.dataclasses.Pedido
 
 class PedidosAdapter(
-    private val pedidos: MutableList<Pedido>,
+    private var pedidos: List<Pedido>,
     private val onVerDetalles: (Pedido) -> Unit,
-    private val onEstadoCambiado: (Pedido, Boolean) -> Unit
+    private val onEstadoCambiado: (Pedido) -> Unit
 ) : RecyclerView.Adapter<PedidosAdapter.PedidoViewHolder>() {
 
     inner class PedidoViewHolder(val binding: ItemLayoutBinding) :
@@ -29,16 +29,16 @@ class PedidosAdapter(
 
         with(holder.binding) {
             numeroPedido.text = "PEDIDO ${pedido.id}"
-            nombrePedido.text = "Nombre: ${pedido.nombreCliente}"
+            nombrePedido.text = "Cliente: ${pedido.cliente}"
             textItems.text = "Total de Items: ${pedido.totalItems}"
-            textTotal.text = "Total: %.2f Bs.".format(pedido.total)
+            textTotal.text = "Total: %.2f Bs.".format(pedido.totalMonto)
 
             switchStatus.setOnCheckedChangeListener(null)
             switchStatus.isChecked = pedido.listo
 
             switchStatus.setOnCheckedChangeListener { _, isChecked ->
                 pedido.listo = isChecked
-                onEstadoCambiado(pedido, isChecked)
+                onEstadoCambiado(pedido)
             }
 
             btnVerDetalles.setOnClickListener {
@@ -49,9 +49,8 @@ class PedidosAdapter(
 
     override fun getItemCount(): Int = pedidos.size
 
-    fun setLista(nuevaLista: List<Pedido>) {
-        pedidos.clear()
-        pedidos.addAll(nuevaLista)
+    fun actualizarLista(nuevaLista: List<Pedido>) {
+        pedidos = nuevaLista
         notifyDataSetChanged()
     }
 }

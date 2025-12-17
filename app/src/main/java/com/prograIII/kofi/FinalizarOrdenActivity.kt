@@ -77,10 +77,6 @@ class FinalizarOrdenActivity : AppCompatActivity() {
 
         //Confirmar pedido
         binding.btnConfirmarPedido.setOnClickListener {
-            val intentCambioAPedidos = Intent(context, PedidosActivity::class.java)
-            startActivity(intentCambioAPedidos)
-        }
-        binding.btnConfirmarPedido.setOnClickListener {
             confirmarPedidoFinal()
         }
     }
@@ -106,6 +102,8 @@ class FinalizarOrdenActivity : AppCompatActivity() {
             runOnUiThread {
                 binding.etNombreCliente.setText(ordenHeader.cliente)
                 binding.etComentario.setText(ordenHeader.comentario)
+                binding.etNitCliente.setText(ordenHeader.nit.toString())
+
                 // Llenamos el adapter con los datos reales de la BD
                 binding.rvArticulosPedido.adapter = ProductoFinalizarOrdenAdapter(detallesUi,
                     onSumar = { item -> modificarCantidad(item, 1) },
@@ -160,7 +158,7 @@ class FinalizarOrdenActivity : AppCompatActivity() {
     private fun confirmarPedidoFinal() {
         val nombreCliente = binding.etNombreCliente.text.toString()
         val comentario = binding.etComentario.text.toString()
-        // val nit = binding.etNit.text.toString() // Si tienes el campo
+        val nit = binding.etNitCliente.text.toString().toInt()
 
         if (nombreCliente.isEmpty()) {
             binding.etNombreCliente.error = "Ingresa nombre del cliente"
@@ -178,11 +176,11 @@ class FinalizarOrdenActivity : AppCompatActivity() {
             // 2. Crear copia con TODOS los datos nuevos
             val ordenActualizada = ordenVieja.copy(
                 cliente = nombreCliente,
+                nit = nit,
                 comentario = comentario,
-                // nit = nit,
                 totalMonto = totalMontoFinal,
                 totalItems = totalItemsFinal,
-                listo = true
+                listo = false
             )
 
             // 3. Guardar en BD

@@ -93,7 +93,9 @@ class ComandaActivity : AppCompatActivity() {
 
                 //Crear la entidad Orden
                 val nuevaOrden = OrdenEntity(
-                    cliente = "Llenar Aquí",
+                    cliente = "",
+                    nit = 0,
+                    comentario = "",
                     totalItems = totalItems,
                     totalMonto = totalMonto,
                     listo = false

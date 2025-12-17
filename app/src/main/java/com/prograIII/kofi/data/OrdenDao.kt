@@ -17,20 +17,26 @@ interface OrdenDao {
     @Insert
     fun insertarDetalles(detalles: List<DetalleOrdenEntity>)
 
+    @Query("SELECT * FROM tabla_ordenes ORDER BY id DESC")
+    fun obtenerTodasLasOrdenes(): List<OrdenEntity>
+
+    // --- NUEVO: FILTRO POR ESTADO (SQL) ---
+    @Query("SELECT * FROM tabla_ordenes WHERE listo = :estaListo ORDER BY id DESC")
+    fun obtenerOrdenesPorEstado(estaListo: Boolean): List<OrdenEntity>
+    // --------------------------------------
+
     @Query("SELECT * FROM tabla_detalles WHERE ordenId = :ordenId")
     fun obtenerDetallesDeOrden(ordenId: Int): List<DetalleOrdenEntity>
 
     @Query("SELECT * FROM tabla_detalles WHERE id = :id LIMIT 1")
     fun obtenerDetallePorId(id: Int): DetalleOrdenEntity?
-    //ELIMINAR
+
     @Delete
     fun eliminarProducto(detalle: DetalleOrdenEntity)
 
-    //MODIFICAR
     @Update
     fun actualizarProducto(detalle: DetalleOrdenEntity)
 
-    // 3. Opcional: Para actualizar el total de la cabecera de la orden
     @Update
     fun actualizarOrden(orden: OrdenEntity)
 }

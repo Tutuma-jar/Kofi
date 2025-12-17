@@ -2,8 +2,10 @@ package com.prograIII.kofi.dataclasses
 
 data class Pedido(
     val id: Int,
-    val nombreCliente: String,
+    val cliente: String,
+    val nit: Int,
+    val comentario: String,
     val totalItems: Int,
-    val total: Double,
+    val totalMonto: Double,
     var listo: Boolean
 )
