@@ -224,7 +224,7 @@
                     android:layout_height="24dp"
                     app:tint="@color/beige_medio"/>
                 <TextView
-                    android:text="@string/menu"
+                    android:text="@string/menu_minuscula"
                     android:textColor="@color/texto_blanco"
                     android:layout_marginStart="16dp"
                     android:textStyle="bold"
