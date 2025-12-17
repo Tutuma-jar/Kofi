@@ -27,6 +27,8 @@ class FinalizarOrdenActivity : AppCompatActivity() {
     val context: Context = this
     private var ordenIdActual: Int = 0
 
+    var totalDescuento: Double = 1.0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -79,6 +81,22 @@ class FinalizarOrdenActivity : AppCompatActivity() {
         binding.btnConfirmarPedido.setOnClickListener {
             confirmarPedidoFinal()
         }
+        binding.rgMetodoPago.setOnCheckedChangeListener { _, _ ->
+
+            val code = binding.tvPromocion.text.toString()
+
+            val montoOriginal = totalDescuento
+
+            if (code == "PROMOCION" || code == "OREO") {
+                val totalConDescuento = montoOriginal * 0.90
+                binding.tvTotal.text = " %.2f Bs.".format(totalConDescuento)
+
+                Toast.makeText(context, "¡Descuento aplicado!", Toast.LENGTH_SHORT).show()
+            } else {
+                binding.tvTotal.text = " $montoOriginal Bs."
+            }
+        }
+
     }
     //cargar db
     fun cargarProductosDeLaOrden(id: Int) {
@@ -89,6 +107,9 @@ class FinalizarOrdenActivity : AppCompatActivity() {
             val listaDetalles = db.ordenDao().obtenerDetallesDeOrden(id)
 
             val total = listaDetalles.sumOf { it.precio * it.cantidad }
+
+            totalDescuento = total
+
 
             val detallesUi = listaDetalles.map { p ->
                 ItemPedido(
@@ -103,6 +124,8 @@ class FinalizarOrdenActivity : AppCompatActivity() {
                 binding.etNombreCliente.setText(ordenHeader.cliente)
                 binding.etComentario.setText(ordenHeader.comentario)
                 binding.etNitCliente.setText(ordenHeader.nit.toString())
+                binding.tvTotal.text = " $total Bs."
+
 
                 // Llenamos el adapter con los datos reales de la BD
                 binding.rvArticulosPedido.adapter = ProductoFinalizarOrdenAdapter(detallesUi,
@@ -110,7 +133,8 @@ class FinalizarOrdenActivity : AppCompatActivity() {
                     onRestar = { item -> modificarCantidad(item, -1) },
                     onEliminar = { item -> eliminarItem(item) }
                 )
-                binding.tvTotal.text = " $total Bs."
+
+
             }
         }
     }
