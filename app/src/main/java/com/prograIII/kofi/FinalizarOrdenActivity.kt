@@ -76,16 +76,16 @@ class FinalizarOrdenActivity : AppCompatActivity() {
 
             val code = binding.tvPromocion.text.toString()
 
-            if (code == "PROMOCION") {
-                totalDescuento = totalDescuento * 0.90
+            if (code == "PROMOCION" && !descAplicado) {
+                totalDescuento = "%.2f".format(totalDescuento * 0.90).toDouble()
                 binding.tvTotal.text = "$totalDescuento Bs."
                 Toast.makeText(context, "¡Descuento aplicado!", Toast.LENGTH_SHORT).show()
-            } else if(code == "OREO"){
-                totalDescuento = totalDescuento / 2
+            } else if(code == "OREO"&& !descAplicado){
+                totalDescuento = "%.2f".format(totalDescuento / 2).toDouble()
                 binding.tvTotal.text = "$totalDescuento Bs."
                 Toast.makeText(context, "¡Descuento aplicado!", Toast.LENGTH_SHORT).show()
-            } else if(code == "PAMBLUCHIS"){
-                totalDescuento = totalDescuento * 2
+            } else if(code == "PAMBLUCHIS" && !descAplicado){
+                totalDescuento = "%.2f".format(totalDescuento * 2).toDouble()
                 binding.tvTotal.text = "$totalDescuento Bs."
                 Toast.makeText(context, "¡Descuento aplicado!", Toast.LENGTH_SHORT).show()
             } else {
