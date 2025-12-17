@@ -13,15 +13,28 @@ import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.room.Room
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import com.prograIII.kofi.LoginActivity.Companion.nombreDB
+import com.prograIII.kofi.adapters.PedidosAdapter
+import com.prograIII.kofi.data.AppDatabase
+import com.prograIII.kofi.data.OrdenEntity
 import com.prograIII.kofi.databinding.ActivityPrincipalBinding
+import com.prograIII.kofi.dataclasses.Pedido
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class PrincipalActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPrincipalBinding
     lateinit var auth: FirebaseAuth
+    private lateinit var db: AppDatabase
+    private var listaCompletaDB: List<OrdenEntity> = emptyList()
+
     val context: Context = this
 
 
@@ -35,7 +48,23 @@ class PrincipalActivity : AppCompatActivity() {
         setContentView(binding.root)
         auth = Firebase.auth
 
+        db = Room.databaseBuilder(
+            applicationContext,
+            AppDatabase::class.java,
+            nombreDB
+        ).build()
+
         val content = binding.mainContent
+
+        binding.recyclerPedidosPendientes.layoutManager = LinearLayoutManager(this)
+
+        db = Room.databaseBuilder(
+            applicationContext,
+            AppDatabase::class.java,
+            nombreDB
+        ).build()
+
+        cargarOrdenes()
 
         val pL = content.paddingLeft
         val pT = content.paddingTop
@@ -52,6 +81,8 @@ class PrincipalActivity : AppCompatActivity() {
             )
             insets
         }
+
+
 
         // ---------------- BOTONES ----------------
 
@@ -93,6 +124,52 @@ class PrincipalActivity : AppCompatActivity() {
             auth.signOut()
             val intentCambioALogin = Intent(context, LoginActivity::class.java)
             startActivity(intentCambioALogin)
+        }
+    }
+    override fun onResume() {
+        super.onResume()
+        cargarOrdenes()
+    }
+
+    private fun cargarOrdenes() {
+        GlobalScope.launch(Dispatchers.IO) {
+            // Consultamos al DAO
+            listaCompletaDB = db.ordenDao().obtenerOrdenesPorEstado(false)
+
+            val pedidoUi = listaCompletaDB.map { p ->
+                Pedido(
+                    id = p.id,
+                    cliente = p.cliente,
+                    nit = p.nit,
+                    comentario = p.comentario,
+                    totalItems = p.totalItems,
+                    totalMonto = p.totalMonto,
+                    listo = p.listo
+                )
+            }
+            runOnUiThread {
+                // Llenamos el adapter con los datos reales
+                binding.recyclerPedidosPendientes.adapter = PedidosAdapter(pedidoUi,
+                    onVerDetalles = { item -> onVerDetalles(item.id)},
+                    onEstadoCambiado = { item -> onEstadoCambiado(item)}
+                )
+            }
+        }
+    }
+
+    private fun onVerDetalles(idOrden: Int) {
+        GlobalScope.launch(Dispatchers.IO) {
+            val intent = Intent(context, FinalizarOrdenActivity::class.java)
+            intent.putExtra("ID_ORDEN", idOrden) // IMPORTANTE: Pasamos el ID
+            startActivity(intent)
+        }
+    }
+    private fun onEstadoCambiado(item: Pedido) {
+        GlobalScope.launch(Dispatchers.IO) {
+            val ordenEntity = db.ordenDao().obtenerOrdenPorId(item.id)
+            val ordenActualizada = ordenEntity.copy(listo = item.listo)
+            db.ordenDao().actualizarOrden(ordenActualizada)
+
         }
     }
 }

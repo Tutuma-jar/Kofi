@@ -28,7 +28,6 @@ class PedidosActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var db: AppDatabase
 
-    private lateinit var adapter: PedidosAdapter
     private var listaCompletaDB: List<OrdenEntity> = emptyList()
 
     val context: Context = this
