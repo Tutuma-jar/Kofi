@@ -70,13 +70,13 @@ class GuardarProductoActivity : AppCompatActivity() {
         }
 
 
-
         // Room
         db = Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java,
             "kofi-db"
         ).build()
+
         productoId = intent.getIntExtra(EXTRA_PRODUCTO_ID, -1)
         val esEdicion = productoId != -1
 

@@ -100,7 +100,7 @@ class CategoriaMenuActivity : AppCompatActivity() {
                     descripcion = p.descripcion,
                     precio = p.precio,
                     categoriaId = p.categoriaId,
-                    imagen = p.imagen       // ✅ SOLO usamos imagen (URI o drawable)
+                    imagen = p.imagen       //Imagen URI
                 )
             }
 
