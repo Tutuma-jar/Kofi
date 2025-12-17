@@ -5,8 +5,6 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Delete
 import androidx.room.Update
-import androidx.room.Transaction
-
 
 @Dao
 interface OrdenDao {
@@ -42,19 +40,12 @@ interface OrdenDao {
     @Update
     fun actualizarOrden(orden: OrdenEntity)
 
-    // 1. Elimina solo la cabecera (la orden)
-    @Delete
-    fun eliminarOrden(orden: OrdenEntity)
-
-    // 2. Elimina todos los detalles que pertenezcan a esa orden
     @Query("DELETE FROM tabla_detalles WHERE ordenId = :ordenId")
     fun eliminarDetallesPorOrdenId(ordenId: Int)
 
-    // 3. TRANSACCIÓN MAESTRA: Ejecuta ambos pasos automáticamente
-    // Usa ESTE método desde tu Activity
-    @Transaction
-    fun eliminarOrdenCompleta(orden: OrdenEntity) {
-        eliminarDetallesPorOrdenId(orden.id) // Primero borra los hijos
-        eliminarOrden(orden)                 // Luego borra el padre
-    }
+    @Query("DELETE FROM tabla_ordenes WHERE id = :ordenId")
+    fun eliminarOrdenPorId(ordenId: Int)
+
+    @Query("SELECT * FROM tabla_ordenes WHERE listo = :estaListo AND cliente != '' ORDER BY id DESC")
+    fun obtenerOrdenesGuardadasPorEstado(estaListo: Boolean): List<OrdenEntity>
 }

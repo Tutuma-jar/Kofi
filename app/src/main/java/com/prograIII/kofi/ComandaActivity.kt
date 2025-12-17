@@ -30,6 +30,9 @@ class ComandaActivity : AppCompatActivity() {
 
     private val listaPedidos = mutableListOf<ItemPedido>()
     private var productosActuales: List<Producto> = emptyList()
+    private var productosMenuCompleto: List<Producto> = emptyList()
+
+    private var ordenIdActual: Int? = null
 
     private lateinit var adapterProductos: ProductoCategoriaComandaAdapter
 
@@ -69,6 +72,24 @@ class ComandaActivity : AppCompatActivity() {
             insets
         }
 
+        // Cargar todo el menu
+        GlobalScope.launch(Dispatchers.IO) {
+            val productosDb = db.productoDao().obtenerTodos()
+            val productosUi = productosDb.map { p ->
+                Producto(
+                    id = p.id,
+                    nombre = p.nombre,
+                    descripcion = p.descripcion,
+                    precio = p.precio,
+                    categoriaId = p.categoriaId,
+                    imagen = p.imagen
+                )
+            }
+            runOnUiThread {
+                productosMenuCompleto = productosUi
+            }
+        }
+
         cargarProductosPorCodigo("CAFES")
         binding.categoria1.setOnClickListener { cargarProductosPorCodigo("CAFES") }
         binding.categoria2.setOnClickListener { cargarProductosPorCodigo("INFUSIONES") }
@@ -82,62 +103,43 @@ class ComandaActivity : AppCompatActivity() {
         binding.etBuscar.addTextChangedListener { texto ->
             val q = texto.toString().trim().lowercase()
 
-            val filtrados =
-                if (q.isEmpty()) productosActuales
-                else productosActuales.filter { it.nombre.lowercase().contains(q) }
-
-            adapterProductos.actualizarLista(filtrados)
+            if (q.isEmpty()) {
+                adapterProductos.actualizarLista(productosActuales)
+            } else {
+                val filtrados = productosMenuCompleto.filter {
+                    it.nombre.lowercase().contains(q)
+                }
+                adapterProductos.actualizarLista(filtrados)
+            }
         }
 
         binding.arrow.setOnClickListener {
             startActivity(Intent(context, PrincipalActivity::class.java))
         }
 
+        // ✅ ÚNICO CAMBIO: ahora finaliza usando la BD (ordenIdActual + detalles)
         binding.finalizarOrden.setOnClickListener {
 
-            if (listaPedidos.isEmpty()) {
+            if (ordenIdActual == null) {
                 Toast.makeText(context, "La orden está vacía, agrega productos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             GlobalScope.launch(Dispatchers.IO) {
 
-                val totalMonto = listaPedidos.sumOf { it.precio }
-                val totalItems = listaPedidos.size
+                val detalles = db.ordenDao().obtenerDetallesDeOrden(ordenIdActual!!)
 
-                val nuevaOrden = OrdenEntity(
-                    cliente = "",
-                    nit = 0,
-                    comentario = "",
-                    totalItems = totalItems,
-                    totalMonto = totalMonto,
-                    listo = false
-                )
-
-                val idGeneradoLong = db.ordenDao().insertarOrden(nuevaOrden)
-                val idOrden = idGeneradoLong.toInt()
-
-                val detallesParaGuardar = listaPedidos.map { pedidoUi ->
-                    DetalleOrdenEntity(
-                        ordenId = idOrden,
-                        imagenProducto = pedidoUi.imagen,
-                        nombreProducto = pedidoUi.nombre,
-                        precio = pedidoUi.precio,
-                        cantidad = 1
-                    )
+                if (detalles.isEmpty()) {
+                    runOnUiThread {
+                        Toast.makeText(context, "La orden está vacía, agrega productos", Toast.LENGTH_SHORT).show()
+                    }
+                    return@launch
                 }
 
-                db.ordenDao().insertarDetalles(detallesParaGuardar)
-
                 runOnUiThread {
-                    Toast.makeText(context, "Orden #$idOrden creada exitosamente", Toast.LENGTH_SHORT).show()
-
                     val intent = Intent(context, FinalizarOrdenActivity::class.java)
-                    intent.putExtra("ID_ORDEN", idOrden)
-                    intent.putExtra("VieneDeComanda", true)
+                    intent.putExtra("ID_ORDEN", ordenIdActual!!)
                     startActivity(intent)
-
-                    listaPedidos.clear()
                 }
             }
         }
@@ -171,22 +173,36 @@ class ComandaActivity : AppCompatActivity() {
     }
 
     private fun agregarProductoAOrden(productoSeleccionado: Producto) {
-        val nombre = productoSeleccionado.nombre
-        val existe = listaPedidos.any { it.nombre == nombre }
 
-        if (!existe) {
-            listaPedidos.add(
-                ItemPedido(
-                    productoSeleccionado.id,
-                    productoSeleccionado.nombre,
-                    productoSeleccionado.precio,
-                    productoSeleccionado.imagen,
-                    1
+        GlobalScope.launch(Dispatchers.IO) {
+
+            // Si no hay orden aún, la creamos
+            if (ordenIdActual == null) {
+                val nuevaOrden = OrdenEntity(
+                    cliente = "",
+                    nit = 0,
+                    comentario = "",
+                    totalItems = 0,
+                    totalMonto = 0.0,
+                    listo = false
                 )
+                ordenIdActual = db.ordenDao().insertarOrden(nuevaOrden).toInt()
+            }
+
+            // Insertamos el producto directamente en BD
+            val detalle = DetalleOrdenEntity(
+                ordenId = ordenIdActual!!,
+                imagenProducto = productoSeleccionado.imagen,
+                nombreProducto = productoSeleccionado.nombre,
+                precio = productoSeleccionado.precio,
+                cantidad = 1
             )
-            Toast.makeText(context, "Agregado: $nombre", Toast.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(context, "El producto ya está en la orden", Toast.LENGTH_SHORT).show()
+
+            db.ordenDao().insertarDetalles(listOf(detalle))
+
+            runOnUiThread {
+                Toast.makeText(context, "Agregado: ${productoSeleccionado.nombre}", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
