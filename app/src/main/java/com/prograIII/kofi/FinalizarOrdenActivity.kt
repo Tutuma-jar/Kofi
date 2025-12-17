@@ -177,14 +177,10 @@ class FinalizarOrdenActivity : AppCompatActivity() {
             val ordenVieja = db.ordenDao().obtenerOrdenPorId(ordenIdActual)
             val detalles = db.ordenDao().obtenerDetallesDeOrden(ordenIdActual)
 
-            if (detalles.size <= 1) {
+            if (detalles.isEmpty()) {
                 db.ordenDao().eliminarDetallesPorOrdenId(ordenIdActual)
                 db.ordenDao().eliminarOrdenPorId(ordenIdActual)
-
-                runOnUiThread {
-                    Toast.makeText(context, "Debe tener más de 1 producto para guardar", Toast.LENGTH_SHORT).show()
-                    finish()
-                }
+                
                 return@launch
             }
 
