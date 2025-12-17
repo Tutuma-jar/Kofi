@@ -86,6 +86,8 @@
     <string name="ver_detalles">Ver detalles</string>
     <string name="cantidad">Cantidad:</string>
     <string name="categoria_minuscula">Categoría</string>
+    <string name="pedido">PEDIDO</string>
+    <string name="total_de_items">TOTAL DE ITEMS:</string>
 
 
 </resources>

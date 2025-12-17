@@ -28,29 +28,38 @@
                 android:id="@+id/numero_pedido"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="PEDIDO 34"
+                android:text="@string/pedido"
                 style="@style/titulos"/>
 
             <TextView
                 android:id="@+id/nombre_pedido"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nombre: Pérez"
+                android:text="@string/nombre"
                 style="@style/texto"/>
 
             <TextView
                 android:id="@+id/text_items"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total de Items: 5"
+                android:text="@string/total_de_items"
                 style="@style/texto"/>
 
             <TextView
                 android:id="@+id/text_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total: 25.50 Bs."
+                android:text="@string/total"
                 style="@style/texto"/>
+
+            <ImageButton
+                android:id="@+id/borrar_pedido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/trash"
+                android:layout_marginTop="10dp"
+                android:background="@color/beige_medio"
+                app:tint="@color/azul_oscuro" />
 
         </LinearLayout>
 
@@ -74,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ver_detalles"
-                android:textSize="14sp"
+                android:textSize="13sp"
                 style="@style/botones_azules"/>
         </LinearLayout>
     </LinearLayout>
