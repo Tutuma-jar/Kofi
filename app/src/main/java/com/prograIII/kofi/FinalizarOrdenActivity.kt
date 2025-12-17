@@ -25,7 +25,7 @@ class FinalizarOrdenActivity : AppCompatActivity() {
     private lateinit var db: AppDatabase
     val context: Context = this
     private var ordenIdActual: Int = 0
-
+    var descAplicado: Boolean = false
     var totalDescuento: Double = 1.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,23 +75,23 @@ class FinalizarOrdenActivity : AppCompatActivity() {
         binding.rgMetodoPago.setOnCheckedChangeListener { _, _ ->
 
             val code = binding.tvPromocion.text.toString()
-            val montoOriginal = totalDescuento
 
             if (code == "PROMOCION") {
-                val totalConDescuento = montoOriginal * 0.90
-                binding.tvTotal.text = "$totalConDescuento Bs"
+                totalDescuento = totalDescuento * 0.90
+                binding.tvTotal.text = "$totalDescuento Bs."
                 Toast.makeText(context, "¡Descuento aplicado!", Toast.LENGTH_SHORT).show()
             } else if(code == "OREO"){
-                val totalConDescuento = montoOriginal -30.0
-                binding.tvTotal.text = "$totalConDescuento Bs"
+                totalDescuento = totalDescuento / 2
+                binding.tvTotal.text = "$totalDescuento Bs."
                 Toast.makeText(context, "¡Descuento aplicado!", Toast.LENGTH_SHORT).show()
             } else if(code == "PAMBLUCHIS"){
-                val totalConDescuento = montoOriginal * 2
-                binding.tvTotal.text = "$totalConDescuento Bs"
+                totalDescuento = totalDescuento * 2
+                binding.tvTotal.text = "$totalDescuento Bs."
                 Toast.makeText(context, "¡Descuento aplicado!", Toast.LENGTH_SHORT).show()
             } else {
-                binding.tvTotal.text = " $montoOriginal Bs."
+                binding.tvTotal.text = "$totalDescuento Bs."
             }
+            descAplicado = true
         }
     }
 
@@ -180,12 +180,16 @@ class FinalizarOrdenActivity : AppCompatActivity() {
             if (detalles.isEmpty()) {
                 db.ordenDao().eliminarDetallesPorOrdenId(ordenIdActual)
                 db.ordenDao().eliminarOrdenPorId(ordenIdActual)
-                
+
                 return@launch
             }
 
-            val totalMontoFinal = detalles.sumOf { it.precio * it.cantidad }
+            var totalMontoFinal = detalles.sumOf { it.precio * it.cantidad }
             val totalItemsFinal = detalles.sumOf { it.cantidad }
+
+            if (descAplicado){
+                totalMontoFinal = totalDescuento
+            }
 
             val ordenActualizada = ordenVieja.copy(
                 cliente = nombreCliente,
