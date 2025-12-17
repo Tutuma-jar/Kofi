@@ -55,6 +55,7 @@
             android:padding="5dp">
 
             <EditText
+                android:id="@+id/etBuscar"
                 android:layout_width="300dp"
                 android:layout_height="40dp"
                 android:hint="@string/buscar"

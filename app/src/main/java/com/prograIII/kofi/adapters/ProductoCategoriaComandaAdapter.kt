@@ -9,7 +9,7 @@ import com.prograIII.kofi.databinding.ProductoCategoriaComandaBinding
 import com.prograIII.kofi.dataclasses.Producto
 
 class ProductoCategoriaComandaAdapter(
-    private val productos: List<Producto>,
+    private var productos: List<Producto>,
     private val onAddClick: (Producto) -> Unit
 ) : RecyclerView.Adapter<ProductoCategoriaComandaAdapter.ProductoViewHolder>() {
 
@@ -29,7 +29,6 @@ class ProductoCategoriaComandaAdapter(
             nombreProducto.text = producto.nombre
             precioProducto.text = "${producto.precio} Bs."
 
-            //URI o drawable
             val img = producto.imagen
             if (img.startsWith("content://")) {
                 imagenProducto.setImageURI(Uri.parse(img))
@@ -44,7 +43,6 @@ class ProductoCategoriaComandaAdapter(
                 )
             }
 
-            // Click en botón +
             addButton.setOnClickListener {
                 onAddClick(producto)
             }
@@ -52,4 +50,9 @@ class ProductoCategoriaComandaAdapter(
     }
 
     override fun getItemCount(): Int = productos.size
+
+    fun actualizarLista(nuevaLista: List<Producto>) {
+        productos = nuevaLista
+        notifyDataSetChanged()
+    }
 }
