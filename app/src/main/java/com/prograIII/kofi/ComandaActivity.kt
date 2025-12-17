@@ -134,6 +134,7 @@ class ComandaActivity : AppCompatActivity() {
 
                     val intent = Intent(context, FinalizarOrdenActivity::class.java)
                     intent.putExtra("ID_ORDEN", idOrden)
+                    intent.putExtra("VieneDeComanda", true)
                     startActivity(intent)
 
                     listaPedidos.clear()

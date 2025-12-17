@@ -18,6 +18,7 @@ import com.prograIII.kofi.dataclasses.ItemPedido
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import androidx.activity.OnBackPressedCallback
 
 
 class FinalizarOrdenActivity : AppCompatActivity() {
@@ -26,7 +27,7 @@ class FinalizarOrdenActivity : AppCompatActivity() {
     private lateinit var db: AppDatabase
     val context: Context = this
     private var ordenIdActual: Int = 0
-
+    var vieneDeComanda: Boolean = false
     var totalDescuento: Double = 1.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,14 +69,35 @@ class FinalizarOrdenActivity : AppCompatActivity() {
 
         //Obtenemos el ID
         ordenIdActual = intent.getIntExtra("ID_ORDEN", 0)
+        vieneDeComanda = intent.getBooleanExtra("VieneDeComanda", false)
+
+        //Cargamos los productos de la orden
 
         cargarProductosDeLaOrden(ordenIdActual)
 
         //Volver a Comanda
         binding.arrow.setOnClickListener {
-            val intentCambioAComanda = Intent(context, ComandaActivity::class.java)
-            startActivity(intentCambioAComanda)
+            if (vieneDeComanda) {
+                eliminarOrdenYVolver()
+            } else {
+                val intent = Intent(context, PedidosActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (vieneDeComanda) {
+                    eliminarOrdenYVolver()
+                } else {
+                    val intent = Intent(context, PedidosActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }
+        }
+        )
+
 
         //Confirmar pedido
         binding.btnConfirmarPedido.setOnClickListener {
@@ -211,6 +233,23 @@ class FinalizarOrdenActivity : AppCompatActivity() {
             runOnUiThread {
                 Toast.makeText(context, "Pedido Guardado", Toast.LENGTH_SHORT).show()
                 val intent = Intent(context, PedidosActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+    }
+    private fun eliminarOrdenYVolver() {
+        GlobalScope.launch(Dispatchers.IO) {
+            // Buscamos la orden
+            val ordenParaBorrar = db.ordenDao().obtenerOrdenPorId(ordenIdActual)
+
+            // Usamos la transacción que borra detalles + cabecera
+            db.ordenDao().eliminarOrdenCompleta(ordenParaBorrar)
+
+            runOnUiThread {
+                Toast.makeText(context, "Orden cancelada", Toast.LENGTH_SHORT).show()
+                // Volvemos a ComandaActivity para empezar de cero
+                val intent = Intent(context, ComandaActivity::class.java)
                 startActivity(intent)
                 finish()
             }

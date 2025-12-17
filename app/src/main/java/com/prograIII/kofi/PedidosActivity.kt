@@ -166,7 +166,8 @@ class PedidosActivity : AppCompatActivity() {
     private fun onVerDetalles(idOrden: Int) {
         GlobalScope.launch(Dispatchers.IO) {
             val intent = Intent(context, FinalizarOrdenActivity::class.java)
-            intent.putExtra("ID_ORDEN", idOrden) // IMPORTANTE: Pasamos el ID
+            intent.putExtra("ID_ORDEN", idOrden)
+            intent.putExtra("VieneDeComanda", false)
             startActivity(intent)
         }
     }
