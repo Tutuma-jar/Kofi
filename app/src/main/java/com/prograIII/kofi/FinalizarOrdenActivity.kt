@@ -77,9 +77,17 @@ class FinalizarOrdenActivity : AppCompatActivity() {
             val code = binding.tvPromocion.text.toString()
             val montoOriginal = totalDescuento
 
-            if (code == "PROMOCION" || code == "OREO") {
+            if (code == "PROMOCION") {
                 val totalConDescuento = montoOriginal * 0.90
-                binding.tvTotal.text = " %.2f Bs.".format(totalConDescuento)
+                binding.tvTotal.text = "$totalConDescuento Bs"
+                Toast.makeText(context, "¡Descuento aplicado!", Toast.LENGTH_SHORT).show()
+            } else if(code == "OREO"){
+                val totalConDescuento = montoOriginal -30.0
+                binding.tvTotal.text = "$totalConDescuento Bs"
+                Toast.makeText(context, "¡Descuento aplicado!", Toast.LENGTH_SHORT).show()
+            } else if(code == "PAMBLUCHIS"){
+                val totalConDescuento = montoOriginal * 2
+                binding.tvTotal.text = "$totalConDescuento Bs"
                 Toast.makeText(context, "¡Descuento aplicado!", Toast.LENGTH_SHORT).show()
             } else {
                 binding.tvTotal.text = " $montoOriginal Bs."

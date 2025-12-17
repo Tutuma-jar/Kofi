@@ -91,14 +91,23 @@ class ComandaActivity : AppCompatActivity() {
         }
 
         cargarProductosPorCodigo("CAFES")
-        binding.categoria1.setOnClickListener { cargarProductosPorCodigo("CAFES") }
-        binding.categoria2.setOnClickListener { cargarProductosPorCodigo("INFUSIONES") }
-        binding.categoria3.setOnClickListener { cargarProductosPorCodigo("BREAKFAST") }
-        binding.categoria4.setOnClickListener { cargarProductosPorCodigo("PANADERIA") }
-        binding.categoria5.setOnClickListener { cargarProductosPorCodigo("PASTELES") }
-        binding.categoria6.setOnClickListener { cargarProductosPorCodigo("SANDWICHES") }
-        binding.categoria7.setOnClickListener { cargarProductosPorCodigo("HELADOS") }
-        binding.categoria8.setOnClickListener { cargarProductosPorCodigo("BEBIDAS") }
+        binding.categoriaTitulo.setText("CAFES")
+        binding.categoria1.setOnClickListener { cargarProductosPorCodigo("CAFES")
+            binding.categoriaTitulo.setText("CAFES")}
+        binding.categoria2.setOnClickListener { cargarProductosPorCodigo("INFUSIONES")
+            binding.categoriaTitulo.setText("INFUSIONES")}
+        binding.categoria3.setOnClickListener { cargarProductosPorCodigo("BREAKFAST")
+            binding.categoriaTitulo.setText("BREAKFAST")}
+        binding.categoria4.setOnClickListener { cargarProductosPorCodigo("PANADERIA")
+            binding.categoriaTitulo.setText("PANADERIA")}
+        binding.categoria5.setOnClickListener { cargarProductosPorCodigo("PASTELES")
+            binding.categoriaTitulo.setText("PASTELES")}
+        binding.categoria6.setOnClickListener { cargarProductosPorCodigo("SANDWICHES")
+            binding.categoriaTitulo.setText("SANDWICHES")}
+        binding.categoria7.setOnClickListener { cargarProductosPorCodigo("HELADOS")
+            binding.categoriaTitulo.setText("HELADOS")}
+        binding.categoria8.setOnClickListener { cargarProductosPorCodigo("BEBIDAS")
+            binding.categoriaTitulo.setText("BEBIDAS")}
 
         binding.etBuscar.addTextChangedListener { texto ->
             val q = texto.toString().trim().lowercase()
@@ -187,6 +196,15 @@ class ComandaActivity : AppCompatActivity() {
                     listo = false
                 )
                 ordenIdActual = db.ordenDao().insertarOrden(nuevaOrden).toInt()
+            }
+            val nombre = productoSeleccionado.nombre
+            val existe = db.ordenDao().existeProductoEnOrden(ordenIdActual!!, nombre)
+
+            if (existe) {
+                runOnUiThread {
+                    Toast.makeText(context, "Ya está en la orden", Toast.LENGTH_SHORT).show()
+                }
+                return@launch
             }
 
             // Insertamos el producto directamente en BD

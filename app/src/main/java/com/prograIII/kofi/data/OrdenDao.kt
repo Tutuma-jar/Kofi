@@ -48,4 +48,7 @@ interface OrdenDao {
 
     @Query("SELECT * FROM tabla_ordenes WHERE listo = :estaListo AND cliente != '' ORDER BY id DESC")
     fun obtenerOrdenesGuardadasPorEstado(estaListo: Boolean): List<OrdenEntity>
+
+    @Query("SELECT EXISTS(SELECT 1 FROM tabla_detalles WHERE ordenId = :ordenId AND nombreProducto = :nombreProducto)")
+    fun existeProductoEnOrden(ordenId: Int, nombreProducto: String): Boolean
 }
