@@ -16,6 +16,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import com.prograIII.kofi.LoginActivity.Companion.nombreDB
+import androidx.core.net.toUri
 
 class ProductoIndividualActivity : AppCompatActivity() {
 
@@ -105,7 +106,7 @@ class ProductoIndividualActivity : AppCompatActivity() {
                 // Imagen: URI o drawable
                 val img = producto.imagen
                 if (img.startsWith("content://")) {
-                    binding.ivProducto.setImageURI(Uri.parse(img))
+                    binding.ivProducto.setImageURI(img.toUri())
                 } else {
                     val resId = resources.getIdentifier(img, "drawable", packageName)
                     binding.ivProducto.setImageResource(
