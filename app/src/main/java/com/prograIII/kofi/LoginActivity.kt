@@ -113,6 +113,11 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     // mi usuario se creó correctamente
+                    Toast.makeText(
+                        baseContext,
+                        "El usuario se creó correctamente",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 } else {
                     Toast.makeText(
                         baseContext,

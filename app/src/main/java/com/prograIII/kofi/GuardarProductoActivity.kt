@@ -32,6 +32,19 @@ class GuardarProductoActivity : AppCompatActivity() {
     private var categoriaId: Int = -1
     private var imagenActual: String = ""
 
+    // Selector de imagen
+    private val seleccionarImagen =
+        registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri: Uri? ->
+            uri?.let {
+                contentResolver.takePersistableUriPermission(
+                    it,
+                    Intent.FLAG_GRANT_READ_URI_PERMISSION
+                )
+                imagenActual = it.toString()
+                binding.ivProducto.setImageURI(it)
+            }
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -113,19 +126,6 @@ class GuardarProductoActivity : AppCompatActivity() {
             else agregarNuevo()
         }
     }
-
-    // Selector de imagen
-    private val seleccionarImagen =
-        registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri: Uri? ->
-            uri?.let {
-                contentResolver.takePersistableUriPermission(
-                    it,
-                    Intent.FLAG_GRANT_READ_URI_PERMISSION
-                )
-                imagenActual = it.toString()
-                binding.ivProducto.setImageURI(it)
-            }
-        }
 
     private fun cargarProducto(id: Int) {
         GlobalScope.launch(Dispatchers.IO) {
