@@ -56,7 +56,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:gravity="start|center"
         android:paddingStart="23dp"
-        android:text="PEDIDO XX"
+        android:text="@string/pedido"
         style="@style/subtitulos" />
 
 
