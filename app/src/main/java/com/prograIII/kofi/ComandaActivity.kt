@@ -126,7 +126,7 @@ class ComandaActivity : AppCompatActivity() {
             startActivity(Intent(context, PrincipalActivity::class.java))
         }
 
-        // ✅ ÚNICO CAMBIO: ahora finaliza usando la BD (ordenIdActual + detalles)
+        //(ordenIdActual + detalles)
         binding.finalizarOrden.setOnClickListener {
 
             if (ordenIdActual == null) {

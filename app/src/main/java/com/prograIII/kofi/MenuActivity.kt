@@ -44,7 +44,7 @@ class MenuActivity : AppCompatActivity() {
             insets
         }
 
-        // ---------------- CATEGORÍAS ----------------
+        // ---------------- CATEGORÍAS
 
         binding.categoria1.setOnClickListener { abrirCategoria("BREAKFAST") }
         binding.categoria2.setOnClickListener { abrirCategoria("CAFES") }
@@ -55,7 +55,7 @@ class MenuActivity : AppCompatActivity() {
         binding.categoria7.setOnClickListener { abrirCategoria("PASTELES") }
         binding.categoria8.setOnClickListener { abrirCategoria("HELADOS") }
 
-        // ---------------- UI ----------------
+        // ---------------- UI
 
         binding.arrow.setOnClickListener {
             startActivity(Intent(context, PrincipalActivity::class.java))

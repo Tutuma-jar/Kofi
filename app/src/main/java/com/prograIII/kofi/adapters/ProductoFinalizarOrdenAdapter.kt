@@ -40,7 +40,7 @@ class ProductoFinalizarOrdenAdapter(
             // Cantidad en el medio de los botones
             tvCantidad.text = producto.cantidad.toString()
 
-            // --- LISTENERS DE BOTONES ---
+            // --- LISTENERS DE BOTONES
             btnIncrementarCantidadCantidad.setOnClickListener { onSumar(producto) }
             btnDisminuirCantidad.setOnClickListener { onRestar(producto) }
             ibEliminarArticulo.setOnClickListener { onEliminar(producto) }

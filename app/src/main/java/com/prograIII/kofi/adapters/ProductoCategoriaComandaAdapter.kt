@@ -13,7 +13,7 @@ class ProductoCategoriaComandaAdapter(
     private val onAddClick: (Producto) -> Unit
 ) : RecyclerView.Adapter<ProductoCategoriaComandaAdapter.ProductoViewHolder>() {
 
-    inner class ProductoViewHolder(val binding: ProductoCategoriaComandaBinding) :
+    class ProductoViewHolder(val binding: ProductoCategoriaComandaBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductoViewHolder {

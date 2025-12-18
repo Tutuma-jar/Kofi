@@ -78,7 +78,7 @@ class PrincipalActivity : AppCompatActivity() {
 
 
 
-        // ---------------- BOTONES ----------------
+        // ---------------- BOTONES
 
         binding.buttonNuevaComanda.setOnClickListener {
             val intentCambioAComandas = Intent(context, ComandaActivity::class.java)
@@ -143,7 +143,7 @@ class PrincipalActivity : AppCompatActivity() {
                 )
             }
             runOnUiThread {
-                // Llenamos el adapter con los datos reales
+                // Adapter con los datos reales
                 binding.recyclerPedidosPendientes.adapter = PedidosAdapter(pedidoUi,
                     onVerDetalles = { item -> onVerDetalles(item.id)},
                     onEstadoCambiado = { item -> onEstadoCambiado(item)},
