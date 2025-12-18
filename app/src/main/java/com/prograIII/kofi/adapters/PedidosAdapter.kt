@@ -9,10 +9,12 @@ import com.prograIII.kofi.dataclasses.Pedido
 class PedidosAdapter(
     private var pedidos: List<Pedido>,
     private val onVerDetalles: (Pedido) -> Unit,
-    private val onEstadoCambiado: (Pedido) -> Unit
+    private val onEstadoCambiado: (Pedido) -> Unit,
+    private val onEliminar: (Pedido) -> Unit
+
 ) : RecyclerView.Adapter<PedidosAdapter.PedidoViewHolder>() {
 
-    inner class PedidoViewHolder(val binding: ItemLayoutBinding) :
+    class PedidoViewHolder(val binding: ItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PedidoViewHolder {
@@ -43,6 +45,9 @@ class PedidosAdapter(
 
             btnVerDetalles.setOnClickListener {
                 onVerDetalles(pedido)
+            }
+            borrarPedido.setOnClickListener {
+                onEliminar(pedido)
             }
         }
     }

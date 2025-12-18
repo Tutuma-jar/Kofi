@@ -155,7 +155,8 @@ class PedidosActivity : AppCompatActivity() {
                 // Llenamos el adapter con los datos reales
                 binding.rvPedidos.adapter = PedidosAdapter(pedidoUi,
                     onVerDetalles = { item -> onVerDetalles(item.id)},
-                    onEstadoCambiado = { item -> onEstadoCambiado(item)}
+                    onEstadoCambiado = { item -> onEstadoCambiado(item)},
+                    onEliminar = { item -> onEliminarPedido(item.id) }
                 )
             }
         }
@@ -177,4 +178,16 @@ class PedidosActivity : AppCompatActivity() {
 
         }
     }
+
+    private fun onEliminarPedido(idOrden: Int) {
+        GlobalScope.launch(Dispatchers.IO) {
+            db.ordenDao().eliminarDetallesPorOrden(idOrden)
+            db.ordenDao().eliminarOrdenPorId(idOrden)
+
+            runOnUiThread {
+                cargarOrdenes()
+            }
+        }
+    }
+
 }

@@ -51,4 +51,8 @@ interface OrdenDao {
 
     @Query("SELECT EXISTS(SELECT 1 FROM tabla_detalles WHERE ordenId = :ordenId AND nombreProducto = :nombreProducto)")
     fun existeProductoEnOrden(ordenId: Int, nombreProducto: String): Boolean
+
+    @Query("DELETE FROM tabla_detalles WHERE ordenId = :idOrden")
+    fun eliminarDetallesPorOrden(idOrden: Int)
+
 }
